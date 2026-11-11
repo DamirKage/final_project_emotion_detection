@@ -1,0 +1,345 @@
+<title>M099 дайындық</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700&family=Montserrat:wght@700;800&display=swap">
+<style>
+/* layout: sticky top bar with 4 tabs; one reading column (max 780px); theory opens one topic at a time; test runner is a single question card with a number palette */
+:root{
+  --bg:#f2f4f8; --card:#ffffff; --ink:#131c2b; --mute:#566275; --line:#d5dbe5; --soft:#e8eef6;
+  --acc:#1456b8; --acc-ink:#ffffff; --ok:#17794a; --ok-bg:#e3f4ea; --bad:#b3261e; --bad-bg:#fbe9e7; --warn:#8a5a00; --warn-bg:#fff3d6;
+  --it:#5b3fb0; --it-bg:#efeafc;
+  --c1:#1456b8; --c2:#c2410c; --c3:#17794a; --c4:#7a35b5;
+  --fd:'Montserrat','Segoe UI',system-ui,sans-serif; --fb:'Golos Text','Segoe UI',system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#0d131b; --card:#161f2b; --ink:#e7edf5; --mute:#9aa8ba; --line:#2a3646; --soft:#1d2937;
+  --acc:#6fb1ff; --acc-ink:#06121f; --ok:#5fd097; --ok-bg:#12301f; --bad:#ff8f85; --bad-bg:#3a1714; --warn:#f2c462; --warn-bg:#33280f;
+  --it:#b9a3ff; --it-bg:#251d40;
+  --c1:#6fb1ff; --c2:#ff9a5c; --c3:#5fd097; --c4:#c79bff; color-scheme:dark; } }
+:root[data-theme="dark"]{
+  --bg:#0d131b; --card:#161f2b; --ink:#e7edf5; --mute:#9aa8ba; --line:#2a3646; --soft:#1d2937;
+  --acc:#6fb1ff; --acc-ink:#06121f; --ok:#5fd097; --ok-bg:#12301f; --bad:#ff8f85; --bad-bg:#3a1714; --warn:#f2c462; --warn-bg:#33280f;
+  --it:#b9a3ff; --it-bg:#251d40;
+  --c1:#6fb1ff; --c2:#ff9a5c; --c3:#5fd097; --c4:#c79bff; color-scheme:dark; }
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 var(--fb)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--card)}
+h1,h2,h3,h4{font-family:var(--fd);text-wrap:balance;line-height:1.25;margin:0}
+h1{font-size:1.55rem} h2{font-size:1.4rem} h3{font-size:1.12rem;margin-top:1.6rem;color:var(--acc)} h4{font-size:1rem;margin-top:1.1rem}
+p{margin:.7rem 0} ul,ol{margin:.6rem 0;padding-left:1.3rem} li{margin:.3rem 0}
+a{color:var(--acc)}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--card);border-bottom:1px solid var(--line)}
+.top .in{max-width:860px;margin:0 auto;display:flex;gap:6px;overflow-x:auto;padding-block:8px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.top button{flex:none;border:1px solid var(--line);background:var(--card);border-radius:9px;padding:7px 14px;font-weight:600;font-size:.95rem}
+.top button[aria-current="true"]{background:var(--acc);color:var(--acc-ink);border-color:var(--acc)}
+main{max-width:812px;margin:0 auto;padding-block:20px 80px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));min-width:0}
+.lead{color:var(--mute);font-size:1.05rem}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:16px 0;min-width:0}
+.card>h2:first-child,.card>h3:first-child{margin-top:0}
+.tw{overflow-x:auto;margin:.9rem 0;border:1px solid var(--line);border-radius:10px}
+table{border-collapse:collapse;width:100%;font-size:.95rem;font-variant-numeric:tabular-nums}
+th,td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{background:var(--soft);font-weight:600} tr:last-child td{border-bottom:0}
+/* theory */
+.topic{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 18px;min-width:0}
+.topic>h2{padding-bottom:.6rem;border-bottom:2px solid var(--acc)}
+.topic .lvl{display:inline-block;font:600 .8rem var(--fb);background:var(--soft);border-radius:6px;padding:2px 8px;margin:.5rem .4rem 0 0;color:var(--mute)}
+.box{border-radius:10px;padding:12px 14px;margin:1rem 0;border:1px solid var(--line);background:var(--bg)}
+.box>:first-child{margin-top:0}.box>:last-child{margin-bottom:0}
+.box .bt{display:block;font:700 .82rem var(--fd);letter-spacing:.04em;text-transform:uppercase;margin-bottom:.35rem}
+.box.def{background:var(--soft);border-color:transparent}.box.def .bt{color:var(--acc)}
+.box.ex{border-style:dashed}.box.ex .bt{color:var(--ok)}
+.box.trap{background:var(--bad-bg);border-color:transparent}.box.trap .bt{color:var(--bad)}
+.box.tip{background:var(--warn-bg);border-color:transparent}.box.tip .bt{color:var(--warn)}
+.box.it{background:var(--it-bg);border-color:transparent}.box.it .bt{color:var(--it)}
+.key{background:var(--soft);border-radius:10px;padding:6px 14px;margin:1rem 0}
+.fm{overflow-x:auto;overflow-y:hidden;padding:.5rem 0;text-align:center}
+math{font-family:"Cambria Math","STIX Two Math","Latin Modern Math","Noto Sans Math",serif;font-size:1.08em}
+.fm math{font-size:1.2em}
+figure{margin:1.1rem 0;text-align:center;overflow-x:auto}
+figure svg{width:100%;height:auto;display:block;margin:0 auto}
+figcaption{font-size:.88rem;color:var(--mute);margin-top:.4rem;text-align:center}
+details.chk{border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin:.6rem 0;background:var(--card)}
+details.chk summary{cursor:pointer;font-weight:600}
+.cheat{margin-top:1.6rem;border-top:2px dashed var(--line);padding-top:.4rem}
+.cheatblk{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin:14px 0}
+.cheatblk h3{margin-top:0}
+/* svg kit */
+svg text{font:13px var(--fb);fill:var(--ink)}
+svg .sm{font-size:11px} svg .big{font-size:15px;font-weight:600} svg .itl{font-style:italic} svg .mid{text-anchor:middle} svg .end{text-anchor:end}
+svg .tk{font-size:11px;fill:var(--mute)}
+svg .w{stroke:var(--ink);stroke-width:1.6;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg .th{stroke:var(--ink);stroke-width:1;fill:none}
+svg .ds{stroke:var(--mute);stroke-width:1;stroke-dasharray:5 4;fill:none}
+svg .dsh{stroke-dasharray:7 5}
+svg .ar{stroke:var(--ink);stroke-width:1.6;fill:none;marker-end:url(#ah)}
+svg .nd{fill:var(--ink);stroke:none}
+svg .bx{stroke:var(--ink);stroke-width:1.6;fill:var(--card)}
+svg .sf{fill:var(--soft);stroke:var(--line);stroke-width:1}
+svg .gr{stroke:var(--line);stroke-width:1} svg .ax{stroke:var(--ink);stroke-width:1.4;fill:none}
+svg .k1{stroke:var(--c1);stroke-width:2.4;fill:none} svg .k2{stroke:var(--c2);stroke-width:2.4;fill:none} svg .k3{stroke:var(--c3);stroke-width:2.4;fill:none} svg .k4{stroke:var(--c4);stroke-width:2.4;fill:none}
+svg .v1{stroke:var(--c1);stroke-width:2.2;fill:none;marker-end:url(#ah1)} svg .v2{stroke:var(--c2);stroke-width:2.2;fill:none;marker-end:url(#ah2)} svg .v3{stroke:var(--c3);stroke-width:2.2;fill:none;marker-end:url(#ah3)} svg .v4{stroke:var(--c4);stroke-width:2.2;fill:none;marker-end:url(#ah4)}
+svg .f1{fill:var(--c1)} svg .f2{fill:var(--c2)} svg .f3{fill:var(--c3)} svg .f4{fill:var(--c4)}
+svg .a1{fill:var(--c1);fill-opacity:.15;stroke:none} svg .a2{fill:var(--c2);fill-opacity:.15;stroke:none} svg .a3{fill:var(--c3);fill-opacity:.15;stroke:none} svg .a4{fill:var(--c4);fill-opacity:.15;stroke:none}
+svg .s{stroke:var(--ink);stroke-width:1.6;fill:none;stroke-linecap:round;stroke-linejoin:round} svg .sb{stroke:var(--ink);stroke-width:1.6;fill:var(--card)} svg .si{fill:var(--ink);stroke:none}
+.pt{font-weight:600;font-size:.95rem;margin-bottom:.3rem}
+.lgd{display:flex;flex-wrap:wrap;gap:4px 16px;justify-content:center;font-size:.88rem;margin-top:.3rem}
+.lgd i{display:inline-block;width:18px;height:4px;border-radius:2px;margin-right:6px;vertical-align:middle}
+.lg1{background:var(--c1)}.lg2{background:var(--c2)}.lg3{background:var(--c3)}.lg4{background:var(--c4)}
+/* ui */
+.btn{border:1px solid var(--line);background:var(--card);border-radius:10px;padding:10px 14px;font-weight:600;text-align:left}
+.btn.pri{background:var(--acc);color:var(--acc-ink);border-color:var(--acc)}
+.btn small{display:block;font-weight:400;color:var(--mute);font-size:.8rem}
+.btn.pri small{color:inherit;opacity:.85}
+.btn:disabled{opacity:.45;cursor:default}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.tgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px}
+.tgrid .btn{display:flex;gap:10px;align-items:flex-start}
+.tgrid .n{flex:none;width:30px;height:30px;border-radius:8px;background:var(--soft);display:grid;place-items:center;font:700 .85rem var(--fd)}
+.tgrid .btn.done .n{background:var(--ok-bg);color:var(--ok)}
+.pill{display:inline-block;border-radius:999px;padding:1px 9px;font-size:.78rem;font-weight:600;background:var(--soft);color:var(--mute)}
+.pill.g{background:var(--ok-bg);color:var(--ok)}.pill.b{background:var(--bad-bg);color:var(--bad)}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.seg button{border:0;background:var(--card);padding:8px 14px;font-weight:600}
+.seg button[aria-pressed="true"]{background:var(--acc);color:var(--acc-ink)}
+.tbar{position:sticky;top:calc(env(safe-area-inset-top,0px) + 52px);z-index:5;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:8px 12px;display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;justify-content:space-between;font-weight:600;font-variant-numeric:tabular-nums}
+.q{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;margin:14px 0;min-width:0}
+.q .h{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 12px;font-size:.82rem;color:var(--mute);margin-bottom:.5rem}
+.q .qt{font-weight:600;font-size:1.05rem}
+.q label{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--line);border-radius:10px;padding:10px 12px;margin-top:8px;cursor:pointer}
+.q label:has(input:checked){border-color:var(--acc);background:var(--soft)}
+.q label.c{border-color:var(--ok);background:var(--ok-bg)}
+.q label.w{border-color:var(--bad);background:var(--bad-bg)}
+.q input{margin-top:.35rem;accent-color:var(--acc);width:17px;height:17px;flex:none}
+.q .ex{margin-top:12px;padding:10px 12px;border-radius:10px;background:var(--soft);font-size:.96rem}
+.q .pts{margin-top:10px;font-weight:700}.q .pts.g{color:var(--ok)}.q .pts.b{color:var(--bad)}
+.pal{display:grid;grid-template-columns:repeat(auto-fill,minmax(38px,1fr));gap:6px;margin:14px 0}
+.pal button{border:1px solid var(--line);background:var(--card);border-radius:8px;padding:6px 0;font-weight:600;font-size:.9rem;text-align:center}
+.pal .a{background:var(--soft);border-color:var(--acc)}.pal .g{background:var(--ok-bg);border-color:var(--ok)}.pal .b{background:var(--bad-bg);border-color:var(--bad)}.pal .cur{outline:2px solid var(--acc);outline-offset:1px}
+.bigscore{font:800 2.6rem var(--fd);margin:.3rem 0}
+.bar{height:8px;border-radius:4px;background:var(--soft);overflow:hidden}.bar i{display:block;height:100%;background:var(--ok)}
+@media (max-width:480px){body{font-size:16px}.topic,.card{padding:16px 14px}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+
+<svg id="kit" width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" style="fill:var(--ink)"/></marker>
+  <marker id="ah1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" style="fill:var(--c1)"/></marker>
+  <marker id="ah2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" style="fill:var(--c2)"/></marker>
+  <marker id="ah3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" style="fill:var(--c3)"/></marker>
+  <marker id="ah4" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" style="fill:var(--c4)"/></marker>
+  <!-- all symbols: horizontal, centred at 0,0, terminals at x=-25 and x=+25 -->
+  <g id="s-r"><path class="s" d="M-25 0H-15M15 0H25"/><rect class="sb" x="-15" y="-6" width="30" height="12"/></g>
+  <g id="s-l"><path class="s" d="M-25 0H-16a4 4 0 0 1 8 0a4 4 0 0 1 8 0a4 4 0 0 1 8 0a4 4 0 0 1 8 0H25"/></g>
+  <g id="s-c"><path class="s" d="M-25 0H-3M3 0H25M-3 -10V10M3 -10V10"/></g>
+  <g id="s-e"><path class="s" d="M-25 0H-11M11 0H25"/><circle class="sb" r="11"/><path class="s" d="M-6 0H5M1 -3.5L5.5 0L1 3.5"/></g>
+  <g id="s-j"><path class="s" d="M-25 0H-11M11 0H25"/><circle class="sb" r="11"/><path class="s" d="M-7 0H6M-2 -3.5L2.5 0L-2 3.5M2 -3.5L6.5 0L2 3.5"/></g>
+  <g id="s-ac"><path class="s" d="M-25 0H-11M11 0H25"/><circle class="sb" r="11"/><path class="s" d="M-6 0q3 -7 6 0t6 0"/></g>
+  <g id="s-m"><path class="s" d="M-25 0H-11M11 0H25"/><circle class="sb" r="11"/></g>
+  <g id="s-sw"><path class="s" d="M-25 0H-10M10 0H25M-10 0L8 -9"/><circle class="si" cx="-10" r="2"/><circle class="si" cx="10" r="2"/></g>
+  <g id="s-d"><path class="s" d="M-25 0H25M7 -8V8"/><path class="sb" d="M-7 -8V8L7 0z"/></g>
+  <g id="s-lamp"><path class="s" d="M-25 0H-10M10 0H25"/><circle class="sb" r="10"/><path class="s" d="M-7 -7L7 7M-7 7L7 -7"/></g>
+  <g id="s-gnd"><path class="s" d="M0 0V8M-10 8H10M-6 12H6M-2 16H2"/></g>
+  <g id="s-nl"><path class="s" d="M-25 0H-15M15 0H25M-10 10L8 -10H14"/><rect class="sb" x="-15" y="-6" width="30" height="12"/><path class="s" d="M-10 10L8 -10H14"/></g>
+</defs></svg>
+
+<div class="top"><div class="in" id="nav">
+  <button data-v="home">Басты</button><button data-v="theory">Теория</button><button data-v="test">Тест</button><button data-v="formulas">Формулалар</button>
+</div></div>
+
+<main id="v-home">
+  <h1>M099 «Энергетика және электр техникасы»</h1>
+  <p class="lead">Магистратураға кешенді тестілеудің екі бейіндік пәні: «Электр техникасының теориялық негіздері» (ЭТН) және «Электр машиналары» (ЭМ). Мақсат: 70/70.</p>
+  <div class="card" id="prog"></div>
+  <div class="card"><h2>Емтихан құрылымы</h2>
+    <table><tr><th>Пән</th><th>Тапсырма</th><th>Уақыт</th><th>Жауап түрі</th><th>Балл</th></tr>
+    <tr><td>ЭТН</td><td>30</td><td>60 мин</td><td>5 жауаптан 1 дұрыс</td><td>30 (1 балдан)</td></tr>
+    <tr><td>Электр машиналары</td><td>20</td><td>50 мин</td><td>бір немесе бірнеше дұрыс</td><td>40 (2 балдан)</td></tr>
+    <tr><td><b>Жиыны</b></td><td><b>50</b></td><td><b>110 мин</b></td><td></td><td><b>70</b></td></tr></table>
+    <p>ЭМ бағалауы: барлық дұрыс жауап таңдалса 2 балл, бір қате болса 1 балл, екі не одан көп қате болса 0 балл. Қиындық деңгейлері екі пәнде де: A 30%, B 40%, C 30%.</p>
+  </div>
+  <div class="card"><h2>ЭТН: 7 тақырып, 30 сұрақ</h2>
+    <table><tr><th>№</th><th>Тақырып</th><th>Деңгей</th><th>Сұрақ</th></tr>
+    <tr><td>1</td><td><a href="#toe1">Тұрақты токтың сызықты электр тізбектері</a></td><td>3 A, 2 B</td><td>5</td></tr>
+    <tr><td>2</td><td><a href="#toe2">Бір фазалы синусоидалы ток тізбектері</a></td><td>2 A, 3 B</td><td>5</td></tr>
+    <tr><td>3</td><td><a href="#toe3">Үш фазалы тізбектер</a></td><td>2 A, 1 B, 2 C</td><td>5</td></tr>
+    <tr><td>4</td><td><a href="#toe4">Сызықты тізбектердегі өтпелі процестер</a></td><td>2 A, 3 C</td><td>5</td></tr>
+    <tr><td>5</td><td><a href="#toe5">Параметрлері таралған тізбектер</a></td><td>3 B, 2 C</td><td>5</td></tr>
+    <tr><td>6</td><td><a href="#toe6">Сызықты емес тізбектер</a></td><td>1 B, 1 C</td><td>2</td></tr>
+    <tr><td>7</td><td><a href="#toe7">Электрмагниттік өріс теориясы</a></td><td>2 B, 1 C</td><td>3</td></tr></table>
+  </div>
+  <div class="card"><h2>Электр машиналары: 20 тақырып, әрқайсысынан 1 сұрақ</h2>
+    <table><tr><th>Бөлім</th><th>Тақырыптар (деңгейі)</th></tr>
+    <tr><td>Трансформаторлар</td><td><a href="#em1">1. Шығындар мен ПӘК</a> (C); <a href="#em2">2. Параллель жұмыс</a> (A); <a href="#em3">3. Параметрлерді тәжірибемен анықтау</a> (A); <a href="#em4">4. Орамалардың қосылу сұлбалары мен топтары</a> (B); <a href="#em5">5. Жүктемемен жұмыс</a> (A)</td></tr>
+    <tr><td>Синхронды машиналар</td><td><a href="#em6">6. Зәкір реакциясы</a> (B); <a href="#em7">7. Параллель жұмыс</a> (B); <a href="#em8">8. Синхронды қозғалтқыштар</a> (A); <a href="#em9">9. Векторлық диаграммалар мен сипаттамалар</a> (C); <a href="#em10">10. Синхронды компенсатор</a> (A)</td></tr>
+    <tr><td>Асинхронды машиналар</td><td><a href="#em11">11. Электрмагниттік момент пен механикалық сипаттама</a> (C); <a href="#em12">12. Айналу жиілігін реттеу</a> (B); <a href="#em13">13. Теңдеулер, алмастыру сұлбасы, векторлық диаграмма</a> (B); <a href="#em14">14. Іске қосу</a> (A); <a href="#em15">15. Жұмыс режимдері</a> (B)</td></tr>
+    <tr><td>Тұрақты ток машиналары</td><td><a href="#em16">16. Жиілікті реттеу</a> (C); <a href="#em17">17. Іске қосу</a> (C); <a href="#em18">18. Шығындар мен ПӘК</a> (B); <a href="#em19">19. Зәкір реакциясы</a> (B); <a href="#em20">20. Генератор сипаттамалары</a> (C)</td></tr></table>
+  </div>
+  <div class="card"><h2>Табыс кілті</h2>
+    <ol>
+      <li><b>Әр тақырыпты үш қадаммен өт.</b> Теорияны оқы, сол тақырыптың жаттығуын шеш, қате кеткен сұрақтардың түсіндірмесін оқы. Тақырып жаттығуы 90%-дан төмен болса, келесіге өтпе.</li>
+      <li><b>ЭТН 1–4 тақырып 20 балл береді.</b> Есептері бірнеше дайын формуламен шығады. Алдымен соларды автоматизмге жеткіз.</li>
+      <li><b>ЭМ-де әр сұрақ 2 балл, әр тақырыптан дәл бір сұрақ.</b> Ешбір тақырыпты тастауға болмайды: бір тақырып = 2 балл.</li>
+      <li><b>Бірнеше жауапты сұрақ.</b> Алдымен 100% сенімді нұсқаларды белгіле. Сенімсіз нұсқаны қоспа: бір қате 1 балды сақтайды, екі қате бәрін жояды.</li>
+      <li><b>Уақыт.</b> A деңгейіне 1 минуттан артық жұмсама. Тұрып қалсаң, өтіп кет те соңында орал.</li>
+      <li><b>Жатқа білетін сандар.</b> √2 = 1,414; √3 = 1,732; 1/√2 = 0,707; 1/√3 = 0,577; e⁻¹ = 0,368; 1 − e⁻¹ = 0,632; ε₀ = 8,85·10⁻¹² Ф/м; μ₀ = 4π·10⁻⁷ Гн/м.</li>
+      <li><b>Соңғы апта.</b> Күніне бір толық емтихан (110 минут, екі пән) және «Қателермен жұмыс».</li>
+    </ol>
+  </div>
+  <div class="card"><h2>4 апталық жоспар</h2>
+    <table><tr><th>Апта</th><th>Теория</th><th>Тест</th></tr>
+    <tr><td>1</td><td>ЭТН 1–3: тұрақты ток, синусоидалы ток, үш фаза</td><td>тақырып жаттығулары, ЭТН 1–3 нұсқа</td></tr>
+    <tr><td>2</td><td>ЭТН 4–7: өтпелі процестер, ұзын желілер, сызықты емес тізбектер, өріс</td><td>ЭТН 4–8 нұсқа</td></tr>
+    <tr><td>3</td><td>Трансформаторлар, синхронды машиналар</td><td>ЭМ 1–5 нұсқа, ЭТН 9–12 нұсқа</td></tr>
+    <tr><td>4</td><td>Асинхронды және тұрақты ток машиналары, формулаларды қайталау</td><td>ЭМ 6–12 нұсқа, толық емтихандар, қателермен жұмыс</td></tr></table>
+  </div>
+</main>
+
+<main id="v-theory" hidden>
+  <div id="tlist">
+    <h1>Теория</h1>
+    <p class="lead">Әр тақырып нөлден түсіндірілген: ұғым, сұлба, формула, шығарылған мысал, тесттегі тұзақтар. Оқып болған соң төмендегі «Оқыдым» батырмасын бас.</p>
+    <div id="tgroups"></div>
+  </div>
+  <div id="tview" hidden>
+    <div class="row" style="margin-bottom:12px"><button class="btn" id="tback">← Тақырыптар</button><button class="btn" id="tprev">Алдыңғы</button><button class="btn" id="tnext">Келесі</button></div>
+    <div id="tbody">
+<!--THEORY-->
+    </div>
+    <div class="card"><div class="row"><button class="btn pri" id="tprac">Осы тақырыптан жаттығу<small>сұрақтар мен түсіндірмелер</small></button><button class="btn" id="tread">Оқыдым</button><button class="btn" id="tnext2">Келесі тақырып →</button></div></div>
+  </div>
+</main>
+
+<main id="v-test" hidden>
+  <div id="setup">
+    <h1>Тест</h1>
+    <p class="lead">Нұсқалар спецификация бойынша жиналған: ЭТН 30 сұрақ (60 мин), ЭМ 20 сұрақ (50 мин).</p>
+    <div class="card"><div class="row"><b>Режим:</b><div class="seg" id="mode"><button data-m="train" aria-pressed="true">Жаттығу</button><button data-m="exam" aria-pressed="false">Емтихан</button></div></div>
+      <p class="lead" id="modehint" style="font-size:.92rem;margin-bottom:0"></p></div>
+    <div class="card"><h2>Толық емтихан</h2><p>ЭТН 30 + ЭМ 20 сұрақ, 110 минут, 70 балл.</p><div class="grid" id="vg-full"></div></div>
+    <div class="card"><h2>ЭТН нұсқалары</h2><div class="grid" id="vg-toe"></div></div>
+    <div class="card"><h2>Электр машиналары нұсқалары</h2><div class="grid" id="vg-em"></div></div>
+    <div class="card"><h2>Қателермен жұмыс</h2><p id="wrinfo"></p><div class="row"><button class="btn pri" id="wrgo">Қате кеткен сұрақтарды қайта шешу</button></div></div>
+    <div class="card"><h2>Тақырып бойынша жаттығу</h2><div class="tgrid" id="vg-topic"></div></div>
+  </div>
+  <div id="run" hidden>
+    <div class="tbar"><span id="tname"></span><span id="tm"></span><span id="cnt"></span><button class="btn" id="end">Аяқтау</button></div>
+    <div id="qc"></div>
+    <div class="row"><button class="btn" id="prev">← Алдыңғы</button><button class="btn pri" id="chk">Тексеру</button><button class="btn" id="next">Келесі →</button></div>
+    <div class="pal" id="pal"></div>
+  </div>
+  <div id="res" hidden></div>
+  <div id="rev"></div>
+</main>
+
+<main id="v-formulas" hidden>
+  <h1>Формулалар</h1>
+  <p class="lead">Барлық тақырыптың қысқаша формулалары бір бетте. Емтихан алдында осы бетті қайталап шық.</p>
+<!--CHEATS-->
+</main>
+
+<!--DATA-->
+<script>
+(function(){
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const TN=['','Тұрақты ток тізбектері','Синусоидалы ток','Үш фазалы тізбектер','Өтпелі процестер','Параметрлері таралған тізбектер','Сызықты емес тізбектер','Электрмагниттік өріс'];
+const EN=['','Трансформатордың шығындары мен ПӘК','Трансформаторлардың параллель жұмысы','Параметрлерді тәжірибемен анықтау','Қосылу сұлбалары мен топтары','Трансформатордың жүктемемен жұмысы','Синхронды машинаның зәкір реакциясы','Синхронды машиналардың параллель жұмысы','Синхронды қозғалтқыштар','СГ векторлық диаграммалары мен сипаттамалары','Синхронды компенсатор','АҚ моменті мен механикалық сипаттамасы','АҚ айналу жиілігін реттеу','АМ теңдеулері мен алмастыру сұлбасы','АҚ іске қосу','АМ жұмыс режимдері','ТТҚ айналу жиілігін реттеу','ТТҚ іске қосу','ТТМ шығындары мен ПӘК','ТТМ зәкір реакциясы','ТТ генераторларының сипаттамалары'];
+const GROUPS=[['ЭТН',f=>f.startsWith('toe')],['Трансформаторлар',f=>f==='em-tr'],['Синхронды машиналар',f=>f==='em-sm'],['Асинхронды машиналар',f=>f==='em-am'],['Тұрақты ток машиналары',f=>f==='em-dc']];
+const NV=12;
+QS.forEach((q,i)=>q.i=i);
+/* storage */
+let ST={best:{},read:{},wrong:[],mode:'train'};
+try{ST=Object.assign(ST,JSON.parse(localStorage.getItem('m099v3')||'{}'))}catch(e){}
+const save=()=>{try{localStorage.setItem('m099v3',JSON.stringify(ST))}catch(e){}};
+/* rng */
+function rng(a){return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+function shuf(a,f){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(f()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+function fams(s,t,l){const m=new Map();QS.forEach(q=>{if(q.s===s&&q.t===t&&(l==null||q.l===l)){if(!m.has(q.f))m.set(q.f,[]);m.get(q.f).push(q)}});return [...m.values()]}
+function inst(q,f){return {q,o:shuf(q.o.map(x=>({s:x[0],c:x[1]})),f)}}
+function pickCell(s,t,l,k,v,cellSeed,f){const fs=fams(s,t,l);if(!fs.length)return [];
+  if(!v){return shuf(fs,f).slice(0,k).map(a=>inst(a[Math.floor(f()*a.length)],f))}
+  const ord=shuf(fs,rng(cellSeed*977+13)),out=[];
+  for(let j=0;j<k;j++){const n=(v-1)*k+j,a=ord[n%ord.length],round=Math.floor(n/ord.length);out.push(inst(a[(round+(v-1))%a.length],f))}
+  return out}
+function build(subj,v){const f=rng(v?v*7919+(subj==='em'?5:1):(Date.now()&0x7fffffff));let out=[];
+  if(subj!=='em')SPEC.forEach(([t,l,k],ci)=>{out=out.concat(pickCell('toe',t,l,k,v,ci+1,f))});
+  if(subj!=='toe')for(let t=1;t<=20;t++)out=out.concat(pickCell('em',t,null,1,v,100+t,f));
+  return out}
+function buildTopic(s,t){const f=rng(Date.now()&0x7fffffff);return shuf(fams(s,t,null),f).slice(0,s==='toe'?15:12).map(a=>inst(a[Math.floor(f()*a.length)],f))}
+function buildWrong(){const f=rng(Date.now()&0x7fffffff);return shuf(ST.wrong.filter(i=>QS[i]),f).slice(0,30).map(i=>inst(QS[i],f))}
+const mx=x=>x.q.s==='em'?2:1;
+function score(x,sel){if(x.q.s!=='em')return sel.length===1&&x.o[sel[0]].c?1:0;if(!sel.length)return 0;let err=0;x.o.forEach((o,i)=>{if(!!o.c!==sel.includes(i))err++});return err===0?2:err===1?1:0}
+const tname=q=>q.s==='toe'?'ЭТН '+q.t+'. '+TN[q.t]:'ЭМ '+q.t+'. '+EN[q.t];
+const tid=q=>q.s==='toe'?'toe'+q.t:'em'+q.t;
+
+/* navigation */
+let curTopic=null;
+function show(v){$$('main').forEach(m=>m.hidden=m.id!=='v-'+v);$$('#nav button').forEach(b=>b.setAttribute('aria-current',b.dataset.v===v))}
+function route(){const h=(location.hash||'#home').slice(1);const tp=TOC.find(t=>t.id===h);
+  if(tp){show('theory');openTopic(tp.id)}
+  else if(h==='theory'){show('theory');$('#tlist').hidden=false;$('#tview').hidden=true;renderTList()}
+  else if(h==='test'||h==='formulas'){show(h);if(h==='test')menu()}
+  else{show('home');renderProg()}
+  window.scrollTo(0,0)}
+function go(h){if(location.hash==='#'+h)route();else location.hash=h}
+$$('#nav button').forEach(b=>b.onclick=()=>go(b.dataset.v));
+window.addEventListener('hashchange',route);
+function openTopic(id){curTopic=id;$('#tlist').hidden=true;$('#tview').hidden=false;$$('#tbody .topic').forEach(s=>s.hidden=s.id!==id);
+  const i=TOC.findIndex(t=>t.id===id);$('#tprev').disabled=i<=0;$('#tnext').disabled=$('#tnext2').disabled=i>=TOC.length-1;
+  $('#tread').textContent=ST.read[id]?'✓ Оқылды':'Оқыдым';const m=id.match(/^(toe|em)(\d+)$/);$('#tprac').hidden=!m||!fams(m[1],+m[2],null).length}
+$('#tback').onclick=()=>go('theory');
+$('#tprev').onclick=()=>{const i=TOC.findIndex(t=>t.id===curTopic);if(i>0)go(TOC[i-1].id)};
+$('#tnext').onclick=$('#tnext2').onclick=()=>{const i=TOC.findIndex(t=>t.id===curTopic);if(i<TOC.length-1)go(TOC[i+1].id)};
+$('#tread').onclick=()=>{ST.read[curTopic]=!ST.read[curTopic];save();$('#tread').textContent=ST.read[curTopic]?'✓ Оқылды':'Оқыдым'};
+$('#tprac').onclick=()=>{const m=curTopic.match(/^(toe|em)(\d+)$/);if(m){show('test');startTopic(m[1],+m[2])}};
+function label(t){const m=t.id.match(/^(toe|em)(\d+)$/);return m?m[2]:'•'}
+function renderTList(){$('#tgroups').innerHTML=GROUPS.map(([nm,fn])=>{const ts=TOC.filter(t=>fn(t.file));if(!ts.length)return '';
+  return `<div class="card"><h2>${nm}</h2><div class="tgrid" style="margin-top:12px">${ts.map(t=>`<button class="btn${ST.read[t.id]?' done':''}" data-id="${t.id}"><span class="n">${ST.read[t.id]?'✓':label(t)}</span><span>${t.short}${ST.best['tp-'+t.id]?`<small>жаттығу: ${ST.best['tp-'+t.id]}</small>`:''}</span></button>`).join('')}</div></div>`}).join('');
+  $$('#tgroups button').forEach(b=>b.onclick=()=>go(b.dataset.id))}
+function renderProg(){const rd=TOC.filter(t=>ST.read[t.id]).length,vt=Object.keys(ST.best).filter(k=>/^(toe|em|full)-\d+$/.test(k)).length;
+  $('#prog').innerHTML=`<h2>Сенің прогресің</h2><p>Оқылған тақырып: <b>${rd} / ${TOC.length}</b></p><div class="bar"><i style="width:${TOC.length?rd/TOC.length*100:0}%"></i></div><p>Шешілген нұсқа: <b>${vt} / ${NV*3}</b> · Қателер тізімінде: <b>${ST.wrong.length}</b> сұрақ</p><div class="row"><button class="btn pri" id="h1">Теорияны бастау</button><button class="btn" id="h2">Тестке өту</button></div>`;
+  $('#h1').onclick=()=>go('theory');$('#h2').onclick=()=>go('test')}
+
+/* test */
+let X=[],A=[],C=[],ci=0,left=0,timer=null,cur=null,endArmed=false;
+function setMode(m){ST.mode=m;save();$$('#mode button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.m===m));
+  $('#modehint').textContent=m==='train'?'Жаттығу: әр сұрақтан кейін «Тексеру» басып, дұрыс жауап пен түсіндірмені бірден көресің.':'Емтихан: нағыз тесттегідей, жауаптар мен түсіндірмелер тек соңында көрсетіледі.'}
+$$('#mode button').forEach(b=>b.onclick=()=>setMode(b.dataset.m));
+function menu(){$('#setup').hidden=!!cur;setMode(ST.mode);
+  [['full','Емтихан'],['toe','ЭТН'],['em','ЭМ']].forEach(([s])=>{let x='';for(let i=1;i<=NV;i++)x+=`<button class="btn" data-s="${s}" data-v="${i}">${i}-нұсқа<small>${ST.best[s+'-'+i]||'шешілмеген'}</small></button>`;
+    x+=`<button class="btn" data-s="${s}" data-v="0">Кездейсоқ<small>жаңа жиын</small></button>`;$('#vg-'+s).innerHTML=x});
+  $$('#vg-full button,#vg-toe button,#vg-em button').forEach(b=>b.onclick=()=>start(b.dataset.s,+b.dataset.v));
+  let x='';for(let t=1;t<=7;t++)x+=`<button class="btn" data-s="toe" data-t="${t}"><span class="n">${t}</span><span>${TN[t]}<small>ЭТН · ${ST.best['tp-toe'+t]||'шешілмеген'}</small></span></button>`;
+  for(let t=1;t<=20;t++)x+=`<button class="btn" data-s="em" data-t="${t}"><span class="n">${t}</span><span>${EN[t]}<small>ЭМ · ${ST.best['tp-em'+t]||'шешілмеген'}</small></span></button>`;
+  $('#vg-topic').innerHTML=x;$$('#vg-topic button').forEach(b=>b.onclick=()=>startTopic(b.dataset.s,+b.dataset.t));
+  $('#wrinfo').textContent=ST.wrong.length?`Тізімде ${ST.wrong.length} сұрақ бар. Дұрыс шешкен сұрақ тізімнен шығады.`:'Әзірге қате жоқ. Тест шешкенде қате кеткен сұрақтар осында жиналады.';$('#wrgo').disabled=!ST.wrong.length}
+$('#wrgo').onclick=()=>begin({key:null,name:'Қателермен жұмыс',mode:'train',time:0},buildWrong());
+function start(s,v){const nm={full:'Толық емтихан',toe:'ЭТН',em:'ЭМ'}[s]+(v?' · '+v+'-нұсқа':' · кездейсоқ');
+  begin({key:v?s+'-'+v:null,name:nm,mode:ST.mode,time:{full:6600,toe:3600,em:3000}[s]},build(s==='full'?'all':s,v))}
+function startTopic(s,t){begin({key:'tp-'+s+t,name:(s==='toe'?'ЭТН: '+TN[t]:'ЭМ: '+EN[t]),mode:'train',time:0},buildTopic(s,t))}
+function begin(c,qs){if(!qs.length)return;cur=c;X=qs;A=X.map(()=>[]);C=X.map(()=>false);ci=0;left=c.time;endArmed=false;
+  $('#setup').hidden=true;$('#res').hidden=true;$('#rev').innerHTML='';$('#run').hidden=false;$('#tname').textContent=c.name;$('#chk').hidden=c.mode!=='train';$('#end').textContent='Аяқтау';
+  clearInterval(timer);if(c.time)timer=setInterval(()=>{left--;tick();if(left<=0)finish()},1000);showQ();window.scrollTo(0,0)}
+function card(x,i,sel,done){const p=score(x,sel),m=mx(x),multi=x.q.s==='em';
+  return `<div class="q"><div class="h"><span>${i+1}/${X.length} · ${tname(x.q)} · ${x.q.l} деңгей</span><span>${multi?'бір не бірнеше жауап · 2 балл':'бір жауап · 1 балл'}</span></div><div class="qt">${x.q.q}</div>${x.q.fig?`<figure>${x.q.fig}</figure>`:''}${x.o.map((o,j)=>`<label class="${done?(o.c?'c':sel.includes(j)?'w':''):''}"><input type="${multi?'checkbox':'radio'}" name="q${i}" id="q${i}o${j}" value="${j}"${sel.includes(j)?' checked':''}${done?' disabled':''}><span>${o.s}</span></label>`).join('')}${done?`<div class="pts ${p===m?'g':'b'}">${p}/${m} балл</div><div class="ex">${x.q.e} <a href="#${tid(x.q)}" data-th="1">Теорияны ашу</a></div>`:''}</div>`}
+function pal(){$('#pal').innerHTML=X.map((x,i)=>{const k=C[i]?(score(x,A[i])===mx(x)?'g':'b'):A[i].length?'a':'';return `<button class="${k}${i===ci?' cur':''}" data-i="${i}" aria-label="${i+1}-сұрақ">${i+1}</button>`}).join('');$$('#pal button').forEach(b=>b.onclick=()=>{ci=+b.dataset.i;showQ()})}
+function showQ(){$('#qc').innerHTML=card(X[ci],ci,A[ci],C[ci]);$$('#qc input').forEach(x=>x.onchange=()=>{A[ci]=$$('#qc input').filter(y=>y.checked).map(y=>+y.value);pal();tick()});
+  $('#prev').disabled=ci===0;$('#next').disabled=ci===X.length-1;$('#chk').disabled=C[ci];pal();tick()}
+function tick(){const m=Math.floor(left/60),s=left%60;$('#tm').textContent=cur.time?'⏱ '+m+':'+String(s).padStart(2,'0'):'';$('#cnt').textContent='Жауап: '+A.filter(a=>a.length).length+'/'+X.length}
+$('#prev').onclick=()=>{if(ci>0){ci--;showQ()}};$('#next').onclick=()=>{if(ci<X.length-1){ci++;showQ()}};
+$('#chk').onclick=()=>{if(!A[ci].length)return;C[ci]=true;mark(ci);showQ()};
+function mark(i){const id=X[i].q.i,ok=score(X[i],A[i])===mx(X[i]),k=ST.wrong.indexOf(id);if(ok&&k>=0)ST.wrong.splice(k,1);if(!ok&&k<0)ST.wrong.push(id);save()}
+$('#end').onclick=()=>{if(!endArmed){endArmed=true;$('#end').textContent='Растау: аяқтаймын';setTimeout(()=>{endArmed=false;if(cur)$('#end').textContent='Аяқтау'},4000);return}finish()};
+function finish(){clearInterval(timer);let tot=0,max=0;const by={};X.forEach((x,i)=>{const p=score(x,A[i]),m=mx(x);tot+=p;max+=m;mark(i);const k=tid(x.q);by[k]=by[k]||{n:tname(x.q),p:0,m:0};by[k].p+=p;by[k].m+=m});
+  if(cur.key){ST.best[cur.key]=tot+'/'+max;save()}
+  const rows=Object.entries(by).map(([k,v])=>`<tr><td><a href="#${k}">${v.n}</a></td><td><span class="pill ${v.p===v.m?'g':'b'}">${v.p}/${v.m}</span></td></tr>`).join('');
+  $('#res').innerHTML=`<div class="card"><h2>${cur.name}</h2><div class="bigscore">${tot} / ${max}</div><div class="bar"><i style="width:${max?tot/max*100:0}%"></i></div><table style="margin-top:14px"><tr><th>Тақырып</th><th>Балл</th></tr>${rows}</table><div class="row" style="margin-top:14px"><button class="btn pri" id="again">Тест мәзіріне қайту</button></div><p class="lead" style="font-size:.92rem">Төменде барлық сұрақ: дұрыс жауап жасыл, қате таңдау қызыл, астында түсіндірме.</p></div>`;
+  $('#rev').innerHTML=X.map((x,i)=>card(x,i,A[i],true)).join('');$('#res').hidden=false;$('#run').hidden=true;cur=null;
+  $('#again').onclick=()=>{$('#rev').innerHTML='';$('#res').hidden=true;$('#setup').hidden=false;menu();window.scrollTo(0,0)};window.scrollTo(0,0)}
+route();
+})();
+</script>

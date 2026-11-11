@@ -1,0 +1,65 @@
+<!-- ҮЛГІ ФРАГМЕНТ: форматты көрсету үшін ғана. Нақты файлдар осы құрылыммен жазылады. -->
+<section class="topic" id="toe1" data-short="Тұрақты токтың сызықты тізбектері">
+<h2>1. Тұрақты токтың сызықты электр тізбектері</h2>
+<span class="lvl">Тестте: 5 сұрақ</span><span class="lvl">3 A + 2 B</span>
+
+<p class="lead">Электр тізбегі дегеніміз ток жүретін тұйық жол. Бұл тақырыпта тізбектегі токты табудың бірнеше дайын «алгоритмін» үйренесің.</p>
+
+<div class="box it"><b class="bt">IT тілімен</b>
+<p>Кернеу деген қысым, ток деген ағын, кедергі деген ағынды шектейтін тар түтік. Кирхгоф заңдары сақталу заңдары: түйінге қанша кірсе, сонша шығады.</p></div>
+
+<h3>Ом заңы</h3>
+<p>Ток кернеуге тура, кедергіге кері пропорционал: \(I = U/R\).</p>
+<div class="key">\[ I=\frac{E}{R+r},\qquad U=E-Ir \]</div>
+
+<figure class="fig">
+<svg viewBox="0 0 320 170">
+  <!-- сымдар -->
+  <path class="w" d="M40 110V40H115M165 40H280V60M280 110V140H40V110"/>
+  <!-- ЭҚК көзі: тік, жебесі жоғары қарайды -->
+  <use href="#s-e" transform="translate(40,85) rotate(-90)"/>
+  <!-- ішкі кедергі r: көлденең -->
+  <use href="#s-r" transform="translate(140,40)"/>
+  <!-- жүктеме R: тік -->
+  <use href="#s-r" transform="translate(280,85) rotate(90)"/>
+  <text x="14" y="89" class="itl">E</text>
+  <text x="140" y="26" class="mid itl">r</text>
+  <text x="298" y="89" class="itl">R</text>
+  <!-- ток жебесі -->
+  <path class="v2" d="M190 40H225"/>
+  <text x="207" y="30" class="mid f2 itl">I</text>
+  <!-- кернеу жебесі -->
+  <path class="v1" d="M255 62V108"/>
+  <text x="240" y="89" class="end f1 itl">U</text>
+</svg>
+<figcaption>1-сурет. Ішкі кедергісі r көз бен R жүктеме</figcaption>
+</figure>
+
+<div class="box ex"><b class="bt">Мысал</b>
+<p>\(E=12\) В, \(r=1\) Ом, \(R=5\) Ом. Ток \(I=12/(5+1)=2\) А, кернеу \(U=12-2\cdot 1=10\) В.</p></div>
+
+<figure class="plot" data-spec='{"title":"Жүктемедегі қуат P(R), E = 12 В, r = 1 Ом","x":[0,6],"y":[0,40],"xticks":6,"yticks":4,"xl":"R, Ом","yl":"P, Вт","curves":[{"name":"P = E²R/(R+r)²","f":"144*x/pow(x+1,2)"}],"marks":[{"x":1,"y":36,"label":"Pmax = 36 Вт, R = r"}],"vlines":[{"x":1}]}'>
+<figcaption>2-сурет. Қуат R = r болғанда ең үлкен</figcaption></figure>
+
+<table>
+<tr><th>Әдіс</th><th>Теңдеу саны</th></tr>
+<tr><td>Контурлық токтар</td><td>т − у + 1</td></tr>
+<tr><td>Түйіндік потенциалдар</td><td>у − 1</td></tr>
+</table>
+
+<div class="box trap"><b class="bt">Тесттегі тұзақ</b>
+<p>Беттестіру принципін қуатқа қолдануға болмайды.</p></div>
+
+<div class="box tip"><b class="bt">Есте сақта</b><p>Ең үлкен қуат режимінде ПӘК 50%.</p></div>
+
+<details class="chk"><summary>Өзіңді тексер: 6 тармақ, 4 түйін. Контурлық токтар әдісінде неше теңдеу?</summary><p>6 − 4 + 1 = 3.</p></details>
+
+<section class="cheat">
+<h3>Қысқаша формулалар</h3>
+<table>
+<tr><th>Не</th><th>Формула</th></tr>
+<tr><td>Ом заңы</td><td>\(I=U/R\)</td></tr>
+<tr><td>Ең үлкен қуат</td><td>\(P_{max}=E^2/(4r)\), \(R=r\) кезінде</td></tr>
+</table>
+</section>
+</section>
