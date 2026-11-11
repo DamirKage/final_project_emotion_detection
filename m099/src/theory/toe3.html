@@ -1,0 +1,509 @@
+<section class="topic" id="toe3" data-short="Үш фазалы тізбектер">
+<h2>3. Үш фазалы тізбектер</h2>
+<span class="lvl">Тестте: 5 сұрақ</span><span class="lvl">2 A + 1 B + 2 C</span>
+
+<p class="lead">Электр станциясынан розеткаға дейінгі бүкіл энергетика үш фазалы токпен жұмыс істейді. Тестте √3 қатынастары, жұлдызша мен үшбұрыш, қуат формуласы, бейтарап сымның рөлі және апаттық жағдайлар (үзілу, қысқа тұйықталу) сұралады. C деңгейіндегі екі сұрақ дәл осы апаттық жағдайларға келеді.</p>
+
+<div class="box it"><b class="bt">IT тілімен</b>
+<p>Бір фазалы тізбек бір ядролы процессор сияқты: қуат толқын болып келеді, секундына 100 рет нөлге түседі. Үш фазалы жүйе үш ядролы: үш бірдей синусоида уақыт бойынша бір-бірінен периодтың үштен біріне жылжытылған. Біреуі нөлге түскенде қалған екеуі жұмыс істеп тұрады, сондықтан жалпы қуат тұрақты. Оған қоса үш «арна» үшін алты емес, үш не төрт сым жеткілікті.</p></div>
+
+<h3>Еске түсіру: синусоидалы ток</h3>
+<p>Алдыңғы тақырыптан керегі мынау ғана:</p>
+<ul>
+<li>Лездік мән \(u=U_m\sin(\omega t+\psi)\). Әсерлік мән \(U=U_m/\sqrt2\). Аспаптар мен есептердегі «220 В» дегеннің бәрі әсерлік мән.</li>
+<li>Синусоиданы вектормен (комплекс санмен) бейнелейміз: ұзындығы әсерлік мән, бұрышы бастапқы фаза. \(\dot U=Ue^{j\psi}\).</li>
+<li>Кедергі \(\underline Z=R+jX\), модулі \(Z=\sqrt{R^2+X^2}\), бұрышы \(\varphi=\operatorname{arctg}(X/R)\). Индуктивті жүктемеде ток кернеуден \(\varphi\) бұрышқа қалады.</li>
+<li>Қуаттар: \(P=UI\cos\varphi\) (Вт), \(Q=UI\sin\varphi\) (вар), \(S=UI\) (В·А).</li>
+</ul>
+
+<h3>Үш фазалы ЭҚК жүйесі</h3>
+<p>Үш фазалы генератордың статорында үш бірдей орама бар: A–X, B–Y, C–Z. Олар шеңбер бойымен бір-бірінен 120° бұрышқа жылжытылып орналасқан. Ішінде ротор (магнит) айналады. Магнит әр ораманың жанынан кезекпен өтеді, сондықтан үш орамада амплитудасы мен жиілігі бірдей, бірақ уақыт бойынша периодтың үштен біріне (120°) ығысқан үш ЭҚК пайда болады.</p>
+
+<figure class="fig"><svg viewBox="0 0 340 230">
+  <circle class="sf" cx="115" cy="115" r="96"/><circle class="bx" cx="115" cy="115" r="67"/>
+  <rect class="sf" x="100" y="68" width="30" height="94" rx="6"/>
+  <text x="115" y="88" class="mid big">N</text><text x="115" y="154" class="mid big">S</text>
+  <circle class="nd" cx="115" cy="115" r="3.5"/>
+  <path class="ar" d="M144 86A42 42 0 0 1 144 144"/><text x="162" y="119" class="itl">ω</text>
+  <circle class="bx" cx="115" cy="33.5" r="10"/><text x="115" y="38" class="mid sm">A</text>
+  <circle class="bx" cx="115" cy="196.5" r="10"/><text x="115" y="201" class="mid sm">X</text>
+  <circle class="bx" cx="185.6" cy="155.8" r="10"/><text x="185.6" y="160" class="mid sm">B</text>
+  <circle class="bx" cx="44.4" cy="74.2" r="10"/><text x="44.4" y="78.5" class="mid sm">Y</text>
+  <circle class="bx" cx="44.4" cy="155.8" r="10"/><text x="44.4" y="160" class="mid sm">C</text>
+  <circle class="bx" cx="185.6" cy="74.2" r="10"/><text x="185.6" y="78.5" class="mid sm">Z</text>
+  <text x="228" y="62" class="big">Статор</text><text x="228" y="80" class="sm">үш орама:</text><text x="228" y="95" class="sm">A–X, B–Y, C–Z,</text><text x="228" y="110" class="sm">арасы 120°</text>
+  <text x="228" y="142" class="big">Ротор</text><text x="228" y="160" class="sm">айналатын</text><text x="228" y="175" class="sm">магнит (N–S)</text>
+</svg><figcaption>1-сурет. Үш фазалы генератордың қарапайым сызбасы. A, B, C ораманың басы, X, Y, Z ұшы</figcaption></figure>
+
+<div class="box def"><b class="bt">Анықтама</b>
+<p><b>Симметриялы үш фазалы ЭҚК жүйесі</b>: амплитудалары тең, жиіліктері бірдей, бір-бірінен 120° (\(2\pi/3\)) фазаға ығысқан үш синусоидалы ЭҚК. <b>Фаза</b> деп мұнда тізбектің бір бөлігін (бір ораманы, бір жүктемені) де атайды.</p></div>
+
+<div class="key">\[ e_A=E_m\sin\omega t,\quad e_B=E_m\sin(\omega t-120^\circ),\quad e_C=E_m\sin(\omega t+120^\circ) \]</div>
+<p>\(E_m\) амплитуда (В), \(\omega=2\pi f\) бұрыштық жиілік (рад/с), \(f=50\) Гц. \(e_B\) фазасы \(e_A\)-дан 120° қалады, \(e_C\) фазасы 240° қалады (бұл 120° озумен бірдей).</p>
+
+<figure class="plot" data-spec='{"title":"Үш фазаның лездік ЭҚК-тері (Em үлесімен)","x":[0,360],"y":[-1,1],"xticks":6,"yticks":4,"xl":"ωt, градус","yl":"e/Em","curves":[{"name":"eA","f":"sin(x*PI/180)"},{"name":"eB","f":"sin((x-120)*PI/180)"},{"name":"eC","f":"sin((x+120)*PI/180)","color":4}],"marks":[{"x":90,"y":1,"label":"eA = Em"},{"x":90,"y":-0.5,"label":"eB = eC = −0,5Em","below":true}],"vlines":[{"x":90}]}'>
+<figcaption>2-сурет. Кез келген сәтте үш лездік мәннің қосындысы нөл. Мысалы ωt = 90°: 1 − 0,5 − 0,5 = 0</figcaption></figure>
+
+<p>Ең маңызды қасиет: симметриялы жүйеде кез келген уақытта</p>
+<div class="key">\[ e_A+e_B+e_C=0,\qquad \dot E_A+\dot E_B+\dot E_C=0 \]</div>
+<p>Векторлық диаграммада бұл үш бірдей вектордың «жұлдызы». Үшеуін бірінің ұшына бірін қойсаң, тұйық теңқабырғалы үшбұрыш шығады, яғни қосынды нөл.</p>
+
+<figure class="fig"><svg viewBox="0 0 340 200">
+  <circle class="th" cx="110" cy="118" r="17"/>
+  <path class="v1" d="M110 118L110 40"/><path class="v1" d="M110 118L177.5 157"/><path class="v1" d="M110 118L42.5 157"/>
+  <text x="118" y="48" class="f1 itl">E<tspan dy="3" font-size="9">A</tspan><tspan dy="-3"> </tspan></text><text x="173.5" y="173" class="f1 itl">E<tspan dy="3" font-size="9">B</tspan><tspan dy="-3"> </tspan></text><text x="46.5" y="173" class="f1 itl end">E<tspan dy="3" font-size="9">C</tspan><tspan dy="-3"> </tspan></text>
+  <text x="142" y="102" class="sm">120°</text><text x="78" y="102" class="sm end">120°</text><text x="110" y="156" class="sm mid">120°</text>
+  <path class="ar" d="M62 52A82 82 0 0 0 40 84"/><text x="38" y="60" class="itl end">ω</text>
+  <text x="222" y="60" class="big">Фазалар реті</text><text x="222" y="84">A → B → C</text>
+  <text x="222" y="108" class="sm">B фазасы A-дан</text><text x="222" y="123" class="sm">120° қалады,</text><text x="222" y="138" class="sm">C фазасы B-дан</text><text x="222" y="153" class="sm">120° қалады</text>
+</svg><figcaption>3-сурет. ЭҚК векторлары. Векторлар сағат тіліне қарсы ω жылдамдықпен айналады деп есептеледі. Нақты ось жоғары бағытталған</figcaption></figure>
+
+<h4>Фазалар реті</h4>
+<p>ЭҚК-тердің максимумға жету кезегі <b>фазалар реті</b> деп аталады. A → B → C <b>тура реттілік</b>. Кез келген екі фазаның орнын ауыстырсаң (A → C → B) <b>кері реттілік</b> шығады. Фазалар реті үш фазалы қозғалтқыштың айналу бағытын анықтайды.</p>
+
+<h4>Комплекс түрі және a операторы</h4>
+<p>\(\dot E_A\) векторын нақты ось бойымен бағыттаймыз (бастапқы фазасы нөл). Сонда:</p>
+<div class="key">\[ \dot E_A=E,\qquad \dot E_B=Ee^{-j120^\circ},\qquad \dot E_C=Ee^{+j120^\circ} \]</div>
+<p>\(E\) фазалық ЭҚК-тің әсерлік мәні (В). Жазуды қысқарту үшін <b>фазалық көбейткіш (a операторы)</b> енгізілген:</p>
+<div class="key">\[ a=e^{j120^\circ}=-\frac12+j\frac{\sqrt3}{2},\qquad a^2=e^{-j120^\circ}=-\frac12-j\frac{\sqrt3}{2} \]</div>
+<p>Векторды \(a\)-ға көбейту оны сағат тіліне қарсы 120° бұрады (ұзындығы өзгермейді). \(a^2\)-қа көбейту 240° бұрады, бұл сағат тілімен 120° бұрумен бірдей. Қасиеттері:</p>
+<div class="key">\[ a^3=1,\qquad 1+a+a^2=0,\qquad \dot E_B=a^2\dot E_A,\qquad \dot E_C=a\,\dot E_A \]</div>
+
+<div class="box ex"><b class="bt">Мысал 1</b>
+<p>\(E=220\) В. Комплекстерді алгебралық түрде жаз.</p>
+<p>\(\dot E_A=220\) В. \(\dot E_B=220\cdot(-0{,}5-j0{,}866)=-110-j190{,}5\) В. \(\dot E_C=-110+j190{,}5\) В.</p>
+<p>Тексеру: \(220-110-110=0\), \(-190{,}5+190{,}5=0\). Қосынды нөл.</p></div>
+
+<div class="box trap"><b class="bt">Тесттегі тұзақ</b>
+<p>\(a=e^{+j120^\circ}\), ал B фазасына \(a\) емес, \(a^2\) сәйкес келеді (\(\dot E_B=a^2\dot E_A\)). «\(1+a+a^2\)» неге тең деген сұраққа жауап: нөл, «1» де, «3» те емес.</p></div>
+
+<h3>Жұлдызша қосылу (Y)</h3>
+<p>Үш ораманың ұштарын (X, Y, Z) бір нүктеге біріктіреміз. Бұл нүкте <b>бейтарап (нөлдік) нүкте</b>, генераторда N, жүктемеде n деп белгіленеді. Орамалардың бастарынан (A, B, C) тұтынушыға үш <b>желілік сым</b> кетеді. N мен n арасын қосатын төртінші сым <b>бейтарап сым</b>.</p>
+
+<figure class="fig"><svg viewBox="0 0 420 225">
+  <path class="w" d="M45 40V190H355V40M45 40H45M95 40H305M95 90H305M95 140H305M45 90H45"/>
+  <use href="#s-e" transform="translate(70,40)"/><use href="#s-e" transform="translate(70,90)"/><use href="#s-e" transform="translate(70,140)"/>
+  <use href="#s-r" transform="translate(330,40)"/><use href="#s-r" transform="translate(330,90)"/><use href="#s-r" transform="translate(330,140)"/>
+  <circle class="nd" cx="45" cy="90" r="2.5"/><circle class="nd" cx="45" cy="140" r="2.5"/><circle class="nd" cx="355" cy="90" r="2.5"/><circle class="nd" cx="355" cy="140" r="2.5"/>
+  <text x="70" y="22" class="mid f1 itl">E<tspan dy="3" font-size="9">A</tspan><tspan dy="-3"> </tspan></text><text x="70" y="72" class="mid f1 itl">E<tspan dy="3" font-size="9">B</tspan><tspan dy="-3"> </tspan></text><text x="70" y="122" class="mid f1 itl">E<tspan dy="3" font-size="9">C</tspan><tspan dy="-3"> </tspan></text>
+  <text x="330" y="24" class="mid itl">Z<tspan dy="3" font-size="9">a</tspan><tspan dy="-3"> </tspan></text><text x="330" y="74" class="mid itl">Z<tspan dy="3" font-size="9">b</tspan><tspan dy="-3"> </tspan></text><text x="330" y="124" class="mid itl">Z<tspan dy="3" font-size="9">c</tspan><tspan dy="-3"> </tspan></text>
+  <text x="104" y="34">A</text><text x="104" y="84">B</text><text x="104" y="134">C</text>
+  <text x="30" y="194" class="end">N</text><text x="368" y="194">n</text>
+  <path class="v2" d="M130 40H165"/><text x="147" y="30" class="mid f2 itl">I<tspan dy="3" font-size="9">A</tspan><tspan dy="-3"> </tspan></text>
+  <path class="v2" d="M130 90H165"/><text x="147" y="80" class="mid f2 itl">I<tspan dy="3" font-size="9">B</tspan><tspan dy="-3"> </tspan></text>
+  <path class="v2" d="M130 140H165"/><text x="147" y="130" class="mid f2 itl">I<tspan dy="3" font-size="9">C</tspan><tspan dy="-3"> </tspan></text>
+  <path class="v2" d="M235 190H200"/><text x="217" y="208" class="mid f2 itl">I<tspan dy="3" font-size="9">N</tspan><tspan dy="-3"> </tspan></text>
+  <path class="v1" d="M200 45V85"/><text x="207" y="62" class="f1 sm">U<tspan dy="3" font-size="9">AB</tspan><tspan dy="-3"> </tspan></text><text x="207" y="76" class="f1 sm">желілік</text>
+  <path class="v1" d="M270 145V185"/><text x="277" y="162" class="f1 sm">U<tspan dy="3" font-size="9">C</tspan><tspan dy="-3"> </tspan></text><text x="277" y="176" class="f1 sm">фазалық</text>
+  <text x="120" y="208" class="sm">бейтарап сым</text>
+</svg><figcaption>4-сурет. «Жұлдызша–жұлдызша» төрт сымды жүйе: сол жақта генератор, оң жақта жүктеме</figcaption></figure>
+
+<div class="box def"><b class="bt">Екі түрлі кернеу, екі түрлі ток</b>
+<p><b>Фазалық кернеу</b> \(U_{\text{ф}}\): желілік сым мен бейтарап нүкте арасындағы кернеу (бір фазаның ұштарындағы кернеу): \(U_A, U_B, U_C\).</p>
+<p><b>Желілік кернеу</b> \(U_{\text{ж}}\): екі желілік сымның арасындағы кернеу: \(U_{AB}, U_{BC}, U_{CA}\).</p>
+<p><b>Фазалық ток</b> \(I_{\text{ф}}\): жүктеменің (не генератордың) бір фазасы арқылы өтетін ток. <b>Желілік ток</b> \(I_{\text{ж}}\): желілік сымдағы ток.</p></div>
+
+<p>Жұлдызшада желілік сым жүктеме фазасымен тізбектей тұр, сондықтан желілік ток пен фазалық ток бір ток. Ал желілік кернеу екі фазалық кернеудің <b>векторлық айырмасы</b>:</p>
+<div class="key">\[ \dot U_{AB}=\dot U_A-\dot U_B,\qquad \dot U_{BC}=\dot U_B-\dot U_C,\qquad \dot U_{CA}=\dot U_C-\dot U_A \]</div>
+
+<figure class="fig"><svg viewBox="0 0 320 215">
+  <path class="a4" d="M150 132L150 62L180.3 114.5z"/>
+  <path class="v1" d="M150 132L150 62"/><path class="v1" d="M150 132L210.6 167"/><path class="v1" d="M150 132L89.4 167"/>
+  <path class="v4" d="M210.6 167L150 62"/><path class="v4" d="M89.4 167L210.6 167"/><path class="v4" d="M150 62L89.4 167"/>
+  <path class="ds" d="M150 132L180.3 114.5"/>
+  <path class="th" d="M150 86A24 24 0 0 0 162 82.8"/>
+  <text x="150" y="54" class="f1 itl mid">U<tspan dy="3" font-size="9">A</tspan><tspan dy="-3"> </tspan></text><text x="216.6" y="179" class="f1 itl">U<tspan dy="3" font-size="9">B</tspan><tspan dy="-3"> </tspan></text><text x="85.4" y="179" class="f1 itl end">U<tspan dy="3" font-size="9">C</tspan><tspan dy="-3"> </tspan></text>
+  <text x="192.3" y="110.5" class="f4 itl">U<tspan dy="3" font-size="9">AB</tspan><tspan dy="-3"> </tspan></text><text x="109.69999999999999" y="110.5" class="f4 itl end">U<tspan dy="3" font-size="9">CA</tspan><tspan dy="-3"> </tspan></text><text x="150" y="185" class="f4 itl mid">U<tspan dy="3" font-size="9">BC</tspan><tspan dy="-3"> </tspan></text>
+  <text x="154" y="102" class="sm">30°</text>
+  <text x="144" y="136" class="sm end">N</text><text x="185.3" y="126.5" class="sm">M</text>
+</svg><figcaption>5-сурет. Жұлдызшаның кернеулері (масштаб: Uф = 220 В, Uж = 380 В). Желілік кернеулер фазалық векторлардың ұштарын қосады</figcaption></figure>
+
+<h4>√3 қайдан шығады</h4>
+<p>5-суреттегі боялған үшбұрышқа қара: N, A және AB қабырғасының ортасы M. Бұл тікбұрышты үшбұрыш, A төбесіндегі бұрыш 30°. Гипотенуза \(NA=U_{\text{ф}}\), катет \(AM=U_{\text{ж}}/2\). Демек \(U_{\text{ж}}/2=U_{\text{ф}}\cos30^\circ=U_{\text{ф}}\cdot\sqrt3/2\).</p>
+<div class="key">\[ \text{Жұлдызша:}\qquad U_{\text{ж}}=\sqrt3\,U_{\text{ф}},\qquad I_{\text{ж}}=I_{\text{ф}} \]</div>
+<p>Фаза бойынша: \(\dot U_{AB}\) векторы \(\dot U_A\)-дан 30° <b>озады</b>. Комплекс түрде \(\dot U_{AB}=\sqrt3\,U_{\text{ф}}e^{j30^\circ}\), \(\dot U_{BC}=\sqrt3\,U_{\text{ф}}e^{-j90^\circ}\), \(\dot U_{CA}=\sqrt3\,U_{\text{ф}}e^{j150^\circ}\). Желілік кернеулердің қосындысы әрқашан нөл: \(\dot U_{AB}+\dot U_{BC}+\dot U_{CA}=0\).</p>
+
+<div class="box tip"><b class="bt">Есте сақта: стандарт жұптар</b>
+<p>127/220 В, 220/380 В, 380/660 В. Әр жұпта үлкені кішісінен √3 = 1,73 есе көп. Дәл есептесең 220·1,732 = 381 В, бірақ стандартта 380 В деп дөңгелектейді. Үйдегі розетка: фаза мен бейтарап сым арасы, 220 В. Үш фазалы розетка: фазалар арасы 380 В.</p></div>
+
+<h4>Үш сымды және төрт сымды жүйе, бейтарап сымның рөлі</h4>
+<p>Бейтарап сымдағы ток үш фаза тогының векторлық қосындысы:</p>
+<div class="key">\[ \dot I_N=\dot I_A+\dot I_B+\dot I_C \]</div>
+<table>
+<tr><th>Жүйе</th><th>Қашан қолданылады</th><th>Ерекшелігі</th></tr>
+<tr><td>Төрт сымды (бейтарап сымы бар жұлдызша)</td><td>Жүктеме симметриялы емес: тұрғын үйлер, жарықтандыру</td><td>Екі кернеу бар (220 және 380 В). Әр фазаның кернеуі көздің фазалық кернеуіне тең болып тұрады</td></tr>
+<tr><td>Үш сымды (бейтарап сымсыз жұлдызша не үшбұрыш)</td><td>Жүктеме симметриялы: қозғалтқыштар</td><td>Симметриялы жүктемеде \(I_N=0\), сым керек емес</td></tr>
+</table>
+<p><b>Бейтарап сымның рөлі:</b> жүктеме симметриялы болмаса да жүктеменің фазалық кернеулерін тең етіп ұстау. Ол n нүктесінің потенциалын N нүктесіне «байлап» қояды. Симметриялы жүктемеде бейтарап сымда ток жоқ, оны алып тастаса ештеңе өзгермейді. Симметриялы емес жүктемеде бейтарап сым үзілсе, фазалық кернеулер әртүрлі болып кетеді (төменде). Сондықтан бейтарап сымға сақтандырғыш та, ажыратқыш та қойылмайды.</p>
+
+<h3>Үшбұрыш қосылу (Δ)</h3>
+<p>Бір фазаның ұшы келесі фазаның басына жалғанады: үш фаза тұйық сақина құрайды. Үш төбеден үш желілік сым шығады. Бейтарап нүкте жоқ, жүйе тек үш сымды.</p>
+
+<figure class="fig"><svg viewBox="0 0 400 240">
+  <path class="w" d="M20 30H350M20 120H220M20 210H350"/>
+  <path class="w" d="M350 30L305.6 60.8M264.4 89.2L220 120L264.4 150.8M305.6 179.2L350 210V145M350 95V30"/>
+  <use href="#s-r" transform="translate(285,75) rotate(-34.7)"/><use href="#s-r" transform="translate(285,165) rotate(34.7)"/><use href="#s-r" transform="translate(350,120) rotate(90)"/>
+  <circle class="nd" cx="350" cy="30" r="2.5"/><circle class="nd" cx="220" cy="120" r="2.5"/><circle class="nd" cx="350" cy="210" r="2.5"/>
+  <text x="10" y="24">A</text><text x="10" y="114">B</text><text x="10" y="204">C</text>
+  <text x="358" y="24">a</text><text x="214" y="110" class="end">b</text><text x="358" y="226">c</text>
+  <path class="v2" d="M50 30H85"/><text x="67" y="20" class="mid f2 itl">I<tspan dy="3" font-size="9">A</tspan><tspan dy="-3"> </tspan></text>
+  <path class="v2" d="M50 120H85"/><text x="67" y="110" class="mid f2 itl">I<tspan dy="3" font-size="9">B</tspan><tspan dy="-3"> </tspan></text>
+  <path class="v2" d="M50 210H85"/><text x="67" y="200" class="mid f2 itl">I<tspan dy="3" font-size="9">C</tspan><tspan dy="-3"> </tspan></text>
+  <path class="v2" d="M340 48L319 62.5"/><text x="326" y="80" class="f2 itl sm">I<tspan dy="3" font-size="9">ab</tspan><tspan dy="-3"> </tspan></text>
+  <path class="v2" d="M240 122L260.6 136.3"/><text x="264" y="128" class="f2 itl sm">I<tspan dy="3" font-size="9">bc</tspan><tspan dy="-3"> </tspan></text>
+  <path class="v2" d="M338 196V168"/><text x="332" y="160" class="f2 itl sm end">I<tspan dy="3" font-size="9">ca</tspan><tspan dy="-3"> </tspan></text>
+  <text x="270" y="56" class="itl end">Z<tspan dy="3" font-size="9">ab</tspan><tspan dy="-3"> </tspan></text><text x="270" y="194" class="itl end">Z<tspan dy="3" font-size="9">bc</tspan><tspan dy="-3"> </tspan></text><text x="368" y="124" class="itl">Z<tspan dy="3" font-size="9">ca</tspan><tspan dy="-3"> </tspan></text>
+  <path class="v1" d="M140 35V115"/><text x="147" y="72" class="f1 sm">U<tspan dy="3" font-size="9">AB</tspan><tspan dy="-3"> </tspan></text><text x="147" y="86" class="f1 sm">= Uж = Uф</text>
+</svg><figcaption>6-сурет. Үшбұрыш қосылған жүктеме. Әр фаза тікелей екі желілік сымның арасына қосылған</figcaption></figure>
+
+<p>Әр фаза екі желілік сымның арасында тұр, сондықтан фазадағы кернеу желілік кернеудің өзі. Ал желілік ток төбедегі түйін үшін Кирхгофтың бірінші заңынан шығады: екі фазалық токтың <b>векторлық айырмасы</b>.</p>
+<div class="key">\[ \dot I_A=\dot I_{ab}-\dot I_{ca},\qquad \dot I_B=\dot I_{bc}-\dot I_{ab},\qquad \dot I_C=\dot I_{ca}-\dot I_{bc} \]</div>
+
+<figure class="fig"><svg viewBox="0 0 320 205">
+  <path class="ds" d="M135 84.7L160 41.4"/>
+  <path class="v2" d="M160 128L135 84.7"/><path class="v2" d="M160 128L210 128"/><path class="v2" d="M160 128L135 171.3"/>
+  <path class="v4" d="M160 128L160 41.4"/><path class="v4" d="M160 128L235 171.3"/><path class="v4" d="M160 128L85 171.3"/>
+  <path class="th" d="M160 102A26 26 0 0 0 147 105.5"/>
+  <text x="130" y="86.7" class="f2 itl end">I<tspan dy="3" font-size="9">ab</tspan><tspan dy="-3"> </tspan></text><text x="214" y="122" class="f2 itl">I<tspan dy="3" font-size="9">bc</tspan><tspan dy="-3"> </tspan></text><text x="130" y="183.3" class="f2 itl end">I<tspan dy="3" font-size="9">ca</tspan><tspan dy="-3"> </tspan></text>
+  <text x="167" y="51.4" class="f4 itl">I<tspan dy="3" font-size="9">A</tspan><tspan dy="-3"> </tspan></text><text x="240" y="183.3" class="f4 itl">I<tspan dy="3" font-size="9">B</tspan><tspan dy="-3"> </tspan></text><text x="81" y="183.3" class="f4 itl end">I<tspan dy="3" font-size="9">C</tspan><tspan dy="-3"> </tspan></text>
+  <text x="151" y="95" class="sm end">30°</text>
+  <text x="157" y="58.7" class="sm">−I<tspan dy="3" font-size="9">ca</tspan><tspan dy="-3"> </tspan></text>
+</svg><figcaption>7-сурет. Үшбұрыштың токтары (масштаб: Iф = 10 А, Iж = 17,3 А, активті жүктеме). I<sub>A</sub> = I<sub>ab</sub> + (−I<sub>ca</sub>)</figcaption></figure>
+
+<p>Геометриясы жұлдызшаның кернеулеріндегідей: арасы 120° екі бірдей вектордың айырмасы √3 есе ұзын. Желілік ток \(\dot I_A\) фазалық ток \(\dot I_{ab}\)-дан 30° <b>қалады</b>.</p>
+<div class="key">\[ \text{Үшбұрыш:}\qquad U_{\text{ж}}=U_{\text{ф}},\qquad I_{\text{ж}}=\sqrt3\,I_{\text{ф}} \]</div>
+<p>Желілік токтардың қосындысы үш сымды жүйеде әрқашан нөл: \(\dot I_A+\dot I_B+\dot I_C=0\).</p>
+
+<table>
+<tr><th>Қосылу</th><th>Кернеу</th><th>Ток</th><th>Сым саны</th></tr>
+<tr><td>Жұлдызша Y</td><td>\(U_{\text{ж}}=\sqrt3U_{\text{ф}}\)</td><td>\(I_{\text{ж}}=I_{\text{ф}}\)</td><td>3 не 4</td></tr>
+<tr><td>Үшбұрыш Δ</td><td>\(U_{\text{ж}}=U_{\text{ф}}\)</td><td>\(I_{\text{ж}}=\sqrt3I_{\text{ф}}\)</td><td>3</td></tr>
+</table>
+
+<div class="box trap"><b class="bt">Тесттегі тұзақ</b>
+<p>√3 қатынастары тек <b>симметриялы</b> режимде дұрыс. Жұлдызшада √3 кернеуде, үшбұрышта токта. Есте сақтау тәсілі: жұлдызшада ток тармақталмайды (бір сым, бір фаза), сондықтан ток бірдей. Үшбұрышта фаза тікелей екі сымның арасында, сондықтан кернеу бірдей.</p></div>
+
+<div class="box tip"><b class="bt">Генератор орамаларының үшбұрышы</b>
+<p>Генератор орамаларын да үшбұрыштап қосуға болады. Тұйық сақинадағы ЭҚК-тердің қосындысы нөл (\(\dot E_A+\dot E_B+\dot E_C=0\)), сондықтан жүктеме жоқта сақинада ток жүрмейді. Бір ораманы теріс қосса, қосынды \(2E\) болып, орамаларда өте үлкен ток жүреді.</p></div>
+
+<h3>Симметриялы режимді есептеу</h3>
+<p><b>Симметриялы жүктеме</b>: үш фазаның комплекс кедергілері бірдей, \(\underline Z_a=\underline Z_b=\underline Z_c\) (модулі де, сипаты да). Мұндайда үш фазаның токтары модулі бойынша тең, тек 120°-қа ығысқан. Сондықтан <b>бір фазаны ғана есептейміз</b>, қалған екеуін 120° бұрып аламыз.</p>
+<ol>
+<li>Қосылу түріне қарап фазалық кернеуді тап: жұлдызшада \(U_{\text{ф}}=U_{\text{ж}}/\sqrt3\), үшбұрышта \(U_{\text{ф}}=U_{\text{ж}}\).</li>
+<li>Фазалық ток: \(I_{\text{ф}}=U_{\text{ф}}/Z\), мұнда \(Z=\sqrt{R^2+X^2}\).</li>
+<li>Желілік ток: жұлдызшада \(I_{\text{ж}}=I_{\text{ф}}\), үшбұрышта \(I_{\text{ж}}=\sqrt3I_{\text{ф}}\).</li>
+<li>Ығысу бұрышы: \(\cos\varphi=R/Z\). Бұл <b>фазалық</b> кернеу мен <b>фазалық</b> ток арасындағы бұрыш.</li>
+</ol>
+
+<div class="box ex"><b class="bt">Мысал 2. Жұлдызша</b>
+<p>Желі 380/220 В. Жұлдызша қосылған жүктеменің әр фазасы \(\underline Z=6+j8\) Ом. Токты тап.</p>
+<p>1) \(Z=\sqrt{6^2+8^2}=10\) Ом. 2) \(U_{\text{ф}}=220\) В. 3) \(I_{\text{ф}}=220/10=22\) А, \(I_{\text{ж}}=I_{\text{ф}}=22\) А.</p>
+<p>4) \(\cos\varphi=6/10=0{,}6\), \(\varphi=53^\circ\). Ток кернеуден 53° қалады (индуктивті жүктеме). Бейтарап сымдағы ток нөл.</p></div>
+
+<figure class="fig"><svg viewBox="0 0 320 215">
+  <path class="v1" d="M160 122L160 42"/><path class="v1" d="M160 122L229.3 162"/><path class="v1" d="M160 122L90.7 162"/><path class="v2" d="M160 122L208 86"/><path class="v2" d="M160 122L167.2 181.6"/><path class="v2" d="M160 122L104.8 98.4"/>
+  <path class="th" d="M160 96A26 26 0 0 1 180.8 106.4"/>
+  <text x="154" y="50" class="f1 itl end">U<tspan dy="3" font-size="9">A</tspan><tspan dy="-3"> </tspan></text><text x="234.3" y="172" class="f1 itl">U<tspan dy="3" font-size="9">B</tspan><tspan dy="-3"> </tspan></text><text x="86.7" y="172" class="f1 itl end">U<tspan dy="3" font-size="9">C</tspan><tspan dy="-3"> </tspan></text>
+  <text x="214" y="88" class="f2 itl">I<tspan dy="3" font-size="9">A</tspan><tspan dy="-3"> </tspan></text><text x="173.2" y="193.6" class="f2 itl">I<tspan dy="3" font-size="9">B</tspan><tspan dy="-3"> </tspan></text><text x="99.8" y="96.4" class="f2 itl end">I<tspan dy="3" font-size="9">C</tspan><tspan dy="-3"> </tspan></text>
+  <text x="172" y="90" class="sm">φ = 53°</text>
+</svg><figcaption>8-сурет. 2-мысалдың векторлық диаграммасы (масштаб: 220 В және 22 А). Әр ток өз фазасының кернеуінен 53° қалады</figcaption></figure>
+
+<div class="box ex"><b class="bt">Мысал 3. Үшбұрыш</b>
+<p>Сол жүктемені (\(\underline Z=6+j8\) Ом) сол желіге үшбұрыштап қостық.</p>
+<p>1) \(U_{\text{ф}}=U_{\text{ж}}=380\) В. 2) \(I_{\text{ф}}=380/10=38\) А. 3) \(I_{\text{ж}}=\sqrt3\cdot38=65{,}8\) А.</p>
+<p>Жұлдызшадағы 22 А-мен салыстыр: желілік ток 3 есе өсті (65,8/22 = 2,99, айырма 380-ді дөңгелектеуден).</p></div>
+
+<h3>Симметриялы емес жүктеме: бейтарап сымы бар жұлдызша</h3>
+<p>Фазалардың кедергілері әртүрлі болса, режим симметриялы емес. Төрт сымды жүйеде (бейтарап сымның кедергісі нөл деп аламыз) есеп оңай: бейтарап сым әр фазаға көздің фазалық кернеуін береді, сондықтан <b>әр фаза жеке бір фазалы тізбек сияқты</b> есептеледі.</p>
+<div class="key">\[ \dot I_A=\frac{\dot U_A}{\underline Z_a},\quad \dot I_B=\frac{\dot U_B}{\underline Z_b},\quad \dot I_C=\frac{\dot U_C}{\underline Z_c},\qquad \dot I_N=\dot I_A+\dot I_B+\dot I_C\ne0 \]</div>
+<p>Бір фазадағы өзгеріс (тіпті үзілу) басқа фазаларға әсер етпейді. Тек бейтарап сымдағы ток өзгереді.</p>
+
+<div class="box ex"><b class="bt">Мысал 4</b>
+<p>\(U_{\text{ф}}=220\) В. Активті жүктемелер: \(R_a=11\) Ом, \(R_b=22\) Ом, \(R_c=44\) Ом. Бейтарап сымдағы токты тап.</p>
+<p>1) Модульдер: \(I_A=220/11=20\) А, \(I_B=10\) А, \(I_C=5\) А. Жүктеме активті, сондықтан әр ток өз кернеуімен бағыттас.</p>
+<p>2) Комплекстер: \(\dot I_A=20\), \(\dot I_B=10e^{-j120^\circ}=-5-j8{,}66\), \(\dot I_C=5e^{j120^\circ}=-2{,}5+j4{,}33\).</p>
+<p>3) \(\dot I_N=(20-5-2{,}5)+j(-8{,}66+4{,}33)=12{,}5-j4{,}33\) А. Модулі \(I_N=\sqrt{12{,}5^2+4{,}33^2}=13{,}2\) А.</p></div>
+
+<figure class="fig"><svg viewBox="0 0 340 185">
+  <path class="ds" d="M120 52L154.6 72"/><path class="ds" d="M154.6 72L137.3 82"/>
+  <path class="v2" d="M120 132L120 52"/><path class="v2" d="M120 132L154.6 152"/><path class="v2" d="M120 132L102.7 142"/><path class="v4" d="M120 132L137.3 82"/>
+  <text x="113" y="62" class="f2 itl end">I<tspan dy="3" font-size="9">A</tspan><tspan dy="-3"> </tspan></text><text x="159.6" y="164" class="f2 itl">I<tspan dy="3" font-size="9">B</tspan><tspan dy="-3"> </tspan></text><text x="97.7" y="154" class="f2 itl end">I<tspan dy="3" font-size="9">C</tspan><tspan dy="-3"> </tspan></text>
+  <text x="141.3" y="98" class="f4 itl">I<tspan dy="3" font-size="9">N</tspan><tspan dy="-3"> </tspan></text>
+  <text x="159.6" y="60" class="sm">+I<tspan dy="3" font-size="9">B</tspan><tspan dy="-3"> </tspan></text><text x="158.6" y="84" class="sm">+I<tspan dy="3" font-size="9">C</tspan><tspan dy="-3"> </tspan></text>
+  <text x="222" y="60" class="sm f2">I<tspan dy="3" font-size="9">A</tspan><tspan dy="-3"> </tspan>= 20 А</text><text x="222" y="78" class="sm f2">I<tspan dy="3" font-size="9">B</tspan><tspan dy="-3"> </tspan>= 10 А</text><text x="222" y="96" class="sm f2">I<tspan dy="3" font-size="9">C</tspan><tspan dy="-3"> </tspan>= 5 А</text><text x="222" y="120" class="f4">I<tspan dy="3" font-size="9">N</tspan><tspan dy="-3"> </tspan>= 13,2 А</text>
+</svg><figcaption>9-сурет. 4-мысал: токтарды бірінің ұшына бірін қойып қосамыз (масштаб 20, 10, 5 А). Тұйықтаушы вектор бейтарап сымның тогы</figcaption></figure>
+
+<div class="box trap"><b class="bt">Тесттегі тұзақ</b>
+<p>Бейтарап сымның тогы модульдердің арифметикалық қосындысы (20 + 10 + 5 = 35 А) емес, векторлық қосынды. Жиі кездесетін жағдайлар (активті жүктеме): екі фазада бірдей ток \(I\), үшіншісі ажыратылған болса \(I_N=I\). Тек бір фаза қосулы болса \(I_N=I\). Үш ток тең болса \(I_N=0\).</p></div>
+
+<h3>Симметриялы емес жүктеме: бейтарап сымсыз жұлдызша</h3>
+<p>Бейтарап сым жоқ болса (не үзілсе), n нүктесі енді N-ге «байланбаған». Симметриялы емес жүктемеде оның потенциалы N-ден өзгеше болады. Осы екі нүктенің арасындағы кернеу <b>бейтараптың ығысу кернеуі</b> \(\dot U_{nN}\) деп аталады. Сұлбада екі-ақ түйін (N және n) бар, сондықтан ол <b>екі түйін әдісінің</b> формуласымен табылады:</p>
+<div class="key">\[ \dot U_{nN}=\frac{\dot U_A\underline Y_a+\dot U_B\underline Y_b+\dot U_C\underline Y_c}{\underline Y_a+\underline Y_b+\underline Y_c+\underline Y_N} \]</div>
+<p>\(\dot U_A,\dot U_B,\dot U_C\) көздің фазалық кернеулері (ЭҚК-тері), В. \(\underline Y_a=1/\underline Z_a\) және т.б. фазалардың комплекс өткізгіштіктері, См. \(\underline Y_N\) бейтарап сымның өткізгіштігі: сым жоқ болса \(\underline Y_N=0\), идеал сым болса \(\underline Y_N=\infty\) және \(\dot U_{nN}=0\). Симметриялы жүктемеде алымы \(Y(\dot U_A+\dot U_B+\dot U_C)=0\), яғни ығысу жоқ.</p>
+<p>Одан кейін жүктеменің фазалық кернеулері мен токтары:</p>
+<div class="key">\[ \dot U_{An}=\dot U_A-\dot U_{nN},\quad \dot U_{Bn}=\dot U_B-\dot U_{nN},\quad \dot U_{Cn}=\dot U_C-\dot U_{nN},\qquad \dot I_A=\dot U_{An}\underline Y_a \]</div>
+
+<div class="box ex"><b class="bt">Мысал 5. Бейтарап сым үзілген</b>
+<p>\(U_{\text{ф}}=220\) В, \(R_a=10\) Ом, \(R_b=R_c=20\) Ом, бейтарап сым жоқ.</p>
+<p>1) Өткізгіштіктер: \(Y_a=0{,}1\) См, \(Y_b=Y_c=0{,}05\) См.</p>
+<p>2) Алымы: \(220\cdot0{,}1+220a^2\cdot0{,}05+220a\cdot0{,}05=22+11(a^2+a)=22-11=11\) А (өйткені \(a+a^2=-1\)).</p>
+<p>3) \(U_{nN}=11/(0{,}1+0{,}05+0{,}05)=55\) В, бағыты \(\dot U_A\) бойымен.</p>
+<p>4) \(U_{An}=220-55=165\) В. \(\dot U_{Bn}=(-110-j190{,}5)-55=-165-j190{,}5\), модулі \(\sqrt{165^2+190{,}5^2}=252\) В. \(U_{Cn}=252\) В.</p>
+<p>5) Токтар: \(I_A=165/10=16{,}5\) А, \(I_B=I_C=252/20=12{,}6\) А.</p>
+<p>Қорытынды: көп жүктелген фазаның (кедергісі аз) кернеуі төмендеді (165 В), аз жүктелген фазалардікі артты (252 В).</p></div>
+
+<figure class="fig"><svg viewBox="0 0 360 210">
+  <path class="th" d="M125 48L194.3 168L55.7 168z"/>
+  <path class="ds" d="M125 128L194.3 168"/><path class="ds" d="M125 128L55.7 168"/>
+  <path class="v1" d="M125 108L125 48"/><path class="v1" d="M125 108L194.3 168"/><path class="v1" d="M125 108L55.7 168"/><path class="v4" d="M125 128L125 108"/>
+  <circle class="nd" cx="125" cy="128" r="2.5"/><circle class="nd" cx="125" cy="108" r="2.5"/>
+  <text x="125" y="40" class="mid">A</text><text x="200.3" y="180">B</text><text x="49.7" y="180" class="end">C</text>
+  <text x="132" y="142" class="sm">N</text><text x="118" y="106" class="sm end">n</text>
+  <text x="232" y="52" class="f4">U<tspan dy="3" font-size="9">nN</tspan><tspan dy="-3"> </tspan>= 55 В</text><text x="232" y="76" class="f1">U<tspan dy="3" font-size="9">An</tspan><tspan dy="-3"> </tspan>= 165 В</text><text x="232" y="100" class="f1">U<tspan dy="3" font-size="9">Bn</tspan><tspan dy="-3"> </tspan>= U<tspan dy="3" font-size="9">Cn</tspan><tspan dy="-3"> </tspan></text><text x="232" y="118" class="f1">= 252 В</text>
+  <text x="232" y="146" class="sm">үзік сызық:</text><text x="232" y="161" class="sm">көздің фазалық</text><text x="232" y="176" class="sm">кернеуі, 220 В</text>
+</svg><figcaption>10-сурет. 5-мысалдың топографиялық диаграммасы (масштабпен). Желілік кернеулер үшбұрышы ABC өзгермейді, тек n нүктесі N-ден A жаққа жылжиды</figcaption></figure>
+
+<div class="box tip"><b class="bt">Есте сақта</b>
+<p>Желілік кернеулерді көз (желі) береді, жүктемеге тәуелді емес. Бейтарап сым үзілгенде өзгеретіні жүктеменің <b>фазалық</b> кернеулері. n нүктесі өткізгіштігі үлкен (кедергісі аз) фазаның төбесіне қарай жылжиды. Тұрмыста: бейтарап сым үзілсе, аз жүктелген фазадағы шамдар мен техника асқын кернеуден күйеді.</p></div>
+
+<h4>Екі шекті жағдай: фазаның үзілуі және қысқа тұйықталуы</h4>
+<p>Бейтарап сымсыз жұлдызша, үш фазада бірдей \(R\). Тесттің C деңгейінде осы екеуі жиі келеді.</p>
+
+<figure class="fig"><svg viewBox="0 0 400 200">
+  <text x="95" y="18" class="sm mid">а) A фазасы үзілген</text><text x="295" y="18" class="sm mid">ә) A фазасы қысқа тұйықталған</text>
+  <path class="th" d="M95 45L147 135L43 135z"/>
+  <path class="ds" d="M95 45L95 105"/><path class="v4" d="M95 105L95 135"/><path class="v1" d="M95 135L146 135"/><path class="v1" d="M95 135L44 135"/>
+  <circle class="nd" cx="95" cy="105" r="2.5"/><circle class="nd" cx="95" cy="135" r="2.5"/>
+  <text x="95" y="38" class="mid">A</text><text x="153" y="140">B</text><text x="37" y="140" class="end">C</text>
+  <text x="102" y="107" class="sm">N</text><text x="95" y="150" class="sm mid">n</text>
+  <text x="124" y="150" class="sm f1 mid">Uж/2</text><text x="66" y="150" class="sm f1 mid">Uж/2</text>
+  <text x="95" y="172" class="sm f4 mid">U<tspan dy="3" font-size="9">nN</tspan><tspan dy="-3"> </tspan>= Uф/2</text><text x="95" y="188" class="sm mid">үзілген жерде 1,5Uф</text>
+  <path class="th" d="M295 45L347 135L243 135z"/>
+  <path class="ds" d="M295 105L347 135"/><path class="ds" d="M295 105L243 135"/>
+  <path class="v4" d="M295 105L295 45"/><path class="v1" d="M295 45L347 135"/><path class="v1" d="M295 45L243 135"/>
+  <circle class="nd" cx="295" cy="105" r="2.5"/>
+  <text x="295" y="38" class="mid">A = n</text><text x="353" y="140">B</text><text x="237" y="140" class="end">C</text>
+  <text x="302" y="119" class="sm">N</text>
+  <text x="332" y="84" class="sm f1">Uж</text><text x="258" y="84" class="sm f1 end">Uж</text>
+  <text x="295" y="172" class="sm f4 mid">U<tspan dy="3" font-size="9">nN</tspan><tspan dy="-3"> </tspan>= Uф</text><text x="295" y="188" class="sm mid">U<tspan dy="3" font-size="9">B</tspan><tspan dy="-3"> </tspan>= U<tspan dy="3" font-size="9">C</tspan><tspan dy="-3"> </tspan>= Uж</text>
+</svg><figcaption>11-сурет. Бейтарап сымсыз жұлдызша: A фазасы үзілгенде n нүктесі BC қабырғасының ортасына, қысқа тұйықталғанда A төбесіне көшеді</figcaption></figure>
+
+<figure class="fig"><svg viewBox="0 0 360 180">
+  <path class="w" d="M30 35H110M132 35H205M30 90H205M30 145H205M255 35V145"/>
+  <use href="#s-r" transform="translate(230,35)"/><use href="#s-r" transform="translate(230,90)"/><use href="#s-r" transform="translate(230,145)"/>
+  <circle class="nd" cx="255" cy="90" r="2.5"/>
+  <path class="th" d="M114 28L128 42M128 28L114 42"/>
+  <text x="121" y="20" class="mid sm">үзілген</text>
+  <text x="18" y="39" class="end">A</text><text x="18" y="94" class="end">B</text><text x="18" y="149" class="end">C</text><text x="264" y="94">n</text>
+  <text x="230" y="22" class="mid itl">R</text><text x="230" y="77" class="mid itl">R</text><text x="230" y="132" class="mid itl">R</text>
+  <path class="v2" d="M60 90H95"/><path class="v2" d="M95 145H60"/><text x="77" y="80" class="mid f2 itl">I</text><text x="77" y="163" class="mid f2 itl">I</text>
+  <path class="v2" d="M268 104V134"/>
+  <path class="v1" d="M150 95V140"/><text x="156" y="122" class="f1 sm">U<tspan dy="3" font-size="9">BC</tspan><tspan dy="-3"> </tspan>= Uж</text>
+  <text x="286" y="70" class="sm">B мен C</text><text x="286" y="85" class="sm">тізбектей:</text><text x="286" y="104" class="sm">I = Uж/2R,</text><text x="286" y="119" class="sm">әрқайсысына</text><text x="286" y="134" class="sm">Uж/2</text>
+</svg><figcaption>12-сурет. A фазасы (не A желілік сымы) үзілген: қалған екі фаза тізбектеліп желілік кернеуге қосылады</figcaption></figure>
+
+<table>
+<tr><th>Шама</th><th>Қалыпты режим</th><th>A фазасы үзілген</th><th>A фазасы қысқа тұйықталған</th></tr>
+<tr><td>\(U_{nN}\)</td><td>0</td><td>\(U_{\text{ф}}/2\)</td><td>\(U_{\text{ф}}\)</td></tr>
+<tr><td>A фазасының кернеуі</td><td>\(U_{\text{ф}}\)</td><td>үзілген жерде \(1{,}5U_{\text{ф}}\)</td><td>0</td></tr>
+<tr><td>B, C фазаларының кернеуі</td><td>\(U_{\text{ф}}\)</td><td>\(U_{\text{ж}}/2=0{,}866U_{\text{ф}}\)</td><td>\(U_{\text{ж}}=\sqrt3U_{\text{ф}}\)</td></tr>
+<tr><td>B, C токтары</td><td>\(U_{\text{ф}}/R\)</td><td>\(U_{\text{ж}}/(2R)\)</td><td>\(U_{\text{ж}}/R\) (√3 есе артады)</td></tr>
+<tr><td>A тогы</td><td>\(U_{\text{ф}}/R\)</td><td>0</td><td>\(\sqrt3U_{\text{ж}}/R=3U_{\text{ф}}/R\) (3 есе артады)</td></tr>
+</table>
+
+<div class="box ex"><b class="bt">Мысал 6</b>
+<p>\(U_{\text{ж}}=380\) В, бейтарап сымсыз жұлдызша, әр фазада \(R=38\) Ом.</p>
+<p><b>Қалыпты режим:</b> \(I=220/38=5{,}79\) А.</p>
+<p><b>A үзілген:</b> B мен C тізбектей, \(I_B=I_C=380/(2\cdot38)=5\) А, әр фазада \(190\) В. Шамдар сәл күңгірттенеді.</p>
+<p><b>A қысқа тұйықталған:</b> n нүктесі A сымына тікелей қосылды. B фазасы A мен B сымдарының арасында қалды, яғни 380 В. \(I_B=I_C=380/38=10\) А. A сымындағы ток осы екеуінің векторлық қосындысы: араларындағы бұрыш 60°, сондықтан \(I_A=\sqrt3\cdot10=17{,}3\) А.</p></div>
+
+<div class="box trap"><b class="bt">Тесттегі тұзақ</b>
+<p>Бұл кесте <b>бейтарап сым жоқ</b> жағдайға арналған. Бейтарап сым бар болса, фазаның үзілуі қалған фазаларға мүлде әсер етпейді (кернеулері \(U_{\text{ф}}\) күйінде қалады), ал фазаның қысқа тұйықталуы көздің сол фазасының қысқа тұйықталуы болады (апаттық ток, сақтандырғыш күйеді).</p></div>
+
+<h3>Симметриялы емес жүктеме: үшбұрыш</h3>
+<p>Үшбұрышта әр фаза тікелей желілік кернеуге қосылған. Сондықтан желі сымдарының кедергісін ескермесек, <b>фазалар бір-біріне тәуелсіз</b>: әр фазалық ток өз кернеуі мен өз кедергісінен табылады. Желілік токтар векторлық айырма ретінде есептеледі. √3 қатынасы мұнда жарамайды.</p>
+<div class="key">\[ \dot I_{ab}=\frac{\dot U_{AB}}{\underline Z_{ab}},\quad \dot I_{bc}=\frac{\dot U_{BC}}{\underline Z_{bc}},\quad \dot I_{ca}=\frac{\dot U_{CA}}{\underline Z_{ca}},\qquad \dot I_A=\dot I_{ab}-\dot I_{ca} \]</div>
+
+<div class="box ex"><b class="bt">Мысал 7</b>
+<p>\(U_{\text{ж}}=380\) В. Активті жүктеме: \(R_{ab}=38\) Ом, \(R_{bc}=19\) Ом, \(R_{ca}=38\) Ом.</p>
+<p>1) Фазалық токтар: \(I_{ab}=10\) А, \(I_{bc}=20\) А, \(I_{ca}=10\) А. Бағыттары өз кернеулерімен бірдей: \(\dot I_{ab}=10e^{j30^\circ}\), \(\dot I_{bc}=20e^{-j90^\circ}\), \(\dot I_{ca}=10e^{j150^\circ}\).</p>
+<p>2) \(\dot I_A=(8{,}66+j5)-(-8{,}66+j5)=17{,}3\) А.</p>
+<p>3) \(\dot I_B=-j20-(8{,}66+j5)=-8{,}66-j25\), модулі \(26{,}5\) А. \(\dot I_C=(-8{,}66+j5)+j20=-8{,}66+j25\), модулі \(26{,}5\) А.</p>
+<p>Тексеру: \(17{,}3-8{,}66-8{,}66=0\). Желілік токтардың қосындысы нөл.</p></div>
+
+<h4>Фазаның үзілуі және желі сымының үзілуі</h4>
+<p>Бастапқыда жүктеме симметриялы, әр фазада \(R\), фазалық ток \(I_{\text{ф}}=U_{\text{ж}}/R\), желілік ток \(\sqrt3I_{\text{ф}}\).</p>
+
+<figure class="fig"><svg viewBox="0 0 400 240">
+  <path class="w" d="M20 30H110M132 30H350M20 120H220M20 210H350"/>
+  <path class="w" d="M350 30L305.6 60.8M264.4 89.2L220 120L264.4 150.8M305.6 179.2L350 210V145M350 95V30"/>
+  <use href="#s-r" transform="translate(285,75) rotate(-34.7)"/><use href="#s-r" transform="translate(285,165) rotate(34.7)"/><use href="#s-r" transform="translate(350,120) rotate(90)"/>
+  <circle class="nd" cx="350" cy="30" r="2.5"/><circle class="nd" cx="220" cy="120" r="2.5"/><circle class="nd" cx="350" cy="210" r="2.5"/>
+  <path class="th" d="M114 23L128 37M128 23L114 37"/><text x="121" y="54" class="mid sm">үзілген</text>
+  <text x="10" y="24">A</text><text x="10" y="114">B</text><text x="10" y="204">C</text>
+  <text x="358" y="24">a</text><text x="214" y="110" class="end">b</text><text x="358" y="226">c</text>
+  <path class="v2" d="M50 120H85"/><text x="67" y="110" class="mid f2 sm">1,5Iф</text>
+  <path class="v2" d="M85 210H50"/><text x="67" y="200" class="mid f2 sm">1,5Iф</text>
+  <path class="v2" d="M240 122L260.6 136.3"/><text x="266" y="130" class="f2 sm">Iф</text>
+  <path class="v2" d="M240 118L260.6 103.7"/><text x="266" y="118" class="f2 sm">Iф/2</text>
+  <path class="v2" d="M338 150V178"/><text x="332" y="150" class="f2 sm end">Iф/2</text>
+  <text x="262" y="52" class="itl end">R</text><text x="270" y="194" class="itl end">R</text><text x="368" y="124" class="itl">R</text>
+</svg><figcaption>13-сурет. Үшбұрыш, A желілік сымы үзілген: bc фазасы толық кернеуде, ab мен ca тізбектеліп сол кернеуге қосылған</figcaption></figure>
+
+<table>
+<tr><th>Жағдай</th><th>Фазалық токтар</th><th>Желілік токтар</th><th>Қуат</th></tr>
+<tr><td>ab фазасы үзілген</td><td>\(I_{ab}=0\); \(I_{bc}, I_{ca}\) өзгермейді</td><td>\(I_A=I_B=I_{\text{ф}}\) (√3 есе азайды); \(I_C=\sqrt3I_{\text{ф}}\) өзгермейді</td><td>\(2/3\) бөлігі қалады</td></tr>
+<tr><td>A желілік сымы үзілген</td><td>\(I_{bc}=I_{\text{ф}}\) өзгермейді; \(I_{ab}=I_{ca}=I_{\text{ф}}/2\)</td><td>\(I_A=0\); \(I_B=I_C=1{,}5I_{\text{ф}}\)</td><td>2 есе азаяды</td></tr>
+</table>
+<p>Екінші жолдың түсіндірмесі: A сымы үзілген соң тізбек бір фазалы болып қалады, жалғыз кернеу \(U_{BC}\). bc фазасы оған тікелей қосылған. ab мен ca тізбектей (\(2R\)) сол кернеуге қосылған, сондықтан олардың тогы екі есе аз, әрқайсысындағы кернеу \(U_{\text{ж}}/2\). Қуат: \(U^2/R+U^2/(2R)=1{,}5U^2/R\), бұрын \(3U^2/R\) болған.</p>
+
+<div class="box ex"><b class="bt">Мысал 8</b>
+<p>Үшбұрыш, \(U_{\text{ж}}=380\) В, әр фазада \(R=38\) Ом. Қалыпты режимде \(I_{\text{ф}}=10\) А, \(I_{\text{ж}}=17{,}3\) А, \(P=3\cdot380\cdot10=11{,}4\) кВт.</p>
+<p><b>ab фазасы үзілді:</b> \(I_A=I_B=10\) А, \(I_C=17{,}3\) А, \(P=2\cdot3{,}8=7{,}6\) кВт.</p>
+<p><b>A сымы үзілді:</b> \(I_{bc}=10\) А, \(I_{ab}=I_{ca}=5\) А, \(I_B=I_C=15\) А, \(P=380\cdot10+380\cdot5=5{,}7\) кВт.</p></div>
+
+<h3>Үш фазалы тізбектің қуаты</h3>
+<p>Жалпы жағдайда қуат фазалардың қуаттарының қосындысы: \(P=P_a+P_b+P_c\), \(Q=Q_a+Q_b+Q_c\). Симметриялы режимде үш фаза бірдей: \(P=3U_{\text{ф}}I_{\text{ф}}\cos\varphi\). Фазалық шамаларды желілікке ауыстырсақ (жұлдызшада \(U_{\text{ф}}=U_{\text{ж}}/\sqrt3\), үшбұрышта \(I_{\text{ф}}=I_{\text{ж}}/\sqrt3\)), екі қосылуда да бір формула шығады:</p>
+<div class="key">\[ P=\sqrt3\,U_{\text{ж}}I_{\text{ж}}\cos\varphi,\qquad Q=\sqrt3\,U_{\text{ж}}I_{\text{ж}}\sin\varphi,\qquad S=\sqrt3\,U_{\text{ж}}I_{\text{ж}}=\sqrt{P^2+Q^2} \]</div>
+<p>\(P\) активтік қуат (Вт), \(Q\) реактивтік қуат (вар), \(S\) толық қуат (В·А). \(U_{\text{ж}}, I_{\text{ж}}\) желілік кернеу мен ток. \(\varphi\) <b>фазалық</b> кернеу мен фазалық ток арасындағы бұрыш (жүктеме кедергісінің бұрышы), \(\cos\varphi=R/Z\). Кедергі арқылы: \(P=3I_{\text{ф}}^2R\), \(Q=3I_{\text{ф}}^2X\).</p>
+
+<div class="box ex"><b class="bt">Мысал 9</b>
+<p>2-мысалдағы жұлдызша: \(U_{\text{ф}}=220\) В, \(I=22\) А, \(\underline Z=6+j8\) Ом.</p>
+<p>\(P=3I^2R=3\cdot22^2\cdot6=8712\) Вт. \(Q=3\cdot22^2\cdot8=11616\) вар. \(S=3\cdot220\cdot22=14520\) В·А.</p>
+<p>Тексеру: \(\sqrt{8712^2+11616^2}=14520\). Желілік формуламен: \(\sqrt3\cdot381\cdot22\cdot0{,}6=8712\) Вт.</p></div>
+
+<div class="box trap"><b class="bt">Тесттегі тұзақ</b>
+<p>Жауап нұсқаларында әдетте \(U_{\text{ж}}I_{\text{ж}}\cos\varphi\) (√3 ұмытылған) және \(3U_{\text{ж}}I_{\text{ж}}\cos\varphi\) (√3 орнына 3) тұрады. Ереже: фазалық шамалармен 3, желілік шамалармен √3. Реактивтік қуатта \(\sin\varphi\): \(\cos\varphi=0{,}8\) болса \(\sin\varphi=0{,}6\).</p></div>
+
+<div class="box tip"><b class="bt">Неге үш фаза тиімді</b>
+<p>Симметриялы үш фазалы жүйенің лездік қуаты уақыт бойынша <b>тұрақты</b> (\(p=P\)), бір фазалы тізбектегідей екі еселенген жиілікпен соқпайды. Сондықтан қозғалтқыштың моменті бірқалыпты.</p></div>
+
+<h3>Қуатты өлшеу</h3>
+<p>Ваттметрдің екі тізбегі бар: ток орамасы сымға тізбектей, кернеу орамасы екі нүктенің арасына қосылады. Ол \(UI\cos(\widehat{U,I})\) шамасын көрсетеді.</p>
+<table>
+<tr><th>Әдіс</th><th>Қай жүйеде</th><th>Толық қуат</th></tr>
+<tr><td>Бір ваттметр</td><td>Симметриялы жүктеме (бір фазаның қуатын өлшейді)</td><td>\(P=3P_W\)</td></tr>
+<tr><td>Екі ваттметр</td><td>Үш сымды жүйе, жүктеме кез келген (симметриялы да, емес те), Y не Δ</td><td>\(P=P_1+P_2\) (алгебралық қосынды)</td></tr>
+<tr><td>Үш ваттметр</td><td>Төрт сымды жүйе, симметриялы емес жүктеме</td><td>\(P=P_1+P_2+P_3\)</td></tr>
+</table>
+
+<figure class="fig"><svg viewBox="0 0 380 200">
+  <path class="w" d="M30 40H105M155 40H270M30 100H270M30 160H105M155 160H270"/>
+  <use href="#s-m" transform="translate(130,40)"/><use href="#s-m" transform="translate(130,160)"/>
+  <text x="130" y="44.5" class="mid sm">W</text><text x="130" y="164.5" class="mid sm">W</text>
+  <path class="th" d="M130 51V149"/><circle class="nd" cx="130" cy="100" r="2.5"/>
+  <rect class="bx" x="270" y="22" width="90" height="156" rx="6"/>
+  <text x="315" y="90" class="mid">Жүктеме</text><text x="315" y="108" class="mid sm">Y не Δ,</text><text x="315" y="123" class="mid sm">кез келген</text>
+  <text x="18" y="44" class="end">A</text><text x="18" y="104" class="end">B</text><text x="18" y="164" class="end">C</text>
+  <text x="130" y="20" class="mid f3">P<tspan dy="3" font-size="9">1</tspan><tspan dy="-3"> </tspan></text><text x="130" y="190" class="mid f3">P<tspan dy="3" font-size="9">2</tspan><tspan dy="-3"> </tspan></text>
+  <path class="v2" d="M185 40H220"/><text x="202" y="30" class="mid f2 itl">I<tspan dy="3" font-size="9">A</tspan><tspan dy="-3"> </tspan></text>
+  <path class="v2" d="M185 160H220"/><text x="202" y="150" class="mid f2 itl">I<tspan dy="3" font-size="9">C</tspan><tspan dy="-3"> </tspan></text>
+  <text x="138" y="76" class="f1 sm">U<tspan dy="3" font-size="9">AB</tspan><tspan dy="-3"> </tspan></text><text x="138" y="130" class="f1 sm">U<tspan dy="3" font-size="9">CB</tspan><tspan dy="-3"> </tspan></text>
+</svg><figcaption>14-сурет. Екі ваттметр әдісі: ток орамалары A және C сымдарында, кернеу орамаларының екінші ұштары ортақ B сымында</figcaption></figure>
+
+<p>Неге екеуі жетеді: үш сымды жүйеде \(i_A+i_B+i_C=0\), сондықтан лездік қуатты \(p=u_{AB}i_A+u_{CB}i_C\) деп жазуға болады. Симметриялы жүктемеде көрсеткіштер \(\varphi\) бұрышына тәуелді:</p>
+<div class="key">\[ P_1=U_{\text{ж}}I_{\text{ж}}\cos(\varphi+30^\circ),\qquad P_2=U_{\text{ж}}I_{\text{ж}}\cos(\varphi-30^\circ) \]</div>
+<div class="key">\[ P=P_1+P_2,\qquad Q=\sqrt3\,(P_2-P_1),\qquad \operatorname{tg}\varphi=\sqrt3\,\frac{P_2-P_1}{P_2+P_1} \]</div>
+<p>Мұнда \(P_2\) үлкен көрсеткіш, \(P_1\) кіші көрсеткіш (индуктивті жүктемеде).</p>
+
+<figure class="plot" data-spec='{"title":"Екі ваттметрдің көрсеткіштері (Uж·Iж үлесімен)","x":[0,90],"y":[-0.5,2],"xticks":6,"yticks":5,"xl":"φ, градус","yl":"P/(Uж·Iж)","curves":[{"name":"P₁ = cos(φ + 30°)","f":"cos((x+30)*PI/180)","color":2},{"name":"P₂ = cos(φ − 30°)","f":"cos((x-30)*PI/180)","color":1},{"name":"P₁ + P₂ = √3·cos φ","f":"sqrt(3)*cos(x*PI/180)","color":3,"dash":true}],"marks":[{"x":60,"y":0,"label":"φ = 60°: P₁ = 0","below":true,"left":true},{"x":0,"y":0.866,"label":"φ = 0: P₁ = P₂","below":true}],"vlines":[{"x":60}]}'>
+<figcaption>15-сурет. φ = 0 болса көрсеткіштер тең. φ = 60° болса біреуі нөл. φ &gt; 60° болса біреуі теріс. φ = 90° болса тең және қарама-қарсы, қосынды нөл</figcaption></figure>
+
+<table>
+<tr><th>Жүктеме</th><th>φ</th><th>Көрсеткіштер</th></tr>
+<tr><td>Таза активті</td><td>0</td><td>\(P_1=P_2\)</td></tr>
+<tr><td>\(\cos\varphi=0{,}5\)</td><td>60°</td><td>біреуі нөл, екіншісі бүкіл қуатты көрсетеді</td></tr>
+<tr><td>\(\cos\varphi\lt0{,}5\)</td><td>&gt; 60°</td><td>біреуі теріс (тілі кері ауытқиды), қуат айырмаға тең</td></tr>
+<tr><td>Таза реактивті</td><td>90°</td><td>\(P_1=-P_2\), \(P=0\)</td></tr>
+</table>
+
+<div class="box ex"><b class="bt">Мысал 10</b>
+<p>\(U_{\text{ж}}=380\) В, \(I_{\text{ж}}=10\) А, \(\varphi=30^\circ\) (индуктивті).</p>
+<p>\(P_1=380\cdot10\cdot\cos60^\circ=1900\) Вт. \(P_2=380\cdot10\cdot\cos0^\circ=3800\) Вт. \(P=5700\) Вт.</p>
+<p>Тексеру: \(\sqrt3\cdot380\cdot10\cdot0{,}866=5700\) Вт. Кері есеп: \(\operatorname{tg}\varphi=\sqrt3\cdot1900/5700=0{,}577\), \(\varphi=30^\circ\).</p></div>
+
+<h3>Айналмалы магнит өрісі</h3>
+<p>Бір орамадан синусоидалы ток жүрсе, оның магнит өрісі бір ось бойымен «соғады»: өседі, кемиді, бағытын ауыстырады, бірақ орнынан қозғалмайды. Бұл <b>лүпілдеуші (пульсациялық) өріс</b>. Ал үш ораманың өрістерін қоссақ, қорытқы өріс шамасы тұрақты күйде шеңбер бойымен айналады. Бұл <b>айналмалы магнит өрісі</b>, барлық айнымалы ток қозғалтқыштарының негізі.</p>
+
+<div class="box def"><b class="bt">Айналмалы өрісті алу шарттары</b>
+<p>1) Үш орама кеңістікте бір-бірінен 120° бұрышқа жылжытылған. 2) Орамалардағы токтар уақыт бойынша 120° фазаға ығысқан (симметриялы үш фазалы ток). Екі шарт бірге орындалса өріс дөңгелек болады, оның амплитудасы тұрақты және бір фазаның амплитудасынан 1,5 есе үлкен: \(B=1{,}5B_m\).</p></div>
+
+<figure class="fig"><svg viewBox="0 0 420 190"><path class="ds" d="M72 144L72 40"/><text x="72" y="34" class="sm mid">A</text><path class="ds" d="M27 66L117 118"/><text x="125.7" y="127" class="sm mid">B</text><path class="ds" d="M117 66L27 118"/><text x="18.3" y="127" class="sm mid">C</text><path class="v3" d="M72 92L72 47"/><path class="v1" d="M72 92L72 62"/><path class="v2" d="M72 62L59 54.5"/><path class="v4" d="M59 54.5L72 47"/><text x="72" y="180" class="sm mid">ωt = 0°</text><path class="ds" d="M210 144L210 40"/><text x="210" y="34" class="sm mid">A</text><path class="ds" d="M165 66L255 118"/><text x="263.7" y="127" class="sm mid">B</text><path class="ds" d="M255 66L165 118"/><text x="156.3" y="127" class="sm mid">C</text><path class="v3" d="M210 92L249 69.5"/><path class="v1" d="M210 92L210 77"/><path class="v2" d="M210 77L223 84.5"/><path class="v4" d="M223 84.5L249 69.5"/><text x="210" y="180" class="sm mid">ωt = 60°</text><path class="ds" d="M348 144L348 40"/><text x="348" y="34" class="sm mid">A</text><path class="ds" d="M303 66L393 118"/><text x="401.7" y="127" class="sm mid">B</text><path class="ds" d="M393 66L303 118"/><text x="294.3" y="127" class="sm mid">C</text><path class="v3" d="M348 92L387 114.5"/><path class="v1" d="M348 92L348 107"/><path class="v2" d="M348 107L374 122"/><path class="v4" d="M374 122L387 114.5"/><text x="348" y="180" class="sm mid">ωt = 120°</text></svg><figcaption>16-сурет. Үш сәттегі өріс. Көк, қызғылт-сары, күлгін жебелер A, B, C орамаларының өрістері (әрқайсысы өз осі бойымен), жасыл жебе қорытқы өріс. Ұзындығы тұрақты (1,5B<sub>m</sub>), ток фазасы 60° өзгергенде 60° бұрылады</figcaption></figure>
+
+<p>Өріс токтың бір периодында бір полюс жұбының бойымен өтеді. Сондықтан айналу жиілігі (<b>синхронды жиілік</b>):</p>
+<div class="key">\[ n_1=\frac{60f}{p} \]</div>
+<p>\(n_1\) өрістің айналу жиілігі (айн/мин), \(f\) токтың жиілігі (Гц), \(p\) полюс <b>жұптарының</b> саны (полюстер саны \(2p\)). 60 саны секундты минутқа айналдырады.</p>
+<table>
+<tr><th>p (полюс жұбы)</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th></tr>
+<tr><td>Полюстер саны 2p</td><td>2</td><td>4</td><td>6</td><td>8</td><td>10</td><td>12</td></tr>
+<tr><td>n₁, айн/мин (50 Гц)</td><td>3000</td><td>1500</td><td>1000</td><td>750</td><td>600</td><td>500</td></tr>
+</table>
+<p><b>Айналу бағыты</b> фазалар ретімен анықталады: өріс токтары озатын фазаның орамасынан қалатын фазаның орамасына қарай (A → B → C) айналады. <b>Бағытты өзгерту үшін кез келген екі фазаның (екі желілік сымның) орнын ауыстыру керек.</b> Үшеуін бірдей циклмен жылжытса (A→B, B→C, C→A) бағыт өзгермейді.</p>
+
+<div class="box ex"><b class="bt">Мысал 11</b>
+<p>Алты полюсті орама (\(2p=6\), \(p=3\)), \(f=50\) Гц: \(n_1=60\cdot50/3=1000\) айн/мин. Кері есеп: \(n_1=750\) айн/мин болса \(p=3000/750=4\), полюстер саны 8.</p></div>
+
+<div class="box trap"><b class="bt">Тесттегі тұзақ</b>
+<p>\(p\) полюстер саны емес, полюс <b>жұптарының</b> саны. «Төрт полюсті машина» дегенде \(p=2\), \(n_1=1500\) айн/мин. 50 Гц жиілікте 3000 айн/мин-тан жылдам өріс болмайды.</p></div>
+
+<h3>Жүктемені жұлдызшадан үшбұрышқа ауыстыру</h3>
+<p>Бірдей үш кедергіні сол желіге алдымен жұлдызшалап, сосын үшбұрыштап қосамыз. Желілік кернеу өзгермейді.</p>
+
+<figure class="fig"><svg viewBox="0 0 400 190">
+  <path class="w" d="M90 30V37.5M90 87.5V95L96.4 98.7M139.7 123.7L146.3 127.5M90 95L83.6 98.7M40.3 123.7L33.7 127.5"/>
+  <use href="#s-r" transform="translate(90,62.5) rotate(90)"/><use href="#s-r" transform="translate(118,111.2) rotate(30)"/><use href="#s-r" transform="translate(62,111.2) rotate(-30)"/>
+  <circle class="nd" cx="90" cy="95" r="2.5"/><circle class="nd" cx="90" cy="30" r="2.5"/><circle class="nd" cx="146.3" cy="127.5" r="2.5"/><circle class="nd" cx="33.7" cy="127.5" r="2.5"/>
+  <text x="90" y="22" class="mid">A</text><text x="154" y="132">B</text><text x="26" y="132" class="end">C</text>
+  <text x="90" y="156" class="mid sm f1">фазада Uж/√3 = 220 В</text><text x="90" y="172" class="mid sm f2">Iж = 5,77 А, P = 3,8 кВт</text>
+  <path class="w" d="M300 30L315.6 57.3M340.4 100.7L356 128H325M275 128H244L259.6 100.7M284.4 57.3L300 30"/>
+  <use href="#s-r" transform="translate(328,79) rotate(60.3)"/><use href="#s-r" transform="translate(272,79) rotate(-60.3)"/><use href="#s-r" transform="translate(300,128)"/>
+  <circle class="nd" cx="300" cy="30" r="2.5"/><circle class="nd" cx="356" cy="128" r="2.5"/><circle class="nd" cx="244" cy="128" r="2.5"/>
+  <text x="300" y="22" class="mid">A</text><text x="364" y="132">B</text><text x="236" y="132" class="end">C</text>
+  <text x="300" y="156" class="mid sm f1">фазада Uж = 380 В</text><text x="300" y="172" class="mid sm f2">Iж = 17,3 А, P = 11,4 кВт</text>
+  <path class="ar" d="M180 85H222"/><text x="201" y="76" class="mid sm">× 3</text>
+</svg><figcaption>17-сурет. Uж = 380 В, R = 38 Ом. Үшбұрышқа ауыстырғанда желілік ток пен қуат 3 есе артады</figcaption></figure>
+
+<table>
+<tr><th>Шама</th><th>Жұлдызша</th><th>Үшбұрыш</th><th>Қатынасы</th></tr>
+<tr><td>Фазалық кернеу</td><td>\(U_{\text{ж}}/\sqrt3\)</td><td>\(U_{\text{ж}}\)</td><td>√3 есе артады</td></tr>
+<tr><td>Фазалық ток</td><td>\(U_{\text{ж}}/(\sqrt3Z)\)</td><td>\(U_{\text{ж}}/Z\)</td><td>√3 есе артады</td></tr>
+<tr><td>Желілік ток</td><td>\(U_{\text{ж}}/(\sqrt3Z)\)</td><td>\(\sqrt3U_{\text{ж}}/Z\)</td><td><b>3 есе артады</b></td></tr>
+<tr><td>Қуат P, Q, S</td><td>\(U_{\text{ж}}^2/Z\cdot\cos\varphi\)</td><td>\(3U_{\text{ж}}^2/Z\cdot\cos\varphi\)</td><td><b>3 есе артады</b></td></tr>
+</table>
+<div class="key">\[ \frac{I_{\text{ж}\Delta}}{I_{\text{ж}Y}}=3,\qquad \frac{P_\Delta}{P_Y}=3 \]</div>
+<p>Себебі: фазалық кернеу √3 есе артады, сол себепті фазалық ток та √3 есе артады, ал үшбұрышта желілік ток фазалықтан тағы √3 есе көп. \(\sqrt3\cdot\sqrt3=3\). Қуат кернеудің квадратына пропорционал: \((\sqrt3)^2=3\).</p>
+
+<div class="box ex"><b class="bt">Мысал 12</b>
+<p>\(U_{\text{ж}}=380\) В, \(R=38\) Ом. <b>Жұлдызша:</b> \(U_{\text{ф}}=380/\sqrt3=219{,}4\) В, \(I_{\text{ж}}=219{,}4/38=5{,}77\) А, \(P=\sqrt3\cdot380\cdot5{,}77=3800\) Вт.</p>
+<p><b>Үшбұрыш:</b> \(I_{\text{ф}}=380/38=10\) А, \(I_{\text{ж}}=17{,}3\) А, \(P=\sqrt3\cdot380\cdot17{,}3=11400\) Вт. Қатынастар: \(17{,}3/5{,}77=3\), \(11400/3800=3\).</p></div>
+
+<div class="box tip"><b class="bt">Практикада</b>
+<p>Асинхронды қозғалтқышты «жұлдызша–үшбұрыш» ауыстырып іске қосу осыған негізделген: алдымен жұлдызша (желіден алынатын жүргізу тогы 3 есе аз), айналып кеткен соң үшбұрыш. Кері ауыстырғанда (Δ → Y) ток пен қуат 3 есе азаяды.</p></div>
+
+<h3>Өзіңді тексер</h3>
+<details class="chk"><summary>Жұлдызша қосылған симметриялы жүктеме, Uж = 660 В. Фазалық кернеу қанша?</summary><p>Uф = 660/√3 = 381 В (стандарт бойынша 380 В).</p></details>
+<details class="chk"><summary>Төрт сымды жүйе, активті жүктеме. A және B фазаларында 10 А, C фазасында 20 А. Бейтарап сымдағы ток?</summary><p>A мен B токтарының қосындысы 10 А, бағыты C тогына қарама-қарсы. I<sub>N</sub> = 20 − 10 = 10 А.</p></details>
+<details class="chk"><summary>Бейтарап сымсыз жұлдызшада бір фаза қысқа тұйықталды. Қалған екі фазаның кернеуі қалай өзгереді?</summary><p>Фазалық кернеуден желілік кернеуге дейін, яғни √3 есе артады (220 В орнына 380 В).</p></details>
+<details class="chk"><summary>Екі ваттметрдің біреуі нөлді көрсетіп тұр. Жүктеменің cos φ қанша?</summary><p>φ = 60°, cos φ = 0,5.</p></details>
+<details class="chk"><summary>Қозғалтқыштың айналу бағытын қалай өзгертеді?</summary><p>Кез келген екі желілік сымның орнын ауыстырады. Фазалар реті кері болады, өріс кері айналады.</p></details>
+
+<section class="cheat"><h3>Қысқаша формулалар</h3>
+<table>
+<tr><th>Не</th><th>Формула</th></tr>
+<tr><td>ЭҚК жүйесі</td><td>\(\dot E_A=E\), \(\dot E_B=a^2E=Ee^{-j120^\circ}\), \(\dot E_C=aE=Ee^{j120^\circ}\)</td></tr>
+<tr><td>a операторы</td><td>\(a=e^{j120^\circ}=-\frac12+j\frac{\sqrt3}{2}\), \(a^3=1\), \(1+a+a^2=0\)</td></tr>
+<tr><td>Жұлдызша</td><td>\(U_{\text{ж}}=\sqrt3U_{\text{ф}}\), \(I_{\text{ж}}=I_{\text{ф}}\); \(\dot U_{AB}=\dot U_A-\dot U_B\) (\(\dot U_A\)-дан 30° озады)</td></tr>
+<tr><td>Үшбұрыш</td><td>\(U_{\text{ж}}=U_{\text{ф}}\), \(I_{\text{ж}}=\sqrt3I_{\text{ф}}\); \(\dot I_A=\dot I_{ab}-\dot I_{ca}\)</td></tr>
+<tr><td>Бейтарап сымның тогы</td><td>\(\dot I_N=\dot I_A+\dot I_B+\dot I_C\); симметриялы жүктемеде 0</td></tr>
+<tr><td>Бейтараптың ығысуы</td><td>\(\dot U_{nN}=\dfrac{\dot U_AY_a+\dot U_BY_b+\dot U_CY_c}{Y_a+Y_b+Y_c+Y_N}\), \(\dot U_{An}=\dot U_A-\dot U_{nN}\)</td></tr>
+<tr><td>Y, сымсыз, фаза үзілген</td><td>қалған екі фазада \(U_{\text{ж}}/2\), \(I=U_{\text{ж}}/(2R)\), \(U_{nN}=U_{\text{ф}}/2\)</td></tr>
+<tr><td>Y, сымсыз, фаза қ.т.</td><td>қалған екі фазада \(U_{\text{ж}}\), токтары √3 есе, қ.т. фаза тогы 3 есе артады</td></tr>
+<tr><td>Δ, фаза үзілген</td><td>екі желілік ток \(I_{\text{ф}}\), үшіншісі \(\sqrt3I_{\text{ф}}\); қуат 2/3</td></tr>
+<tr><td>Δ, желі сымы үзілген</td><td>\(I_{\text{ф}}\), \(I_{\text{ф}}/2\), \(I_{\text{ф}}/2\); желілік \(1{,}5I_{\text{ф}}\); қуат 1/2</td></tr>
+<tr><td>Қуат (симметриялы)</td><td>\(P=\sqrt3U_{\text{ж}}I_{\text{ж}}\cos\varphi=3U_{\text{ф}}I_{\text{ф}}\cos\varphi\), \(Q=\sqrt3U_{\text{ж}}I_{\text{ж}}\sin\varphi\), \(S=\sqrt3U_{\text{ж}}I_{\text{ж}}\)</td></tr>
+<tr><td>Екі ваттметр</td><td>\(P=P_1+P_2\), \(P_{1,2}=U_{\text{ж}}I_{\text{ж}}\cos(\varphi\pm30^\circ)\), \(\operatorname{tg}\varphi=\sqrt3\dfrac{P_2-P_1}{P_2+P_1}\)</td></tr>
+<tr><td>Айналмалы өріс</td><td>\(n_1=60f/p\), \(B=1{,}5B_m\); бағытын өзгерту: екі фазаны ауыстыру</td></tr>
+<tr><td>Y → Δ</td><td>желілік ток пен қуат 3 есе артады</td></tr>
+</table>
+</section>
+</section>

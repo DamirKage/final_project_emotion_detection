@@ -279,15 +279,17 @@ const tid=q=>q.s==='toe'?'toe'+q.t:'em'+q.t;
 /* navigation */
 let curTopic=null;
 function show(v){$$('main').forEach(m=>m.hidden=m.id!=='v-'+v);$$('#nav button').forEach(b=>b.setAttribute('aria-current',b.dataset.v===v))}
-function route(){const h=(location.hash||'#home').slice(1);const tp=TOC.find(t=>t.id===h);
+let curH=null;
+function route(hh){const h=typeof hh==='string'?hh:(location.hash||'#home').slice(1);if(h===curH&&typeof hh!=='string')return;curH=h;const tp=TOC.find(t=>t.id===h);
   if(tp){show('theory');openTopic(tp.id)}
   else if(h==='theory'){show('theory');$('#tlist').hidden=false;$('#tview').hidden=true;renderTList()}
   else if(h==='test'||h==='formulas'){show(h);if(h==='test')menu()}
   else{show('home');renderProg()}
   window.scrollTo(0,0)}
-function go(h){if(location.hash==='#'+h)route();else location.hash=h}
+function go(h){route(h);try{if(location.hash!=='#'+h)history.replaceState(null,'','#'+h)}catch(e){try{location.hash=h}catch(e2){}}}
+document.addEventListener('click',e=>{const a=e.target.closest&&e.target.closest('a[href^="#"]');if(a){e.preventDefault();go(a.getAttribute('href').slice(1))}});
 $$('#nav button').forEach(b=>b.onclick=()=>go(b.dataset.v));
-window.addEventListener('hashchange',route);
+window.addEventListener('hashchange',()=>route());
 function openTopic(id){curTopic=id;$('#tlist').hidden=true;$('#tview').hidden=false;$$('#tbody .topic').forEach(s=>s.hidden=s.id!==id);
   const i=TOC.findIndex(t=>t.id===id);$('#tprev').disabled=i<=0;$('#tnext').disabled=$('#tnext2').disabled=i>=TOC.length-1;
   $('#tread').textContent=ST.read[id]?'✓ Оқылды':'Оқыдым';const m=id.match(/^(toe|em)(\d+)$/);$('#tprac').hidden=!m||!fams(m[1],+m[2],null).length}
