@@ -12,6 +12,7 @@ const MAC = { '\\s': '_{\\text{#1}}' };
 
 function tex(t, display, where) {
   try {
+    t = t.replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&');
     return katex.renderToString(t.trim(), { output: 'mathml', displayMode: display, throwOnError: true, strict: false, macros: MAC })
       .replace(/<annotation[^>]*>[\s\S]*?<\/annotation>/g, '').replace(/<semantics>([\s\S]*?)<\/semantics>/g, '$1');
   } catch (e) { errors.push(`LaTeX қатесі [${where}]: ${t.slice(0, 80)} :: ${e.message.slice(0, 120)}`); return `<code>${t}</code>`; }

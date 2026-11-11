@@ -1,0 +1,787 @@
+<section class="topic" id="toe1" data-short="Тұрақты токтың сызықты тізбектері">
+<h2>1. Тұрақты токтың сызықты электр тізбектері</h2>
+<span class="lvl">Тестте: 5 сұрақ</span><span class="lvl">3 A + 2 B</span>
+
+<p class="lead">Электр тізбегі дегеніміз ток жүретін тұйық жол. Бұл тақырыпта кез келген тұрақты ток сұлбасындағы токтарды, кернеулерді және қуаттарды табудың дайын «алгоритмдерін» үйренесің. Тестте анықтамалар, теңдеу саны және 1-2 қадамды есептер сұралады.</p>
+
+<div class="box it"><b class="bt">IT тілімен</b>
+<p>Су құбырын елестет. <b>Кернеу</b> деген қысым айырмасы, <b>ток</b> деген секундына ағатын су мөлшері, <b>кедергі</b> деген тар түтік, <b>ЭҚК көзі</b> деген сорғы. Кирхгоф заңдары сақталу заңдары: түйінге қанша кірсе, сонша шығады (бірінші заң); тұйық жолмен айналып шыққанда биіктік бастапқы мәніне қайтады (екінші заң). Сұлбаны есептеу дегеніміз сызықты теңдеулер жүйесін құрып шешу.</p></div>
+
+<h3>1.1. Негізгі ұғымдар</h3>
+
+<table>
+<tr><th>Шама</th><th>Белгі</th><th>Бірлік</th><th>Мағынасы</th></tr>
+<tr><td>Ток</td><td>\(I\)</td><td>А (ампер)</td><td>Өткізгіш қимасынан 1 секундта өтетін заряд: \(I=q/t\)</td></tr>
+<tr><td>Потенциал</td><td>\(\varphi\)</td><td>В (вольт)</td><td>Нүктенің «электрлік биіктігі». Бір нүктенің потенциалын нөл деп аламыз</td></tr>
+<tr><td>Кернеу</td><td>\(U\)</td><td>В</td><td>Екі нүкте потенциалдарының айырмасы: \(U_{ab}=\varphi_a-\varphi_b\)</td></tr>
+<tr><td>ЭҚК</td><td>\(E\)</td><td>В</td><td>Көздің зарядты «көтеретін» күші. Бос жүрістегі көз қысқыштарындағы кернеуге тең</td></tr>
+<tr><td>Кедергі</td><td>\(R\)</td><td>Ом</td><td>Элементтің токқа қарсыласуы</td></tr>
+<tr><td>Өткізгіштік</td><td>\(G=1/R\)</td><td>См (сименс)</td><td>Кедергіге кері шама</td></tr>
+<tr><td>Қуат</td><td>\(P\)</td><td>Вт (ватт)</td><td>1 секундта түрленетін энергия</td></tr>
+</table>
+
+<p>Токтың оң бағыты: сыртқы тізбекте көздің «плюсінен» «минусына» қарай. Резисторда ток <b>потенциалы жоғары нүктеден төмен нүктеге</b> ағады. ЭҚК жебесі көздің ішінде «минустан» «плюске» қарай бағытталған, яғни жебе ұшындағы потенциал жоғары.</p>
+
+<figure class="fig">
+<svg viewBox="0 0 320 170">
+  <path class="w" d="M40 110V40H115M165 40H280V60M280 110V140H40V110"/>
+  <use href="#s-e" transform="translate(40,85) rotate(-90)"/>
+  <use href="#s-r" transform="translate(140,40)"/>
+  <use href="#s-r" transform="translate(280,85) rotate(90)"/>
+  <text x="22" y="89" class="end itl">E</text>
+  <text x="50" y="62" class="sm">+</text>
+  <text x="50" y="116" class="sm">−</text>
+  <text x="140" y="26" class="mid itl">r</text>
+  <text x="296" y="89" class="itl">R</text>
+  <path class="v2" d="M190 40H225"/>
+  <text x="207" y="30" class="mid f2 itl">I</text>
+  <path class="v1" d="M255 62V108"/>
+  <text x="246" y="89" class="end f1 itl">U</text>
+</svg>
+<figcaption>1-сурет. Ең қарапайым тізбек: ЭҚК көзі E, оның ішкі кедергісі r және жүктеме R</figcaption>
+</figure>
+
+<div class="box def"><b class="bt">Сұлбаның «геометриясы»</b>
+<ul>
+<li><b>Тармақ</b>: бойымен бір ғана ток өтетін бөлік (тізбектей қосылған элементтер). Тармақтар саны \(т\).</li>
+<li><b>Түйін</b>: үш немесе одан көп тармақтың түйіскен жері. Түйіндер саны \(у\).</li>
+<li><b>Контур</b>: тармақтар бойымен жүретін кез келген тұйық жол.</li>
+<li><b>Тәуелсіз контур</b>: басқа контурларға кірмеген кемінде бір жаңа тармағы бар контур. Саны \(т-у+1\).</li>
+</ul></div>
+
+<figure class="fig">
+<svg viewBox="0 0 340 204">
+  <path class="w" d="M60 160V145M60 95V90M60 40V30H280V40M280 90V95M280 145V160H60M170 30V70M170 120V160"/>
+  <use href="#s-e" transform="translate(60,120) rotate(-90)"/>
+  <use href="#s-r" transform="translate(60,65) rotate(90)"/>
+  <use href="#s-r" transform="translate(170,95) rotate(90)"/>
+  <use href="#s-r" transform="translate(280,65) rotate(90)"/>
+  <use href="#s-e" transform="translate(280,120) rotate(-90)"/>
+  <circle class="nd" cx="170" cy="30" r="3"/><circle class="nd" cx="170" cy="160" r="3"/>
+  <text x="170" y="20" class="mid">a түйіні</text>
+  <text x="170" y="177" class="mid">b түйіні</text>
+  <path class="ar" d="M99 105A16 16 0 1 1 125 105"/>
+  <text x="112" y="99" class="mid sm">I</text>
+  <path class="ar" d="M219 105A16 16 0 1 1 245 105"/>
+  <text x="232" y="99" class="mid sm">II</text>
+  <text x="60" y="196" class="mid sm f4">1-тармақ</text>
+  <text x="170" y="196" class="mid sm f4">3-тармақ</text>
+  <text x="280" y="196" class="mid sm f4">2-тармақ</text>
+</svg>
+<figcaption>2-сурет. Үш тармақ (т = 3), екі түйін (у = 2), екі тәуелсіз контур (I және II): 3 − 2 + 1 = 2</figcaption>
+</figure>
+
+<div class="box trap"><b class="bt">Тесттегі тұзақ</b>
+<p>Екі сымның жай қосылған жері (екі тармақ) түйін емес. Түйін болу үшін кемінде <b>үш</b> тармақ керек. Сыммен (кедергісіз) жалғанған екі нүкте бір түйін болып саналады.</p></div>
+
+<p><b>Сызықты тізбек</b> дегеніміз барлық кедергілері токқа да, кернеуге де тәуелсіз тұрақты тізбек. Онда ток пен кернеу арасындағы байланыс түзу сызық, сондықтан теңдеулер сызықты болады.</p>
+
+<h3>1.2. Ом заңы</h3>
+
+<h4>Тізбек бөлігі үшін</h4>
+<p>Резистордағы ток оған түсірілген кернеуге тура, кедергісіне кері пропорционал.</p>
+<div class="key">\[ I=\frac{U}{R}=GU,\qquad U=IR \]</div>
+<p>\(I\) ток (А), \(U\) резистордағы кернеу (В), \(R\) кедергі (Ом), \(G=1/R\) өткізгіштік (См). \(U=IR\) көбейтіндісін <b>кернеу түсуі</b> деп атайды.</p>
+
+<h4>Тұйық тізбек үшін</h4>
+<p>1-суреттегі тізбекте ЭҚК екі кедергіге «жұмсалады»: ішкі \(r\) және сыртқы \(R\).</p>
+<div class="key">\[ I=\frac{E}{R+r},\qquad U=E-Ir=IR \]</div>
+<p>\(E\) ЭҚК (В), \(r\) көздің ішкі кедергісі (Ом), \(R\) жүктеме кедергісі (Ом), \(U\) көз қысқыштарындағы кернеу (В).</p>
+
+<div class="box ex"><b class="bt">Мысал 1</b>
+<p>\(E=12\) В, \(r=1\) Ом, \(R=5\) Ом.</p>
+<p>Ток: \(I=12/(5+1)=2\) А. Қысқыштардағы кернеу: \(U=12-2\cdot 1=10\) В (немесе \(U=IR=2\cdot 5=10\) В). Көздің ішінде 2 В «жоғалды».</p></div>
+
+<h4>ЭҚК бар тармақ үшін (жалпыланған Ом заңы)</h4>
+<p>Тармақта резистормен бірге ЭҚК тұрса, токты екеуі бірге анықтайды: ұштарындағы потенциалдар айырмасы және ЭҚК.</p>
+
+<figure class="fig">
+<svg viewBox="0 0 340 122">
+  <path class="w" d="M40 55H95M145 55H195M245 55H300"/>
+  <use href="#s-r" transform="translate(120,55)"/>
+  <use href="#s-e" transform="translate(220,55)"/>
+  <circle class="nd" cx="40" cy="55" r="3"/><circle class="nd" cx="300" cy="55" r="3"/>
+  <text x="40" y="40" class="mid itl">a</text>
+  <text x="300" y="40" class="mid itl">b</text>
+  <text x="120" y="38" class="mid itl">R</text>
+  <text x="220" y="34" class="mid itl">E</text>
+  <path class="v2" d="M52 55H84"/>
+  <text x="68" y="46" class="mid f2 itl">I</text>
+  <path class="v1" d="M45 88H295"/>
+  <text x="170" y="108" class="mid f1">U = φₐ − φ_b (a-дан b-ға)</text>
+</svg>
+<figcaption>3-сурет. ЭҚК бар тармақ. Ток a-дан b-ға, ЭҚК жебесі де сол бағытта</figcaption>
+</figure>
+
+<div class="key">\[ I=\frac{\varphi_a-\varphi_b\pm E}{R}=\frac{U_{ab}\pm E}{R} \]</div>
+<p>\(\varphi_a\) ток шығатын ұштың, \(\varphi_b\) ток баратын ұштың потенциалы. Таңба ережесі: ЭҚК жебесі токтың таңдалған бағытымен <b>бағыттас</b> болса «+», <b>қарсы</b> болса «−». \(R\) тармақтың барлық кедергісі.</p>
+
+<div class="box ex"><b class="bt">Мысал 2</b>
+<p>\(\varphi_a=30\) В, \(\varphi_b=10\) В, \(R=8\) Ом, \(E=12\) В.</p>
+<p>ЭҚК ток бағытымен бағыттас болса: \(I=(30-10+12)/8=4\) А.</p>
+<p>ЭҚК қарсы бағытталса: \(I=(30-10-12)/8=1\) А.</p>
+<p>Нәтиже теріс шықса, нақты ток таңдалған бағытқа қарсы ағады.</p></div>
+
+<h3>1.3. Энергия көздері</h3>
+
+<table>
+<tr><th>Көз</th><th>Не тұрақты</th><th>Ішкі кедергі</th><th>Тыйым салынған режим</th></tr>
+<tr><td>Идеал ЭҚК көзі</td><td>кернеу \(U=E\), токқа тәуелсіз</td><td>\(r=0\)</td><td>қысқа тұйықталу (ток шексіз)</td></tr>
+<tr><td>Идеал ток көзі</td><td>ток \(I=J\), кернеуге тәуелсіз</td><td>\(r=\infty\) (\(g=0\))</td><td>бос жүріс (кернеу шексіз)</td></tr>
+<tr><td>Нақты көз</td><td>екеуі де жүктемеге тәуелді</td><td>\(0&lt;r&lt;\infty\)</td><td></td></tr>
+</table>
+
+<p>Нақты көзді екі түрлі сұлбамен беруге болады: ЭҚК көзі мен <b>тізбектей</b> \(r\), немесе ток көзі мен <b>параллель</b> \(r\). Сыртқы тізбек үшін екеуі бірдей.</p>
+
+<figure class="fig">
+<svg viewBox="0 0 350 172">
+  <path class="w" d="M40 70V40H70M120 40H140M40 120V140H140"/>
+  <use href="#s-e" transform="translate(40,95) rotate(-90)"/>
+  <use href="#s-r" transform="translate(95,40)"/>
+  <circle class="bx" cx="143" cy="40" r="3"/><circle class="bx" cx="143" cy="140" r="3"/>
+  <text x="24" y="99" class="end itl">E</text>
+  <text x="95" y="26" class="mid itl">r</text>
+  <text x="92" y="162" class="mid sm">U = E − rI</text>
+  <text x="182" y="96" class="mid big">⇔</text>
+  <path class="w" d="M230 70V40H327M230 120V140H327M290 40V70M290 120V140"/>
+  <use href="#s-j" transform="translate(230,95) rotate(-90)"/>
+  <use href="#s-r" transform="translate(290,95) rotate(90)"/>
+  <circle class="nd" cx="290" cy="40" r="2.5"/><circle class="nd" cx="290" cy="140" r="2.5"/>
+  <circle class="bx" cx="330" cy="40" r="3"/><circle class="bx" cx="330" cy="140" r="3"/>
+  <text x="214" y="99" class="end itl">J</text>
+  <text x="304" y="99" class="itl">r</text>
+  <text x="272" y="162" class="mid sm">J = E/r, r сол күйі</text>
+</svg>
+<figcaption>4-сурет. Нақты ЭҚК көзі мен нақты ток көзінің баламалы сұлбалары</figcaption>
+</figure>
+
+<div class="key">\[ J=\frac{E}{r},\qquad E=Jr,\qquad r_{\text{ток көзі}}=r_{\text{ЭҚК көзі}} \]</div>
+<p>\(J\) ток көзінің тогы (А), ол ЭҚК көзінің қысқа тұйықталу тогына тең. Ток көзінің жебесі ЭҚК жебесімен бір жаққа қарайды.</p>
+
+<div class="box ex"><b class="bt">Мысал 3</b>
+<p>\(E=12\) В, \(r=2\) Ом көзін ток көзіне айналдыр. \(J=12/2=6\) А, оған параллель \(r=2\) Ом.</p>
+<p>Тексеру, жүктеме \(R=4\) Ом. ЭҚК сұлбасында: \(I=12/(4+2)=2\) А. Ток көзі сұлбасында: \(I=J\cdot r/(r+R)=6\cdot 2/6=2\) А. Бірдей.</p></div>
+
+<figure class="plot" data-spec='{"title":"Көздің сыртқы сипаттамасы U(I): E = 12 В, r = 2 Ом","x":[0,6],"y":[0,16],"xticks":6,"yticks":4,"xl":"I, А","yl":"U, В","curves":[{"name":"нақты көз: U = E − rI","f":"12-2*x"},{"name":"идеал ЭҚК көзі: U = E","f":"12","dash":true,"color":4}],"marks":[{"x":0,"y":12,"label":"бос жүріс: U = E"},{"x":6,"y":0,"label":"қысқа тұйықталу: I = E/r","left":true},{"x":2,"y":8,"label":"R = 4 Ом: 2 А, 8 В"}]}'>
+<figcaption>5-сурет. Жүктеме тогы өскен сайын нақты көздің кернеуі төмендейді</figcaption></figure>
+
+<div class="box tip"><b class="bt">Екі шеткі режим</b>
+<p><b>Бос жүріс</b>: жүктеме ажыратылған (\(R=\infty\)), \(I=0\), \(U_{\text{бж}}=E\).</p>
+<p><b>Қысқа тұйықталу</b>: қысқыштар сыммен тұйықталған (\(R=0\)), \(U=0\), \(I_{\text{қт}}=E/r\).</p>
+<p>Осы екеуінен ішкі кедергі табылады: \(r=U_{\text{бж}}/I_{\text{қт}}\).</p></div>
+
+<div class="box trap"><b class="bt">Тесттегі тұзақ</b>
+<p>Баламалы түрлендіру тек <b>сыртқы тізбек</b> үшін дұрыс. Көздің ішіндегі шығын екі сұлбада әр түрлі. Идеал ЭҚК көзін (\(r=0\)) ток көзіне айналдыруға болмайды, идеал ток көзін де ЭҚК көзіне айналдыруға болмайды.</p></div>
+
+<h3>1.4. Кирхгоф заңдары</h3>
+
+<h4>Бірінші заң (токтар заңы)</h4>
+<p>Түйінде заряд жиналмайды. Сондықтан түйінге кірген токтардың қосындысы шыққан токтардың қосындысына тең.</p>
+<div class="key">\[ \sum I_k=0 \]</div>
+<p>Алгебралық қосынды: түйінге кіретін токтар бір таңбамен, шығатындары қарсы таңбамен алынады.</p>
+
+<figure class="fig">
+<svg viewBox="0 0 340 160">
+  <path class="w" d="M60 80H280M170 15V145"/>
+  <circle class="nd" cx="170" cy="80" r="3.5"/>
+  <path class="v2" d="M80 80H130"/><path class="v2" d="M170 25V60"/>
+  <path class="v2" d="M200 80H250"/><path class="v2" d="M170 100V135"/>
+  <text x="105" y="70" class="mid f2">I₁</text>
+  <text x="182" y="45" class="f2">I₂</text>
+  <text x="225" y="70" class="mid f2">I₃</text>
+  <text x="182" y="122" class="f2">I₄</text>
+  <text x="264" y="130" class="mid sm">I₁ + I₂ = I₃ + I₄</text>
+</svg>
+<figcaption>6-сурет. Кирхгофтың бірінші заңы: I₁ мен I₂ кіреді, I₃ пен I₄ шығады</figcaption>
+</figure>
+
+<h4>Екінші заң (кернеулер заңы)</h4>
+<p>Кез келген тұйық контурда ЭҚК-тердің алгебралық қосындысы кедергілердегі кернеу түсулерінің алгебралық қосындысына тең.</p>
+<div class="key">\[ \sum E_k=\sum I_kR_k \]</div>
+<p>Таңба ережесі. Контурды айналу бағытын таңда (мысалы сағат тілімен). ЭҚК жебесі айналу бағытымен бағыттас болса \(+E\), қарсы болса \(-E\). Тармақ тогы айналу бағытымен бағыттас болса \(+IR\), қарсы болса \(-IR\).</p>
+
+<h4>Теңдеу саны</h4>
+<table>
+<tr><th>Не</th><th>Саны</th></tr>
+<tr><td>Белгісіз токтар</td><td>\(т\) (ток көзі бар тармақтарды шегергенде \(т-т_J\))</td></tr>
+<tr><td>1-заң бойынша теңдеулер</td><td>\(у-1\)</td></tr>
+<tr><td>2-заң бойынша теңдеулер</td><td>\(т-(у-1)=т-у+1\) (ток көзі болса \(т-т_J-у+1\))</td></tr>
+</table>
+<p>Соңғы түйіннің теңдеуі қалғандарының қосындысы болып шығады, сондықтан ол жазылмайды. Ток көзі бар тармақтың тогы белгілі (\(J\)), оған теңдеу керек емес, және 2-заң контурын ток көзі арқылы жүргізбейді.</p>
+
+<div class="box ex"><b class="bt">Мысал 4. Кирхгоф заңдарымен есептеу (негізгі сұлба)</b>
+<p>\(E_1=20\) В, \(E_2=10\) В, \(R_1=2\) Ом, \(R_2=2\) Ом, \(R_3=4\) Ом. Токтардың бағыттарын 7-суреттегідей <b>өзіміз таңдаймыз</b>.</p>
+<p>Түйіндер 2, тармақтар 3. 1-заң бойынша \(2-1=1\) теңдеу, 2-заң бойынша \(3-2+1=2\) теңдеу.</p>
+<p>a түйіні: \(I_1+I_2-I_3=0\).</p>
+<p>I контур (сағат тілімен): \(I_1R_1+I_3R_3=E_1\), яғни \(2I_1+4I_3=20\).</p>
+<p>II контур (сағат тілімен): \(-I_2R_2-I_3R_3=-E_2\), яғни \(2I_2+4I_3=10\).</p>
+<p>Шешу. Екі контур теңдеуін қосамыз: \(2(I_1+I_2)+8I_3=30\). \(I_1+I_2=I_3\) болғандықтан \(10I_3=30\), \(I_3=3\) А. Сонда \(I_1=(20-12)/2=4\) А, \(I_2=(10-12)/2=-1\) А.</p>
+<p>\(I_2\) теріс шықты: нақты ток суретте көрсетілгенге қарсы, яғни \(E_2\) арқылы оның жебесіне қарсы өтеді. Екінші көз энергия <b>тұтынып тұр</b> (аккумулятор зарядталып жатқандай).</p></div>
+
+<figure class="fig">
+<svg viewBox="0 0 340 190">
+  <path class="w" d="M60 160V145M60 95V90M60 40V30H280V40M280 90V95M280 145V160H60M170 30V70M170 120V160"/>
+  <use href="#s-e" transform="translate(60,120) rotate(-90)"/>
+  <use href="#s-r" transform="translate(60,65) rotate(90)"/>
+  <use href="#s-r" transform="translate(170,95) rotate(90)"/>
+  <use href="#s-r" transform="translate(280,65) rotate(90)"/>
+  <use href="#s-e" transform="translate(280,120) rotate(-90)"/>
+  <circle class="nd" cx="170" cy="30" r="3"/><circle class="nd" cx="170" cy="160" r="3"/>
+  <text x="170" y="18" class="mid itl">a</text>
+  <text x="170" y="178" class="mid itl">b</text>
+  <text x="42" y="118" class="end">E₁</text><text x="42" y="132" class="end sm">20 В</text>
+  <text x="46" y="63" class="end">R₁</text><text x="46" y="77" class="end sm">2 Ом</text>
+  <text x="184" y="93">R₃</text><text x="184" y="107" class="sm">4 Ом</text>
+  <text x="294" y="63">R₂</text><text x="294" y="77" class="sm">2 Ом</text>
+  <text x="298" y="118">E₂</text><text x="298" y="132" class="sm">10 В</text>
+  <path class="v2" d="M85 30H125"/><text x="105" y="20" class="mid f2">I₁</text>
+  <path class="v2" d="M255 30H215"/><text x="235" y="20" class="mid f2">I₂</text>
+  <path class="v2" d="M170 36V64"/><text x="158" y="56" class="end f2">I₃</text>
+  <path class="ar" d="M99 135A16 16 0 1 1 125 135"/>
+  <text x="112" y="129" class="mid sm">I</text>
+  <path class="ar" d="M219 135A16 16 0 1 1 245 135"/>
+  <text x="232" y="129" class="mid sm">II</text>
+</svg>
+<figcaption>7-сурет. Негізгі сұлба. Осы сұлбаны әрі қарай әр әдіспен қайта шығарамыз, жауап бірдей: I₁ = 4 А, I₂ = −1 А, I₃ = 3 А</figcaption>
+</figure>
+
+<h3>1.5. Резисторларды қосу</h3>
+
+<figure class="fig">
+<svg viewBox="0 0 360 126">
+  <path class="w" d="M18 50H35M85 50H95M145 50H160"/>
+  <use href="#s-r" transform="translate(60,50)"/><use href="#s-r" transform="translate(120,50)"/>
+  <circle class="bx" cx="15" cy="50" r="3"/><circle class="bx" cx="163" cy="50" r="3"/>
+  <text x="60" y="36" class="mid">R₁</text><text x="120" y="36" class="mid">R₂</text>
+  <text x="90" y="92" class="mid sm">тізбектей: I ортақ</text>
+  <text x="90" y="110" class="mid sm">R = R₁ + R₂</text>
+  <path class="w" d="M203 50H225M225 30V70M320 30V70M320 50H342M225 30H247M297 30H320M225 70H247M297 70H320"/>
+  <use href="#s-r" transform="translate(272,30)"/><use href="#s-r" transform="translate(272,70)"/>
+  <circle class="nd" cx="225" cy="50" r="2.5"/><circle class="nd" cx="320" cy="50" r="2.5"/>
+  <circle class="bx" cx="200" cy="50" r="3"/><circle class="bx" cx="345" cy="50" r="3"/>
+  <text x="272" y="17" class="mid">R₁</text><text x="272" y="55" class="mid">R₂</text>
+  <text x="272" y="98" class="mid sm">параллель: U ортақ</text>
+  <text x="272" y="116" class="mid sm">G = G₁ + G₂</text>
+</svg>
+<figcaption>8-сурет. Тізбектей және параллель қосу</figcaption>
+</figure>
+
+<table>
+<tr><th></th><th>Тізбектей</th><th>Параллель</th></tr>
+<tr><td>Ортақ шама</td><td>ток \(I\)</td><td>кернеу \(U\)</td></tr>
+<tr><td>Қосылады</td><td>кернеулер: \(U=U_1+U_2\)</td><td>токтар: \(I=I_1+I_2\)</td></tr>
+<tr><td>Баламалы</td><td>\(R=R_1+R_2+\dots\)</td><td>\(\dfrac1R=\dfrac1{R_1}+\dfrac1{R_2}+\dots\)</td></tr>
+<tr><td>Екі резистор</td><td>\(R=R_1+R_2\)</td><td>\(R=\dfrac{R_1R_2}{R_1+R_2}\)</td></tr>
+<tr><td>\(n\) бірдей резистор</td><td>\(nR\)</td><td>\(R/n\)</td></tr>
+<tr><td>Нәтиже</td><td>ең үлкенінен үлкен</td><td>ең кішісінен кіші</td></tr>
+</table>
+
+<h4>Кернеу бөлгіш және ток бөлгіш</h4>
+<figure class="fig">
+<svg viewBox="0 0 340 178">
+  <path class="w" d="M23 30H80V35M80 85V95M80 145V150H23M80 90H140M80 150H140"/>
+  <use href="#s-r" transform="translate(80,60) rotate(90)"/><use href="#s-r" transform="translate(80,120) rotate(90)"/>
+  <circle class="bx" cx="20" cy="30" r="3"/><circle class="bx" cx="20" cy="150" r="3"/>
+  <circle class="bx" cx="143" cy="90" r="3"/><circle class="bx" cx="143" cy="150" r="3"/>
+  <circle class="nd" cx="80" cy="90" r="2.5"/><circle class="nd" cx="80" cy="150" r="2.5"/>
+  <text x="96" y="64">R₁</text><text x="96" y="124">R₂</text>
+  <path class="v1" d="M20 40V140"/><text x="30" y="94" class="f1 itl">U</text>
+  <path class="v1" d="M143 98V142"/><text x="151" y="124" class="f1">U₂</text>
+  <text x="80" y="172" class="mid sm">кернеу бөлгіш</text>
+  <path class="w" d="M260 12V40M230 40H290M230 40V70M290 40V70M230 120V150M290 120V150M230 150H290"/>
+  <use href="#s-r" transform="translate(230,95) rotate(90)"/><use href="#s-r" transform="translate(290,95) rotate(90)"/>
+  <circle class="nd" cx="260" cy="40" r="2.5"/>
+  <path class="v2" d="M260 14V34"/><text x="270" y="28" class="f2 itl">I</text>
+  <text x="216" y="99" class="end">R₁</text><text x="304" y="99">R₂</text>
+  <path class="v2" d="M221 124V146"/><text x="214" y="140" class="end f2">I₁</text>
+  <path class="v2" d="M299 124V146"/><text x="306" y="140" class="f2">I₂</text>
+  <text x="260" y="172" class="mid sm">ток бөлгіш</text>
+</svg>
+<figcaption>9-сурет. Кернеу бөлгіш (тізбектей) және ток бөлгіш (параллель)</figcaption>
+</figure>
+
+<div class="key">\[ U_2=U\frac{R_2}{R_1+R_2},\qquad I_1=I\frac{R_2}{R_1+R_2},\quad I_2=I\frac{R_1}{R_1+R_2} \]</div>
+<p>Кернеу бөлгіште кернеу кедергіге <b>тура</b> пропорционал бөлінеді: үлкен кедергіге көп кернеу түседі. Ток бөлгіште ток кедергіге <b>кері</b> пропорционал бөлінеді: алымында <b>қарсы</b> тармақтың кедергісі тұрады, кіші кедергімен көп ток өтеді.</p>
+
+<h4>Аралас қосу</h4>
+<p>Алгоритм: сұлбаны «ішінен сыртына» қарай біртіндеп жина. Параллель топтарды бір резистормен, тізбектей топтарды бір резистормен алмастыр. Жалпы токты тап, сосын кері қарай «жайып» әр тармақтың тогын тап.</p>
+
+<figure class="fig">
+<svg viewBox="0 0 340 170">
+  <path class="w" d="M23 40H75M125 40H280V65M280 115V140H23M200 40V65M200 115V140"/>
+  <use href="#s-r" transform="translate(100,40)"/>
+  <use href="#s-r" transform="translate(200,90) rotate(90)"/>
+  <use href="#s-r" transform="translate(280,90) rotate(90)"/>
+  <circle class="bx" cx="20" cy="40" r="3"/><circle class="bx" cx="20" cy="140" r="3"/>
+  <circle class="nd" cx="200" cy="40" r="2.5"/><circle class="nd" cx="200" cy="140" r="2.5"/>
+  <text x="100" y="24" class="mid">R₁ = 4 Ом</text>
+  <text x="214" y="88">R₂</text><text x="214" y="102" class="sm">12 Ом</text>
+  <text x="294" y="88">R₃</text><text x="294" y="102" class="sm">6 Ом</text>
+  <path class="v1" d="M20 50V130"/><text x="30" y="94" class="f1">U = 24 В</text>
+  <path class="v2" d="M35 40H65"/><text x="50" y="30" class="mid f2 itl">I</text>
+  <path class="v2" d="M190 118V136"/><text x="184" y="132" class="end f2">I₂</text>
+  <path class="v2" d="M270 118V136"/><text x="264" y="132" class="end f2">I₃</text>
+</svg>
+<figcaption>10-сурет. Аралас қосу: R₁ тізбектей, R₂ мен R₃ өзара параллель</figcaption>
+</figure>
+
+<div class="box ex"><b class="bt">Мысал 5</b>
+<p>1) Параллель бөлік: \(R_{23}=12\cdot 6/(12+6)=4\) Ом.</p>
+<p>2) Барлығы: \(R=R_1+R_{23}=4+4=8\) Ом.</p>
+<p>3) Жалпы ток: \(I=24/8=3\) А.</p>
+<p>4) Параллель бөліктегі кернеу: \(U_{23}=I R_{23}=3\cdot 4=12\) В. Сонда \(I_2=12/12=1\) А, \(I_3=12/6=2\) А.</p>
+<p>Ток бөлгіш формуласымен тексеру: \(I_2=3\cdot 6/(12+6)=1\) А. Дұрыс.</p></div>
+
+<h3>1.6. Жұлдызша және үшбұрыш</h3>
+<p>Кейде сұлбада тізбектей де, параллель де емес қосылыс кездеседі (мысалы көпір). Сонда үш резистордан тұратын үшбұрышты баламалы жұлдызшаға (немесе керісінше) ауыстырады. Үш сыртқы түйіннің арасындағы кедергілер өзгермейді.</p>
+
+<figure class="fig">
+<svg viewBox="0 0 360 172">
+  <path class="w" d="M90 28L25 140H155Z"/>
+  <use href="#s-r" transform="translate(57.5,84) rotate(120.1)"/>
+  <use href="#s-r" transform="translate(122.5,84) rotate(59.9)"/>
+  <use href="#s-r" transform="translate(90,140)"/>
+  <circle class="nd" cx="90" cy="28" r="3"/><circle class="nd" cx="25" cy="140" r="3"/><circle class="nd" cx="155" cy="140" r="3"/>
+  <text x="90" y="18" class="mid">1</text><text x="14" y="156" class="mid">2</text><text x="166" y="156" class="mid">3</text>
+  <text x="42" y="80" class="end">R₁₂</text><text x="138" y="80">R₃₁</text><text x="90" y="163" class="mid">R₂₃</text>
+  <text x="188" y="92" class="mid big">⇔</text>
+  <path class="w" d="M270 98V28M270 98L208 140M270 98L332 140"/>
+  <use href="#s-r" transform="translate(270,63) rotate(90)"/>
+  <use href="#s-r" transform="translate(239,119) rotate(145.9)"/>
+  <use href="#s-r" transform="translate(301,119) rotate(34.1)"/>
+  <circle class="nd" cx="270" cy="28" r="3"/><circle class="nd" cx="208" cy="140" r="3"/><circle class="nd" cx="332" cy="140" r="3"/><circle class="nd" cx="270" cy="98" r="2.5"/>
+  <text x="270" y="18" class="mid">1</text><text x="200" y="156" class="mid">2</text><text x="340" y="156" class="mid">3</text>
+  <text x="284" y="67">R₁</text><text x="232" y="104" class="end">R₂</text><text x="308" y="104">R₃</text>
+</svg>
+<figcaption>11-сурет. Үшбұрыш (сол жақта) және оған баламалы жұлдызша (оң жақта)</figcaption>
+</figure>
+
+<p><b>Үшбұрыштан жұлдызшаға:</b> сәуле кедергісі сол түйінге іргелес екі қабырғаның көбейтіндісін үш қабырғаның қосындысына бөлгенге тең.</p>
+<div class="key">\[ R_1=\frac{R_{12}R_{31}}{R_{12}+R_{23}+R_{31}},\quad R_2=\frac{R_{12}R_{23}}{R_{12}+R_{23}+R_{31}} \]
+\[ R_3=\frac{R_{23}R_{31}}{R_{12}+R_{23}+R_{31}} \]</div>
+<p><b>Жұлдызшадан үшбұрышқа:</b> қабырға кедергісі сол екі түйіннің сәулелерінің қосындысына олардың көбейтіндісін үшінші сәулеге бөлгенді қосқанға тең.</p>
+<div class="key">\[ R_{12}=R_1+R_2+\frac{R_1R_2}{R_3} \]</div>
+<p>\(R_{23}\) мен \(R_{31}\) индекстерді ауыстыру арқылы дәл солай жазылады. Барлық кедергілер бірдей болса: \(R_{\text{ж}}=R_{\text{үш}}/3\), \(R_{\text{үш}}=3R_{\text{ж}}\).</p>
+
+<div class="box ex"><b class="bt">Мысал 6. Көпір сұлбасының кедергісі</b>
+<p>12-суреттегі көпірдің a мен b арасындағы кедергісін тап. Жоғарғы үшбұрыш (a, c, d): үш қабырғасы 30 Ом.</p>
+<p>1) Үшбұрышты жұлдызшаға айналдырамыз: әр сәуле \(30\cdot 30/(30+30+30)=10\) Ом.</p>
+<p>2) Енді сұлба қарапайым аралас қосылыс: \(R_a=10\) Ом тізбектей, одан кейін екі параллель тармақ: \(10+5=15\) Ом және \(10+20=30\) Ом.</p>
+<p>3) \(R_{ab}=10+\dfrac{15\cdot 30}{15+30}=10+10=20\) Ом.</p></div>
+
+<figure class="fig">
+<svg viewBox="0 0 340 208">
+  <path class="w" d="M170 30L70 105L170 180L270 105ZM70 105H270"/>
+  <use href="#s-r" transform="translate(120,67.5) rotate(143.1)"/>
+  <use href="#s-r" transform="translate(220,67.5) rotate(36.9)"/>
+  <use href="#s-r" transform="translate(170,105)"/>
+  <use href="#s-r" transform="translate(120,142.5) rotate(36.9)"/>
+  <use href="#s-r" transform="translate(220,142.5) rotate(143.1)"/>
+  <circle class="nd" cx="170" cy="30" r="3"/><circle class="nd" cx="70" cy="105" r="3"/><circle class="nd" cx="270" cy="105" r="3"/><circle class="nd" cx="170" cy="180" r="3"/>
+  <text x="170" y="20" class="mid itl">a</text><text x="170" y="198" class="mid itl">b</text>
+  <text x="60" y="109" class="end itl">c</text><text x="280" y="109" class="itl">d</text>
+  <text x="106" y="56" class="end sm">30 Ом</text><text x="234" y="56" class="sm">30 Ом</text>
+  <text x="170" y="94" class="mid sm">30 Ом</text>
+  <text x="106" y="162" class="end sm">5 Ом</text><text x="234" y="162" class="sm">20 Ом</text>
+</svg>
+<figcaption>12-сурет. Көпір сұлбасы: a, c, d түйіндерінің арасында үшбұрыш</figcaption>
+</figure>
+
+<figure class="fig">
+<svg viewBox="0 0 340 156">
+  <path class="w" d="M33 80H45M95 80V40H125M95 80V120H125M175 40H205M175 120H205M255 40H275V120H255M275 80H307"/>
+  <use href="#s-r" transform="translate(70,80)"/>
+  <use href="#s-r" transform="translate(150,40)"/><use href="#s-r" transform="translate(230,40)"/>
+  <use href="#s-r" transform="translate(150,120)"/><use href="#s-r" transform="translate(230,120)"/>
+  <circle class="bx" cx="30" cy="80" r="3"/><circle class="bx" cx="310" cy="80" r="3"/>
+  <circle class="nd" cx="95" cy="80" r="2.5"/><circle class="nd" cx="275" cy="80" r="2.5"/>
+  <circle class="nd" cx="190" cy="40" r="2.5"/><circle class="nd" cx="190" cy="120" r="2.5"/>
+  <text x="30" y="68" class="mid itl">a</text><text x="310" y="68" class="mid itl">b</text>
+  <text x="190" y="58" class="mid itl">c</text><text x="190" y="110" class="mid itl">d</text>
+  <text x="70" y="66" class="mid sm">10 Ом</text>
+  <text x="150" y="26" class="mid sm">10 Ом</text><text x="230" y="26" class="mid sm">5 Ом</text>
+  <text x="150" y="144" class="mid sm">10 Ом</text><text x="230" y="144" class="mid sm">20 Ом</text>
+</svg>
+<figcaption>13-сурет. Үшбұрышты жұлдызшамен алмастырғаннан кейінгі сұлба: R = 10 + 15·30/45 = 20 Ом</figcaption>
+</figure>
+
+<div class="box tip"><b class="bt">Көпірдің тепе-теңдігі</b>
+<p>Қарама-қарсы иықтардың кедергілерінің көбейтінділері тең болса (12-суретте \(R_{ac}R_{db}=R_{ad}R_{cb}\)), c мен d потенциалдары бірдей, диагональдағы ток нөл. Ондай көпірде диагональ резисторын алып тастауға болады.</p></div>
+
+<h3>1.7. Контурлық токтар әдісі</h3>
+<p>Идея: әр тәуелсіз контурда өзінің «айналма» тогы жүреді деп есептейміз. Белгісіздер саны тармақ токтарынан аз болады. Теңдеулер Кирхгофтың 2-заңы бойынша ғана жазылады, 1-заң өздігінен орындалады.</p>
+<div class="key">\[ \text{теңдеу саны}=т-у+1-т_J \]</div>
+<p>\(т\) тармақтар саны, \(у\) түйіндер саны, \(т_J\) ток көзі бар тармақтар саны (ондай контурдың тогы белгілі, \(J\)-ге тең).</p>
+
+<p>Екі контур үшін жүйе:</p>
+<div class="key">\[ \begin{cases} R_{11}I_{11}+R_{12}I_{22}=E_{11}\\ R_{21}I_{11}+R_{22}I_{22}=E_{22} \end{cases} \]</div>
+<ul>
+<li>\(R_{11}, R_{22}\) контурдың <b>меншікті кедергісі</b>: контурға кіретін барлық кедергілердің қосындысы (әрқашан оң).</li>
+<li>\(R_{12}=R_{21}\) <b>ортақ кедергі</b>: екі контурға ортақ тармақтың кедергісі. Ортақ тармақта контурлық токтар қарсы бағытталса «−», бағыттас болса «+». Барлық контурлық токтар бір жаққа (сағат тілімен) алынса, ортақ кедергі әрқашан «−».</li>
+<li>\(E_{11}, E_{22}\) <b>контурлық ЭҚК</b>: контурдағы ЭҚК-тердің алгебралық қосындысы (айналу бағытымен бағыттасы «+»).</li>
+</ul>
+<p>Тармақ тогы: сыртқы тармақта контурлық токтың өзіне тең; ортақ тармақта екі контурлық токтың алгебралық қосындысына тең.</p>
+
+<figure class="fig">
+<svg viewBox="0 0 340 190">
+  <path class="w" d="M60 160V145M60 95V90M60 40V30H280V40M280 90V95M280 145V160H60M170 30V70M170 120V160"/>
+  <use href="#s-e" transform="translate(60,120) rotate(-90)"/>
+  <use href="#s-r" transform="translate(60,65) rotate(90)"/>
+  <use href="#s-r" transform="translate(170,95) rotate(90)"/>
+  <use href="#s-r" transform="translate(280,65) rotate(90)"/>
+  <use href="#s-e" transform="translate(280,120) rotate(-90)"/>
+  <circle class="nd" cx="170" cy="30" r="3"/><circle class="nd" cx="170" cy="160" r="3"/>
+  <text x="42" y="118" class="end">E₁</text><text x="42" y="132" class="end sm">20 В</text>
+  <text x="46" y="63" class="end">R₁</text><text x="46" y="77" class="end sm">2 Ом</text>
+  <text x="170" y="60" class="mid sm">R₃ = 4 Ом</text>
+  <text x="294" y="63">R₂</text><text x="294" y="77" class="sm">2 Ом</text>
+  <text x="298" y="118">E₂</text><text x="298" y="132" class="sm">10 В</text>
+  <path class="v4" d="M92 112A24 24 0 1 1 132 112"/>
+  <text x="112" y="100" class="mid f4">I₁₁</text>
+  <path class="v4" d="M208 112A24 24 0 1 1 248 112"/>
+  <text x="228" y="100" class="mid f4">I₂₂</text>
+</svg>
+<figcaption>14-сурет. Контурлық токтар I₁₁ және I₂₂, екеуі де сағат тілімен</figcaption>
+</figure>
+
+<div class="box ex"><b class="bt">Мысал 7. Негізгі сұлба, контурлық токтар әдісі</b>
+<p>Теңдеу саны: \(3-2+1=2\).</p>
+<p>\(R_{11}=R_1+R_3=6\) Ом, \(R_{22}=R_2+R_3=6\) Ом, \(R_{12}=-R_3=-4\) Ом.</p>
+<p>\(E_{11}=+E_1=20\) В (жебесі айналумен бағыттас). \(E_{22}=-E_2=-10\) В (оң контурда сағат тілімен жүргенде \(E_2\) жебесіне қарсы өтеміз).</p>
+\[ \begin{cases} 6I_{11}-4I_{22}=20\\ -4I_{11}+6I_{22}=-10 \end{cases} \]
+<p>Бірінші теңдеуді 3-ке, екіншісін 2-ге көбейтіп қосамыз: \(18I_{11}-8I_{11}=60-20\), \(I_{11}=4\) А. Сонда \(I_{22}=(6\cdot 4-20)/4=1\) А.</p>
+<p>Тармақ токтары (7-суреттегі бағыттар): \(I_1=I_{11}=4\) А; \(I_3=I_{11}-I_{22}=3\) А; \(I_2=-I_{22}=-1\) А. Кирхгоф әдісімен бірдей.</p></div>
+
+<h3>1.8. Түйіндік потенциалдар әдісі</h3>
+<p>Идея: белгісіз ретінде түйіндердің потенциалдарын аламыз. Бір түйінді «жерге қосамыз» (\(\varphi=0\)), қалған \(у-1\) түйін үшін Кирхгофтың 1-заңын жазамыз. Потенциалдар табылған соң әр тармақтың тогы жалпыланған Ом заңымен есептеледі.</p>
+<div class="key">\[ \text{теңдеу саны}=у-1 \]</div>
+<p>Екі белгісіз түйін үшін жүйе:</p>
+<div class="key">\[ \begin{cases} G_{11}\varphi_1-G_{12}\varphi_2=J_{11}\\ -G_{21}\varphi_1+G_{22}\varphi_2=J_{22} \end{cases} \]</div>
+<ul>
+<li>\(G_{11}, G_{22}\) түйіннің <b>меншікті өткізгіштігі</b>: сол түйінге жалғанған барлық тармақтардың өткізгіштіктерінің қосындысы.</li>
+<li>\(G_{12}=G_{21}\) <b>ортақ өткізгіштік</b>: 1 және 2 түйіндерді тікелей қосатын тармақтардың өткізгіштіктерінің қосындысы. Теңдеуге әрқашан «−» таңбамен кіреді.</li>
+<li>\(J_{11}, J_{22}\) <b>түйіндік ток</b>: \(\sum EG+\sum J\). Түйінге <b>бағытталған</b> ЭҚК пен ток көзі «+», түйіннен шығатыны «−».</li>
+</ul>
+<p>Ток көзі бар тармақтың өткізгіштігі нөл (ішкі кедергісі шексіз), ол \(G\)-ге кірмейді.</p>
+
+<figure class="fig">
+<svg viewBox="0 0 345 192">
+  <path class="w" d="M48 150V160H310V125M48 100V95M48 45V40H155M205 40H310V75M120 40V75M120 125V160M240 40V75M240 125V160"/>
+  <use href="#s-e" transform="translate(48,125) rotate(-90)"/>
+  <use href="#s-r" transform="translate(48,70) rotate(90)"/>
+  <use href="#s-r" transform="translate(180,40)"/>
+  <use href="#s-r" transform="translate(120,100) rotate(90)"/>
+  <use href="#s-r" transform="translate(240,100) rotate(90)"/>
+  <use href="#s-j" transform="translate(310,100) rotate(-90)"/>
+  <use href="#s-gnd" transform="translate(180,160)"/>
+  <circle class="nd" cx="120" cy="40" r="3"/><circle class="nd" cx="240" cy="40" r="3"/>
+  <circle class="nd" cx="120" cy="160" r="2.5"/><circle class="nd" cx="240" cy="160" r="2.5"/><circle class="nd" cx="180" cy="160" r="2.5"/>
+  <text x="120" y="28" class="mid f1">1</text><text x="240" y="28" class="mid f1">2</text>
+  <text x="196" y="182" class="sm f1">φ₀ = 0</text>
+  <text x="32" y="129" class="end">E₁</text><text x="34" y="74" class="end">R₁</text>
+  <text x="180" y="26" class="mid">R₂</text>
+  <text x="134" y="104">R₃</text><text x="254" y="104">R₄</text>
+  <text x="326" y="104" class="itl">J</text>
+</svg>
+<figcaption>15-сурет. Үш түйінді сұлба: E₁ = 20 В, R₁ = 2 Ом, R₂ = R₃ = R₄ = 4 Ом, J = 1 А</figcaption>
+</figure>
+
+<div class="box ex"><b class="bt">Мысал 8. Түйіндік потенциалдар әдісі</b>
+<p>Түйіндер 3, теңдеу саны \(3-1=2\). Өткізгіштіктер: \(G_1=0{,}5\) См, \(G_2=G_3=G_4=0{,}25\) См.</p>
+<p>\(G_{11}=G_1+G_2+G_3=1\) См. \(G_{22}=G_2+G_4=0{,}5\) См. \(G_{12}=G_2=0{,}25\) См.</p>
+<p>\(J_{11}=E_1G_1=20\cdot 0{,}5=10\) А (ЭҚК 1-түйінге бағытталған). \(J_{22}=J=1\) А (ток көзі 2-түйінге бағытталған).</p>
+\[ \begin{cases} 1\cdot\varphi_1-0{,}25\varphi_2=10\\ -0{,}25\varphi_1+0{,}5\varphi_2=1 \end{cases} \]
+<p>Екінші теңдеуден \(\varphi_2=2+0{,}5\varphi_1\). Біріншіге қойсақ: \(\varphi_1-0{,}5-0{,}125\varphi_1=10\), \(\varphi_1=12\) В, \(\varphi_2=8\) В.</p>
+<p>Токтар: \(I_1=(0-12+20)/2=4\) А (1-түйінге қарай); \(I_3=12/4=3\) А; \(I_2=(12-8)/4=1\) А (1-ден 2-ге); \(I_4=8/4=2\) А.</p>
+<p>Тексеру, 1-түйін: \(4=3+1\). 2-түйін: \(1+1=2\). Дұрыс.</p></div>
+
+<h4>Екі түйін әдісі</h4>
+<p>Сұлбада тек екі түйін болса (барлық тармақтар параллель), бір ғана теңдеу қалады. Бұл тестте өте жиі кездесетін дербес жағдай.</p>
+<div class="key">\[ U_{ab}=\frac{\sum E_kG_k+\sum J_k}{\sum G_k} \]</div>
+<p>\(U_{ab}\) түйіндер арасындағы кернеу (В). Алымында: a түйініне бағытталған ЭҚК мен ток көздері «+», b-ға бағытталғандары «−». Бөлімінде: барлық тармақтардың өткізгіштіктері (ток көзі бар тармақтан басқа), ЭҚК-сі жоқ тармақтар да кіреді.</p>
+
+<div class="box ex"><b class="bt">Мысал 9. Негізгі сұлба, екі түйін әдісі</b>
+<p>\(G_1=1/2=0{,}5\) См, \(G_2=0{,}5\) См, \(G_3=1/4=0{,}25\) См. Екі ЭҚК те a түйініне бағытталған.</p>
+\[ U_{ab}=\frac{20\cdot 0{,}5+10\cdot 0{,}5}{0{,}5+0{,}5+0{,}25}=\frac{15}{1{,}25}=12\ \text{В} \]
+<p>Токтар: \(I_1=(E_1-U_{ab})/R_1=(20-12)/2=4\) А; \(I_2=(10-12)/2=-1\) А; \(I_3=U_{ab}/R_3=12/4=3\) А.</p></div>
+
+<div class="box tip"><b class="bt">Қай әдісті таңдау керек</b>
+<p>Теңдеуі аз әдісті ал. \(у-1 &lt; т-у+1\) болса түйіндік потенциалдар, әйтпесе контурлық токтар. Тек бір тармақтың тогы керек болса баламалы генератор әдісі ыңғайлы.</p></div>
+
+<h3>1.9. Беттестіру (суперпозиция) принципі</h3>
+<p>Сызықты тізбекте кез келген тармақтың тогы әр көздің жеке-жеке тудыратын токтарының алгебралық қосындысына тең.</p>
+<p>Алгоритм:</p>
+<ol>
+<li>Бір көзді қалдыр, қалғандарын «өшір»: идеал ЭҚК көзін <b>сыммен алмастыр</b> (қысқа тұйықта), идеал ток көзінің тармағын <b>үз</b>. Ішкі кедергілері орнында қалады.</li>
+<li>Ішінара токтарды есепте.</li>
+<li>Әр көз үшін қайтала.</li>
+<li>Ішінара токтарды бағытын ескеріп қос.</li>
+</ol>
+
+<figure class="fig">
+<svg viewBox="0 0 370 174">
+  <path class="w" d="M42 130V140H148V80M42 30H148M95 30V60M95 110V140"/>
+  <use href="#s-e" transform="translate(42,105) rotate(-90)"/>
+  <use href="#s-r" transform="translate(42,55) rotate(90)"/>
+  <use href="#s-r" transform="translate(95,85) rotate(90)"/>
+  <use href="#s-r" transform="translate(148,55) rotate(90)"/>
+  <text x="27" y="109" class="end">E₁</text><text x="30" y="59" class="end">R₁</text>
+  <text x="107" y="89">R₃</text><text x="160" y="59">R₂</text>
+  <path class="v2" d="M95 34V56"/>
+  <text x="95" y="162" class="mid sm">тек E₁: I₃′ = 2 А</text>
+  <path class="w" d="M222 80V140H328V130M222 30H328M275 30V60M275 110V140"/>
+  <use href="#s-r" transform="translate(222,55) rotate(90)"/>
+  <use href="#s-r" transform="translate(275,85) rotate(90)"/>
+  <use href="#s-r" transform="translate(328,55) rotate(90)"/>
+  <use href="#s-e" transform="translate(328,105) rotate(-90)"/>
+  <text x="210" y="59" class="end">R₁</text><text x="287" y="89">R₃</text>
+  <text x="340" y="59">R₂</text><text x="344" y="109">E₂</text>
+  <path class="v2" d="M275 34V56"/>
+  <text x="275" y="162" class="mid sm">тек E₂: I₃″ = 1 А</text>
+</svg>
+<figcaption>16-сурет. Негізгі сұлбаның екі ішінара сұлбасы: өшірілген ЭҚК орнында сым</figcaption>
+</figure>
+
+<div class="box ex"><b class="bt">Мысал 10. Негізгі сұлба, беттестіру әдісі</b>
+<p><b>Тек \(E_1\)</b> (\(E_2\) орнында сым). \(R_2\parallel R_3=2\cdot 4/6=4/3\) Ом. \(I_1'=20/(2+4/3)=6\) А. Ток бөлгіш: \(I_3'=6\cdot 2/(2+4)=2\) А, \(R_2\) арқылы төмен 4 А, яғни \(I_2'=-4\) А.</p>
+<p><b>Тек \(E_2\)</b> (\(E_1\) орнында сым). \(R_1\parallel R_3=4/3\) Ом. \(I_2''=10/(2+4/3)=3\) А. \(I_3''=3\cdot 2/6=1\) А, \(R_1\) арқылы төмен 2 А, яғни \(I_1''=-2\) А.</p>
+<p><b>Қосамыз:</b> \(I_1=6-2=4\) А; \(I_2=-4+3=-1\) А; \(I_3=2+1=3\) А.</p></div>
+
+<div class="box trap"><b class="bt">Тесттегі тұзақ</b>
+<p>Беттестіру тек <b>токтар мен кернеулерге</b> жарайды. <b>Қуатқа қолдануға болмайды</b>, себебі қуат токтың квадратына тәуелді. Мысал 10-да \(R_3\) қуаты \(3^2\cdot 4=36\) Вт, ал ішінара қуаттардың қосындысы \(2^2\cdot 4+1^2\cdot 4=20\) Вт. Тең емес. Сызықты емес тізбекке де жарамайды.</p></div>
+
+<h3>1.10. Өзаралық қасиеті</h3>
+<p>Сызықты тізбекте жалғыз ЭҚК көзі бар делік. Ол \(k\) тармағында тұрғанда \(m\) тармағында \(I\) тогын тудырса, сол ЭҚК-ні \(m\) тармағына көшіргенде \(k\) тармағында дәл сондай \(I\) тогы пайда болады.</p>
+<div class="key">\[ I_m=g_{mk}E_k,\qquad g_{mk}=g_{km} \]</div>
+<p>\(g_{mk}\) екі тармақтың <b>өзара өткізгіштігі</b> (См). \(g_{kk}\) тармақтың <b>кіріс өткізгіштігі</b>: ЭҚК өз тармағында тудыратын токтың ЭҚК-ге қатынасы.</p>
+
+<figure class="fig">
+<svg viewBox="0 0 370 174">
+  <path class="w" d="M42 130V140H148V130M42 30H148M95 30V60M95 110V140"/>
+  <use href="#s-e" transform="translate(42,105) rotate(-90)"/>
+  <use href="#s-r" transform="translate(42,55) rotate(90)"/>
+  <use href="#s-r" transform="translate(95,85) rotate(90)"/>
+  <use href="#s-r" transform="translate(148,55) rotate(90)"/>
+  <use href="#s-m" transform="translate(148,105) rotate(90)"/>
+  <text x="148" y="109.500" class="mid sm">A</text>
+  <text x="27" y="109" class="end itl">E</text><text x="30" y="59" class="end">R₁</text>
+  <text x="107" y="89">R₃</text><text x="160" y="59">R₂</text>
+  <text x="95" y="162" class="mid sm">E сол жақта: амперметр 2 А</text>
+  <path class="w" d="M222 130V140H328V130M222 30H328M275 30V60M275 110V140"/>
+  <use href="#s-r" transform="translate(222,55) rotate(90)"/>
+  <use href="#s-m" transform="translate(222,105) rotate(90)"/>
+  <text x="222" y="109.500" class="mid sm">A</text>
+  <use href="#s-r" transform="translate(275,85) rotate(90)"/>
+  <use href="#s-r" transform="translate(328,55) rotate(90)"/>
+  <use href="#s-e" transform="translate(328,105) rotate(-90)"/>
+  <text x="210" y="59" class="end">R₁</text><text x="287" y="89">R₃</text>
+  <text x="340" y="59">R₂</text><text x="344" y="109" class="itl">E</text>
+  <text x="275" y="162" class="mid sm">E оң жақта: амперметр 2 А</text>
+</svg>
+<figcaption>17-сурет. Өзаралық: ЭҚК мен амперметрдің орнын ауыстырғанда көрсеткіш өзгермейді</figcaption>
+</figure>
+
+<div class="box ex"><b class="bt">Мысал 11</b>
+<p>\(E=24\) В, \(R_1=2\) Ом, \(R_2=6\) Ом, \(R_3=3\) Ом (амперметр идеал).</p>
+<p>ЭҚК 1-тармақта: \(R_2\parallel R_3=2\) Ом, \(I_1=24/(2+2)=6\) А, 2-тармақтағы ток \(6\cdot 3/(6+3)=2\) А.</p>
+<p>ЭҚК 2-тармақта: \(R_1\parallel R_3=1{,}2\) Ом, \(I_2=24/(6+1{,}2)=3{,}33\) А, 1-тармақтағы ток \(3{,}33\cdot 3/(2+3)=2\) А. Бірдей.</p></div>
+
+<h3>1.11. Қуат және қуат балансы</h3>
+<div class="key">\[ P=UI=I^2R=\frac{U^2}{R}=U^2G \]</div>
+<p>\(P\) резистордағы қуат (Вт). Резистор әрқашан энергия тұтынады (жылуға айналдырады). Энергия: \(W=Pt\) (Дж немесе кВт·сағ).</p>
+<p>Көздің қуаты: ЭҚК көзі үшін \(P=EI\), ток көзі үшін \(P=U_JJ\) (\(U_J\) ток көзінің қысқыштарындағы кернеу).</p>
+<p><b>Қуат балансы</b> энергияның сақталу заңы: көздер берген қуаттардың алгебралық қосындысы тұтынушылардағы қуаттардың қосындысына тең.</p>
+<div class="key">\[ \sum E_kI_k+\sum U_{Jk}J_k=\sum I_k^2R_k \]</div>
+<p>Таңба: ток ЭҚК жебесімен <b>бағыттас</b> өтсе, көз энергия береді, \(EI\) «+». Ток ЭҚК-ге <b>қарсы</b> өтсе, көз тұтынушы режимінде (зарядталады), \(EI\) «−». Оң жағы әрқашан оң.</p>
+
+<div class="box ex"><b class="bt">Мысал 12. Негізгі сұлбаның қуат балансы</b>
+<p>Көздер: \(E_1I_1+E_2I_2=20\cdot 4+10\cdot(-1)=80-10=70\) Вт.</p>
+<p>Тұтынушылар: \(I_1^2R_1+I_2^2R_2+I_3^2R_3=16\cdot 2+1\cdot 2+9\cdot 4=32+2+36=70\) Вт.</p>
+<p>70 = 70, есеп дұрыс. \(E_2\) көзі 10 Вт тұтынып тұр.</p></div>
+
+<h3>1.12. Екіұштықтар және баламалы генератор әдісі</h3>
+<div class="box def"><b class="bt">Екіұштық</b>
+<p>Сұлбаның екі қысқышпен шығарылған кез келген бөлігі. Ішінде энергия көзі болса <b>активті</b>, болмаса <b>пассивті</b>. Пассивті екіұштық бір кедергімен (кіріс кедергісі \(R_{\text{кір}}\)) алмастырылады.</p></div>
+
+<p><b>Баламалы генератор туралы теорема (Тевенин):</b> кез келген сызықты активті екіұштықты ЭҚК-сі \(E_{\text{э}}\) және ішкі кедергісі \(R_{\text{э}}\) бір нақты көзбен алмастыруға болады.</p>
+
+<figure class="fig">
+<svg viewBox="0 0 365 150">
+  <rect class="bx" x="20" y="30" width="80" height="90" rx="6"/>
+  <text x="60" y="72" class="mid big">А</text>
+  <text x="60" y="90" class="mid sm">активті</text><text x="60" y="103" class="mid sm">екіұштық</text>
+  <path class="w" d="M100 45H150V50M150 100V105H100"/>
+  <use href="#s-r" transform="translate(150,75) rotate(90)"/>
+  <circle class="nd" cx="125" cy="45" r="3"/><circle class="nd" cx="125" cy="105" r="3"/>
+  <text x="125" y="36" class="mid itl">a</text><text x="125" y="123" class="mid itl">b</text>
+  <text x="164" y="79" class="itl">R</text>
+  <text x="192" y="80" class="mid big">⇒</text>
+  <path class="w" d="M230 50V40H250M300 40H330V50M330 100V110H230V100"/>
+  <use href="#s-e" transform="translate(230,75) rotate(-90)"/>
+  <use href="#s-r" transform="translate(275,40)"/>
+  <use href="#s-r" transform="translate(330,75) rotate(90)"/>
+  <text x="275" y="26" class="mid">R<tspan dy="3" font-size="9">э</tspan><tspan dy="-3"> = R</tspan><tspan dy="3" font-size="9">кір</tspan></text>
+  <text x="246" y="72">E<tspan dy="3" font-size="9">э</tspan></text>
+  <text x="246" y="90" class="sm">= U<tspan dy="3" font-size="8">бж</tspan></text>
+  <text x="344" y="79" class="itl">R</text>
+  <path class="v2" d="M303 40H326"/>
+  <text x="314" y="30" class="mid f2 itl">I</text>
+</svg>
+<figcaption>18-сурет. Активті екіұштықты баламалы генератормен алмастыру</figcaption>
+</figure>
+
+<div class="key">\[ I=\frac{U_{\text{бж}}}{R_{\text{кір}}+R} \]</div>
+<ul>
+<li>\(U_{\text{бж}}\) (\(=E_{\text{э}}\)): зерттелетін \(R\) тармағы <b>ажыратылғандағы</b> a және b қысқыштарының арасындағы бос жүріс кернеуі.</li>
+<li>\(R_{\text{кір}}\) (\(=R_{\text{э}}\)): қысқыштар жағынан қарағандағы кіріс кедергісі. Табу үшін ішкі ЭҚК көздері <b>қысқа тұйықталады</b>, ток көздері <b>үзіледі</b>.</li>
+<li>Тәжірибемен: \(R_{\text{кір}}=U_{\text{бж}}/I_{\text{қт}}\).</li>
+</ul>
+<p><b>Нортон нұсқасы:</b> сол екіұштықты ток көзімен алмастыру: \(J_{\text{э}}=I_{\text{қт}}=U_{\text{бж}}/R_{\text{кір}}\), оған параллель \(R_{\text{кір}}\). Сонда \(I=I_{\text{қт}}\dfrac{R_{\text{кір}}}{R_{\text{кір}}+R}\).</p>
+
+<figure class="fig">
+<svg viewBox="0 0 340 190">
+  <path class="w" d="M60 160V145M60 95V90M60 40V30H280V40M280 90V95M280 145V160H60M170 30V52M170 138V160"/>
+  <use href="#s-e" transform="translate(60,120) rotate(-90)"/>
+  <use href="#s-r" transform="translate(60,65) rotate(90)"/>
+  <use href="#s-r" transform="translate(280,65) rotate(90)"/>
+  <use href="#s-e" transform="translate(280,120) rotate(-90)"/>
+  <circle class="nd" cx="170" cy="30" r="3"/><circle class="nd" cx="170" cy="160" r="3"/>
+  <circle class="bx" cx="170" cy="55" r="3"/><circle class="bx" cx="170" cy="135" r="3"/>
+  <text x="182" y="58" class="itl">a</text><text x="182" y="140" class="itl">b</text>
+  <path class="v1" d="M170 64V126"/>
+  <text x="160" y="92" class="end f1">U<tspan dy="3" font-size="9">бж</tspan></text>
+  <text x="160" y="110" class="end sm f1">15 В</text>
+  <text x="42" y="118" class="end">E₁</text><text x="42" y="132" class="end sm">20 В</text>
+  <text x="46" y="63" class="end">R₁</text><text x="46" y="77" class="end sm">2 Ом</text>
+  <text x="294" y="63">R₂</text><text x="294" y="77" class="sm">2 Ом</text>
+  <text x="298" y="118">E₂</text><text x="298" y="132" class="sm">10 В</text>
+  <path class="v2" d="M195 30H245"/><text x="220" y="20" class="mid f2">I = 2,5 А</text>
+</svg>
+<figcaption>19-сурет. Баламалы генератор әдісінің бірінші қадамы: R₃ тармағы ажыратылған</figcaption>
+</figure>
+
+<div class="box ex"><b class="bt">Мысал 13. Негізгі сұлба, I₃ тогын баламалы генератор әдісімен табу</b>
+<p>1) \(R_3\) тармағын ажыратамыз (19-сурет). Бір ғана контур қалады, онда \(E_1\) мен \(E_2\) қарсы қосылған: \(I=(E_1-E_2)/(R_1+R_2)=10/4=2{,}5\) А.</p>
+<p>2) Бос жүріс кернеуі: \(U_{\text{бж}}=E_1-IR_1=20-2{,}5\cdot 2=15\) В.</p>
+<p>3) Кіріс кедергісі: ЭҚК-терді сыммен алмастырамыз, a мен b жағынан қарағанда \(R_1\) мен \(R_2\) параллель: \(R_{\text{кір}}=2\cdot 2/4=1\) Ом.</p>
+<p>4) \(I_3=15/(1+4)=3\) А. Басқа әдістермен бірдей.</p>
+<p>Нортон: \(I_{\text{қт}}=E_1/R_1+E_2/R_2=10+5=15\) А, \(I_3=15\cdot 1/(1+4)=3\) А.</p></div>
+
+<h3>1.13. Жүктемеге ең үлкен қуат беру және ПӘК</h3>
+<p>Ішкі кедергісі \(r\) (немесе \(R_{\text{кір}}\)) көзге \(R\) жүктеме қосылған. Жүктеме қуаты:</p>
+<div class="key">\[ P=I^2R=\frac{E^2R}{(R+r)^2} \]</div>
+<p>\(R\) өте кіші болса кернеу аз, \(R\) өте үлкен болса ток аз. Ең үлкен қуат ортасында, <b>келісілген режимде</b>:</p>
+<div class="key">\[ R=r:\qquad P_{max}=\frac{E^2}{4r},\qquad I=\frac{E}{2r},\qquad U=\frac{E}{2} \]</div>
+
+<figure class="plot" data-spec='{"title":"Жүктеме қуаты P(R): E = 15 В, r = 1 Ом","x":[0,8],"y":[0,60],"xticks":8,"yticks":4,"xl":"R, Ом","yl":"P, Вт","curves":[{"name":"P = E²R/(R + r)²","f":"225*x/pow(x+1,2)","color":3}],"marks":[{"x":1,"y":56.25,"label":"Pmax = 56,25 Вт, R = r"},{"x":4,"y":36,"label":"R = 4 Ом: 36 Вт"}],"vlines":[{"x":1}]}'>
+<figcaption>20-сурет. Қуат R = r болғанда ең үлкен (негізгі сұлбаның баламалы генераторы)</figcaption></figure>
+
+<p><b>ПӘК</b> жүктеме алған қуаттың көз өндірген толық қуатқа қатынасы:</p>
+<div class="key">\[ \eta=\frac{P}{P_{\text{көз}}}=\frac{I^2R}{I^2(R+r)}=\frac{R}{R+r}=\frac{U}{E} \]</div>
+<p>\(\eta\) ПӘК (бірлік үлесі немесе %), \(P_{\text{көз}}=EI\) көздің толық қуаты, \(I^2r\) көздің ішіндегі шығын.</p>
+
+<figure class="plot" data-spec='{"title":"ПӘК және салыстырмалы қуат","x":[0,8],"y":[0,1],"xticks":8,"yticks":4,"xl":"R/r","yl":"η, P/Pmax","curves":[{"name":"η = R/(R + r)","f":"x/(x+1)","color":1},{"name":"P/Pmax","f":"4*x/pow(x+1,2)","color":3,"dash":true}],"marks":[{"x":1,"y":0.5,"label":"η = 0,5","below":true}],"vlines":[{"x":1,"label":"R = r"}]}'>
+<figcaption>21-сурет. R өскен сайын ПӘК өседі, ал қуат R = r нүктесінен кейін кемиді</figcaption></figure>
+
+<div class="box trap"><b class="bt">Тесттегі тұзақ</b>
+<p>Ең үлкен қуат режимінде ПӘК небәрі <b>50%</b>: қуаттың жартысы көздің ішінде жоғалады. Ең үлкен ПӘК (100%-ға жуық) \(R\gg r\) кезінде болады, бірақ онда қуат аз. Күштік энергетикада \(R\gg r\) режимі, ал байланыс пен электроникада келісілген режим (\(R=r\)) қолданылады.</p></div>
+
+<div class="box ex"><b class="bt">Мысал 14</b>
+<p>\(E=15\) В, \(r=1\) Ом. \(R=1\) Ом кезінде: \(P_{max}=15^2/(4\cdot 1)=56{,}25\) Вт, \(\eta=50\%\).</p>
+<p>\(R=4\) Ом кезінде: \(I=3\) А, \(P=9\cdot 4=36\) Вт, \(\eta=4/5=80\%\).</p></div>
+
+<h3>1.14. Потенциалдық диаграмма</h3>
+<p>Потенциалдық диаграмма контур бойымен жүргенде потенциалдың қалай өзгеретінін көрсететін график. <b>Абсцисса</b> осіне контур бойындағы кедергілер бірінен кейін бірі қосылып салынады (Ом). <b>Ордината</b> осіне нүктелердің потенциалдары салынады (В).</p>
+<p>Салу ережелері (контурды айналып жүргенде):</p>
+<ul>
+<li>Резистор арқылы ток <b>бағытымен</b> өтсек, потенциал \(IR\)-ге <b>төмендейді</b> (көлбеу сызық). Токқа қарсы өтсек, \(IR\)-ге өседі.</li>
+<li>Идеал ЭҚК арқылы жебе <b>бағытымен</b> өтсек, потенциал \(E\)-ге <b>секіріп өседі</b> (тік сызық, себебі кедергісі нөл). Жебеге қарсы өтсек, \(E\)-ге секіріп төмендейді.</li>
+<li>Контурды толық айналып шыққанда потенциал бастапқы мәніне қайтады. Бұл Кирхгофтың 2-заңының графигі.</li>
+<li>Көлбеу сызықтың еңісі сол бөліктегі токқа тең: \(\Delta\varphi/\Delta R=I\). Ток үлкен болса, сызық тігірек.</li>
+</ul>
+
+<figure class="fig">
+<svg viewBox="0 0 340 190">
+  <path class="w" d="M60 160V145M60 95V90M60 40V30H280V40M280 90V95M280 145V160H60"/>
+  <use href="#s-e" transform="translate(60,120) rotate(-90)"/>
+  <use href="#s-r" transform="translate(60,65) rotate(90)"/>
+  <use href="#s-r" transform="translate(280,65) rotate(90)"/>
+  <use href="#s-e" transform="translate(280,120) rotate(-90)"/>
+  <circle class="nd" cx="170" cy="30" r="3"/><circle class="nd" cx="170" cy="160" r="3"/>
+  <circle class="nd" cx="60" cy="92.500" r="3"/><circle class="nd" cx="280" cy="92.500" r="3"/>
+  <path class="ds" d="M170 30V160"/>
+  <text x="170" y="18" class="mid itl">a</text><text x="170" y="178" class="mid itl">b</text>
+  <text x="72" y="97" class="itl">m</text><text x="268" y="97" class="end itl">n</text>
+  <text x="42" y="118" class="end">E₁</text><text x="42" y="132" class="end sm">20 В</text>
+  <text x="46" y="63" class="end">R₁</text><text x="46" y="77" class="end sm">2 Ом</text>
+  <text x="294" y="63">R₂</text><text x="294" y="77" class="sm">2 Ом</text>
+  <text x="298" y="118">E₂</text><text x="298" y="132" class="sm">10 В</text>
+  <path class="v2" d="M85 30H125"/><text x="105" y="20" class="mid f2">4 А</text>
+  <path class="v2" d="M215 30H255"/><text x="235" y="20" class="mid f2">1 А</text>
+  <path class="ar" d="M152 110A24 24 0 1 1 188 110"/>
+</svg>
+<figcaption>22-сурет. Негізгі сұлбаның сыртқы контуры b, m, a, n, b. Токтардың нақты бағыттары көрсетілген (R₃ тармағы үзік сызықпен)</figcaption>
+</figure>
+
+<div class="box ex"><b class="bt">Мысал 15. Сыртқы контурдың потенциалдық диаграммасы</b>
+<p>\(\varphi_b=0\) деп аламыз. Контурды сағат тілімен айналамыз: b, m, a, n, b.</p>
+<p>b → m: \(E_1\) арқылы жебе бағытымен, \(\varphi_m=0+20=20\) В.</p>
+<p>m → a: \(R_1\) арқылы ток бағытымен, \(\varphi_a=20-4\cdot 2=12\) В.</p>
+<p>a → n: \(R_2\) арқылы ток бағытымен (нақты ток 1 А төмен қарай), \(\varphi_n=12-1\cdot 2=10\) В.</p>
+<p>n → b: \(E_2\) арқылы жебеге қарсы, \(\varphi_b=10-10=0\). Бастапқы мәнге қайттық.</p></div>
+
+<figure class="fig">
+<svg viewBox="0 0 370 222">
+  <path class="ax" d="M50 15V180H330"/>
+  <path class="ds" d="M50 90H170M50 105H290M170 90V180"/>
+  <path class="k1" d="M50 180V30L170 90L290 105V180"/>
+  <circle class="nd" cx="50" cy="180" r="3.5"/><circle class="nd" cx="50" cy="30" r="3.5"/><circle class="nd" cx="170" cy="90" r="3.5"/><circle class="nd" cx="290" cy="105" r="3.5"/><circle class="nd" cx="290" cy="180" r="3.5"/>
+  <text x="44" y="34" class="end tk">20</text><text x="44" y="87" class="end tk">12</text><text x="44" y="112" class="end tk">10</text><text x="44" y="184" class="end tk">0</text>
+  <text x="170" y="196" class="mid tk">2</text><text x="290" y="196" class="mid tk">4</text>
+  <text x="330" y="212" class="end tk">ΣR, Ом</text><text x="58" y="18" class="tk">φ, В</text>
+  <text x="60" y="38" class="itl">m</text><text x="50" y="198" class="mid itl">b</text>
+  <text x="176" y="82" class="itl">a</text><text x="298" y="102" class="itl">n</text><text x="298" y="176" class="itl">b</text>
+  <text x="124" y="52" class="sm f2">еңіс 4 А</text>
+  <text x="230" y="88" class="mid sm f2">еңіс 1 А</text>
+  <text x="60" y="130" class="sm f1">+E₁</text><text x="298" y="146" class="sm f1">−E₂</text>
+</svg>
+<figcaption>23-сурет. Потенциалдық диаграмма: тік секірістер ЭҚК, көлбеу бөліктер резисторлар</figcaption>
+</figure>
+
+<h3>Өзіңді тексер</h3>
+<details class="chk"><summary>Сұлбада 6 тармақ, 4 түйін бар. Кирхгофтың 1-заңы және 2-заңы бойынша неше теңдеуден жазылады?</summary><p>1-заң: 4 − 1 = 3. 2-заң: 6 − 4 + 1 = 3. Барлығы 6, белгісіз токтар санына тең.</p></details>
+<details class="chk"><summary>Көздің бос жүріс кернеуі 24 В, қысқа тұйықталу тогы 12 А. Ішкі кедергісі және 10 Ом жүктемедегі ток?</summary><p>r = 24/12 = 2 Ом. I = 24/(10 + 2) = 2 А.</p></details>
+<details class="chk"><summary>Неге беттестіру әдісімен қуатты қосуға болмайды?</summary><p>Қуат токтың квадратына пропорционал: (I′ + I″)² ≠ I′² + I″². Алдымен толық токты тауып, сосын P = I²R есептеу керек.</p></details>
+<details class="chk"><summary>Кіріс кедергісін тапқанда идеал ЭҚК көзі мен идеал ток көзін немен алмастырамыз?</summary><p>ЭҚК көзін сыммен (кедергісі 0), ток көзін үзілумен (кедергісі шексіз).</p></details>
+<details class="chk"><summary>Әрқайсысы 6 Ом үш резистор жұлдызшамен қосылған. Баламалы үшбұрыштың қабырғасы?</summary><p>3 · 6 = 18 Ом.</p></details>
+
+<section class="cheat">
+<h3>Қысқаша формулалар</h3>
+<table>
+<tr><th>Не</th><th>Формула</th></tr>
+<tr><td>Ом заңы (бөлік)</td><td>\(I=U/R=GU\), \(G=1/R\) [См]</td></tr>
+<tr><td>Ом заңы (тұйық тізбек)</td><td>\(I=\dfrac{E}{R+r}\), \(U=E-Ir\)</td></tr>
+<tr><td>ЭҚК бар тармақ</td><td>\(I=\dfrac{\varphi_a-\varphi_b\pm E}{R}\) (ЭҚК токпен бағыттас «+»)</td></tr>
+<tr><td>Бос жүріс, қысқа тұйықталу</td><td>\(U_{\text{бж}}=E\); \(I_{\text{қт}}=E/r\); \(r=U_{\text{бж}}/I_{\text{қт}}\)</td></tr>
+<tr><td>Көздерді түрлендіру</td><td>\(J=E/r\), \(r\) параллель; \(E=Jr\), \(r\) тізбектей</td></tr>
+<tr><td>Идеал көздер</td><td>ЭҚК: \(r=0\); ток көзі: \(r=\infty\)</td></tr>
+<tr><td>Кирхгоф 1</td><td>\(\sum I=0\); теңдеу саны \(у-1\)</td></tr>
+<tr><td>Кирхгоф 2</td><td>\(\sum E=\sum IR\); теңдеу саны \(т-у+1\)</td></tr>
+<tr><td>Тізбектей</td><td>\(R=R_1+R_2\); \(U_2=U\dfrac{R_2}{R_1+R_2}\)</td></tr>
+<tr><td>Параллель</td><td>\(R=\dfrac{R_1R_2}{R_1+R_2}\); \(I_1=I\dfrac{R_2}{R_1+R_2}\)</td></tr>
+<tr><td>Үшбұрыш → жұлдызша</td><td>\(R_1=\dfrac{R_{12}R_{31}}{R_{12}+R_{23}+R_{31}}\); бірдей болса \(R_{\text{ж}}=R_{\text{үш}}/3\)</td></tr>
+<tr><td>Жұлдызша → үшбұрыш</td><td>\(R_{12}=R_1+R_2+\dfrac{R_1R_2}{R_3}\)</td></tr>
+<tr><td>Контурлық токтар</td><td>\(R_{11}I_{11}+R_{12}I_{22}=E_{11}\); теңдеу саны \(т-у+1-т_J\)</td></tr>
+<tr><td>Түйіндік потенциалдар</td><td>\(G_{11}\varphi_1-G_{12}\varphi_2=J_{11}\); теңдеу саны \(у-1\)</td></tr>
+<tr><td>Екі түйін</td><td>\(U_{ab}=\dfrac{\sum EG+\sum J}{\sum G}\)</td></tr>
+<tr><td>Беттестіру</td><td>\(I=I'+I''+\dots\); тек ток пен кернеуге, қуатқа емес</td></tr>
+<tr><td>Өзаралық</td><td>\(g_{mk}=g_{km}\)</td></tr>
+<tr><td>Қуат</td><td>\(P=UI=I^2R=U^2/R\)</td></tr>
+<tr><td>Қуат балансы</td><td>\(\sum EI+\sum U_JJ=\sum I^2R\)</td></tr>
+<tr><td>Баламалы генератор</td><td>\(I=\dfrac{U_{\text{бж}}}{R_{\text{кір}}+R}\); \(R_{\text{кір}}\): ЭҚК сым, ток көзі үзік</td></tr>
+<tr><td>Ең үлкен қуат</td><td>\(R=r\): \(P_{max}=\dfrac{E^2}{4r}\), \(\eta=50\%\)</td></tr>
+<tr><td>ПӘК</td><td>\(\eta=\dfrac{R}{R+r}=\dfrac{U}{E}\)</td></tr>
+<tr><td>Потенциалдық диаграмма</td><td>абсцисса \(\sum R\), ордината \(\varphi\); еңіс \(=I\)</td></tr>
+</table>
+</section>
+</section>

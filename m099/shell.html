@@ -23,7 +23,7 @@
 *{box-sizing:border-box}
 [hidden]{display:none!important}
 html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 var(--fb)}
+body{margin:0;overflow-x:clip;background:var(--bg);color:var(--ink);font:17px/1.6 var(--fb)}
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--card)}
 h1,h2,h3,h4{font-family:var(--fd);text-wrap:balance;line-height:1.25;margin:0}
 h1{font-size:1.55rem} h2{font-size:1.4rem} h3{font-size:1.12rem;margin-top:1.6rem;color:var(--acc)} h4{font-size:1rem;margin-top:1.1rem}
@@ -84,7 +84,7 @@ svg .k1{stroke:var(--c1);stroke-width:2.4;fill:none} svg .k2{stroke:var(--c2);st
 svg .v1{stroke:var(--c1);stroke-width:2.2;fill:none;marker-end:url(#ah1)} svg .v2{stroke:var(--c2);stroke-width:2.2;fill:none;marker-end:url(#ah2)} svg .v3{stroke:var(--c3);stroke-width:2.2;fill:none;marker-end:url(#ah3)} svg .v4{stroke:var(--c4);stroke-width:2.2;fill:none;marker-end:url(#ah4)}
 svg .f1{fill:var(--c1)} svg .f2{fill:var(--c2)} svg .f3{fill:var(--c3)} svg .f4{fill:var(--c4)}
 svg .a1{fill:var(--c1);fill-opacity:.15;stroke:none} svg .a2{fill:var(--c2);fill-opacity:.15;stroke:none} svg .a3{fill:var(--c3);fill-opacity:.15;stroke:none} svg .a4{fill:var(--c4);fill-opacity:.15;stroke:none}
-svg .s{stroke:var(--ink);stroke-width:1.6;fill:none;stroke-linecap:round;stroke-linejoin:round} svg .sb{stroke:var(--ink);stroke-width:1.6;fill:var(--card)} svg .si{fill:var(--ink);stroke:none}
+.s{stroke:var(--ink);stroke-width:1.6;fill:none;stroke-linecap:round;stroke-linejoin:round} .sb{stroke:var(--ink);stroke-width:1.6;fill:var(--card)} .si{fill:var(--ink);stroke:none}
 .pt{font-weight:600;font-size:.95rem;margin-bottom:.3rem}
 .lgd{display:flex;flex-wrap:wrap;gap:4px 16px;justify-content:center;font-size:.88rem;margin-top:.3rem}
 .lgd i{display:inline-block;width:18px;height:4px;border-radius:2px;margin-right:6px;vertical-align:middle}
