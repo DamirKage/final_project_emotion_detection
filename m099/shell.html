@@ -222,7 +222,7 @@ svg .a1{fill:var(--c1);fill-opacity:.15;stroke:none} svg .a2{fill:var(--c2);fill
     <p class="lead">Нұсқалар спецификация бойынша жиналған: ЭТН 30 сұрақ (60 мин), ЭМ 20 сұрақ (50 мин).</p>
     <div class="card"><div class="row"><b>Режим:</b><div class="seg" id="mode"><button data-m="train" aria-pressed="true">Жаттығу</button><button data-m="exam" aria-pressed="false">Емтихан</button></div></div>
       <p class="lead" id="modehint" style="font-size:.92rem;margin-bottom:0"></p></div>
-    <div class="card"><h2>Testcenter сынақ тесті (ЭТН)</h2><p>Сіз сатып алған нақты сынақтың 29 сұрағы, түсіндірмесімен.</p><div class="row"><button class="btn pri" id="probego">Сынақты шешу<small>60 мин</small></button></div></div>
+    <div class="card"><h2>Testcenter сынақ тесті</h2><p>Сіз сатып алған нақты сынақтың сұрақтары (ЭТН 29 + ЭМ 14), түсіндірмесімен.</p><div class="row"><button class="btn pri" id="probego">Сынақты шешу<small>110 мин</small></button></div></div>
     <div class="card"><h2>Толық емтихан</h2><p>ЭТН 30 + ЭМ 20 сұрақ, 110 минут, 70 балл.</p><div class="grid" id="vg-full"></div></div>
     <div class="card"><h2>ЭТН нұсқалары</h2><div class="grid" id="vg-toe"></div></div>
     <div class="card"><h2>Электр машиналары нұсқалары</h2><div class="grid" id="vg-em"></div></div>
@@ -328,7 +328,7 @@ function menu(){$('#setup').hidden=!!cur;setMode(ST.mode);
   for(let t=1;t<=20;t++)x+=`<button class="btn" data-s="em" data-t="${t}"><span class="n">${t}</span><span>${EN[t]}<small>ЭМ · ${ST.best['tp-em'+t]||'шешілмеген'}</small></span></button>`;
   $('#vg-topic').innerHTML=x;$$('#vg-topic button').forEach(b=>b.onclick=()=>startTopic(b.dataset.s,+b.dataset.t));
   $('#wrinfo').textContent=ST.wrong.length?`Тізімде ${ST.wrong.length} сұрақ бар. Дұрыс шешкен сұрақ тізімнен шығады.`:'Әзірге қате жоқ. Тест шешкенде қате кеткен сұрақтар осында жиналады.';$('#wrgo').disabled=!ST.wrong.length}
-$('#probego').onclick=()=>{const f=rng(Date.now()&0x7fffffff);begin({key:'probe',name:'Testcenter сынағы',mode:ST.mode,time:3600},QS.filter(q=>q.src==='toe-probe').map(q=>inst(q,f)))};
+$('#probego').onclick=()=>{const f=rng(Date.now()&0x7fffffff);begin({key:'probe',name:'Testcenter сынағы',mode:ST.mode,time:6600},QS.filter(q=>q.src==='toe-probe'||q.src==='em-probe').map(q=>inst(q,f)))};
 $('#wrgo').onclick=()=>begin({key:null,name:'Қателермен жұмыс',mode:'train',time:0},buildWrong());
 function start(s,v){const nm={full:'Толық емтихан',toe:'ЭТН',em:'ЭМ'}[s]+(v?' · '+v+'-нұсқа':' · кездейсоқ');
   begin({key:v?s+'-'+v:null,name:nm,mode:ST.mode,time:{full:6600,toe:3600,em:3000}[s]},build(s==='full'?'all':s,v))}
