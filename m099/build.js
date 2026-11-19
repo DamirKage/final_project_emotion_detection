@@ -117,6 +117,12 @@ for (const f of fs.readdirSync(qdir).filter(x => x.endsWith('.js')).sort()) {
 /* ---------- assemble ---------- */
 let page = R('shell.html');
 const put = (k, v) => { page = page.split(`<!--${k}-->`).join(v); };
+let shp = '';
+if (fs.existsSync(path.join(__dirname, 'src/shpargalka.html'))) {
+  shp = R('src/shpargalka.html').replace(/<figure class="plot" data-spec='([\s\S]*?)'>/g, (m, spec) => `<figure class="plot">` + plot(spec, 'shpargalka'));
+  shp = mathHTML(shp, 'shpargalka').replace(/<table/g, '<div class="tw"><table').replace(/<\/table>/g, '</table></div>');
+}
+put('SHPARG', shp);
 put('THEORY', theory); put('CHEATS', cheats);
 put('DATA', `<script>const QS=${JSON.stringify(QS).replace(/<\/script/g, '<\\/script')};const TOC=${JSON.stringify(toc)};const SPEC=${JSON.stringify(SPEC)};const EML="${EML}";</script>`);
 fs.mkdirSync(path.dirname(OUT), { recursive: true });

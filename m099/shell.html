@@ -97,6 +97,7 @@ svg .a1{fill:var(--c1);fill-opacity:.15;stroke:none} svg .a2{fill:var(--c2);fill
 .btn:disabled{opacity:.45;cursor:default}
 .row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.sgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:8px}.sgrid figure{margin:.4rem 0}
 .tgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px}
 .tgrid .btn{display:flex;gap:10px;align-items:flex-start}
 .tgrid .n{flex:none;width:30px;height:30px;border-radius:8px;background:var(--soft);display:grid;place-items:center;font:700 .85rem var(--fd)}
@@ -148,12 +149,13 @@ svg .a1{fill:var(--c1);fill-opacity:.15;stroke:none} svg .a2{fill:var(--c2);fill
 </defs></svg>
 
 <div class="top"><div class="in" id="nav">
-  <button data-v="home">Басты</button><button data-v="theory">Теория</button><button data-v="test">Тест</button><button data-v="formulas">Формулалар</button>
+  <button data-v="home">Басты</button><button data-v="cheat">Шпаргалка</button><button data-v="theory">Теория</button><button data-v="test">Тест</button><button data-v="formulas">Формулалар</button>
 </div></div>
 
 <main id="v-home">
   <h1>M099 «Энергетика және электр техникасы»</h1>
   <p class="lead">Магистратураға кешенді тестілеудің екі бейіндік пәні: «Электр техникасының теориялық негіздері» (ЭТН) және «Электр машиналары» (ЭМ). Мақсат: 70/70.</p>
+  <div class="card" style="border:2px solid var(--acc)"><h2>Қиын болса, осыдан баста</h2><p>Бәрін оқудың қажеті жоқ. «Шпаргалка» бетінде тестте ұпай беретін ережелер мен суреттерді тану бір жерге жиналған.</p><div class="row"><a class="btn pri" href="#cheat" style="text-decoration:none">Шпаргалканы ашу</a></div></div>
   <div class="card" id="prog"></div>
   <div class="card"><h2>Емтихан құрылымы</h2>
     <table><tr><th>Пән</th><th>Тапсырма</th><th>Уақыт</th><th>Жауап түрі</th><th>Балл</th></tr>
@@ -236,6 +238,12 @@ svg .a1{fill:var(--c1);fill-opacity:.15;stroke:none} svg .a2{fill:var(--c2);fill
   <div id="rev"></div>
 </main>
 
+<main id="v-cheat" hidden>
+  <h1>Шпаргалка</h1>
+  <p class="lead">Ең керектісі бір бетте, қарапайым тілмен. Осыдан баста.</p>
+<!--SHPARG-->
+</main>
+
 <main id="v-formulas" hidden>
   <h1>Формулалар</h1>
   <p class="lead">Барлық тақырыптың қысқаша формулалары бір бетте. Емтихан алдында осы бетті қайталап шық.</p>
@@ -283,7 +291,7 @@ let curH=null;
 function route(hh){const h=typeof hh==='string'?hh:(location.hash||'#home').slice(1);if(h===curH&&typeof hh!=='string')return;curH=h;const tp=TOC.find(t=>t.id===h);
   if(tp){show('theory');openTopic(tp.id)}
   else if(h==='theory'){show('theory');$('#tlist').hidden=false;$('#tview').hidden=true;renderTList()}
-  else if(h==='test'||h==='formulas'){show(h);if(h==='test')menu()}
+  else if(h==='test'||h==='formulas'||h==='cheat'){show(h);if(h==='test')menu()}
   else{show('home');renderProg()}
   window.scrollTo(0,0)}
 function go(h){route(h);try{if(location.hash!=='#'+h)history.replaceState(null,'','#'+h)}catch(e){try{location.hash=h}catch(e2){}}}
