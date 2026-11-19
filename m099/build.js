@@ -97,7 +97,7 @@ function addQ(s, t, l, q, o, e, fig, where, family) {
   if (new Set(o.map(x => String(x[0]))).size !== o.length) errors.push(`${where}: қайталанған жауап нұсқасы: ${q.slice(0, 60)}`);
   if (s === 'toe' && !cellOK(t, l)) errors.push(`${where}: спецификацияда жоқ ұяшық t=${t} l=${l}`);
   if (!e) errors.push(`${where}: түсіндірме жоқ: ${q.slice(0, 60)}`);
-  QS.push({ s, t, l, f: family, q: mathQ(q, where), o: o.map(x => [mathQ(x[0], where), x[1] ? 1 : 0]), e: mathQ(e || '', where), fig: fig || '' });
+  QS.push({ src: where.split('#')[0].replace('.js',''), s, t, l, f: family, q: mathQ(q, where), o: o.map(x => [mathQ(x[0], where), x[1] ? 1 : 0]), e: mathQ(e || '', where), fig: fig || '' });
 }
 if (!ONLY) {
   const old = require('./src/oldbank.js');
