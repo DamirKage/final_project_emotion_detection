@@ -120,6 +120,7 @@ const put = (k, v) => { page = page.split(`<!--${k}-->`).join(v); };
 let shp = '';
 if (fs.existsSync(path.join(__dirname, 'src/shpargalka.html'))) {
   shp = R('src/shpargalka.html').replace(/<figure class="plot" data-spec='([\s\S]*?)'>/g, (m, spec) => `<figure class="plot">` + plot(spec, 'shpargalka'));
+  shp = shp.replace(/<svg viewBox="0 0 (\d+) (\d+)"(?![^>]*style)/g, (m, w) => `${m} style="max-width:${Math.round(w * 1.3)}px"`);
   shp = mathHTML(shp, 'shpargalka').replace(/<table/g, '<div class="tw"><table').replace(/<\/table>/g, '</table></div>');
 }
 put('SHPARG', shp);
