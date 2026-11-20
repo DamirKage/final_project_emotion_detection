@@ -967,6 +967,11 @@ svg .a1{fill:var(--c1);fill-opacity:.15;stroke:none} svg .a2{fill:var(--c2);fill
 <details class="chk"><summary>Кіріс кедергісін тапқанда идеал ЭҚК көзі мен идеал ток көзін немен алмастырамыз?</summary><p>ЭҚК көзін сыммен (кедергісі 0), ток көзін үзілумен (кедергісі шексіз).</p></details>
 <details class="chk"><summary>Әрқайсысы 6 Ом үш резистор жұлдызшамен қосылған. Баламалы үшбұрыштың қабырғасы?</summary><p>3 · 6 = 18 Ом.</p></details>
 
+<h3>Активті және пассивті элемент</h3>
+<div class="tw"><table><tr><th>Элемент</th><th>Анықтамасы</th><th>Мысал</th></tr>
+<tr><td><b>Активті</b></td><td>энергия көзі: <b>ток жоқ кезде де</b> қысқыштарында кернеу (ЭҚК) бар</td><td>батарея, генератор, ЭҚК көзі, ток көзі</td></tr>
+<tr><td><b>Пассивті</b></td><td>энергияны тек тұтынады не жинайды: ток жоқ болса, кернеу де жоқ</td><td>R, L, C</td></tr></table></div>
+<div class="box trap"><b class="bt">Тесттегі тұзақ</b><p>«Ток жоқ кезде қысқыштарында кернеуі бар элемент» → <b>активті</b>. «Идеалды», «реалды», «толық» – тұзақ.</p></div>
 <section class="cheat">
 <h3>Қысқаша формулалар</h3>
 <div class="tw"><table>
@@ -2096,6 +2101,11 @@ svg .a1{fill:var(--c1);fill-opacity:.15;stroke:none} svg .a2{fill:var(--c2);fill
 <details class="chk"><summary>Екі ваттметрдің біреуі нөлді көрсетіп тұр. Жүктеменің cos φ қанша?</summary><p>φ = 60°, cos φ = 0,5.</p></details>
 <details class="chk"><summary>Қозғалтқыштың айналу бағытын қалай өзгертеді?</summary><p>Кез келген екі желілік сымның орнын ауыстырады. Фазалар реті кері болады, өріс кері айналады.</p></details>
 
+<h3>Бір ваттметрмен реактивті қуатты өлшеу</h3>
+<p>Ваттметрдің <b>ток орамасы бір сымда</b> (мысалы B), ал <b>кернеу орамасы қалған екі сымның арасына</b> (A мен C) қосылса, ваттметр активті емес, <b>реактивті</b> қуатқа пропорционал шаманы көрсетеді:</p>
+<div class="key"><div class="fm"><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><mi>W</mi><mo>=</mo><msub><mi>U</mi><mrow><mi>A</mi><mi>C</mi></mrow></msub><msub><mi>I</mi><mi>B</mi></msub><mi>cos</mi><mo>⁡</mo><mo stretchy="false">(</mo><msup><mn>90</mn><mo>∘</mo></msup><mo>−</mo><mi>φ</mi><mo stretchy="false">)</mo><mo>=</mo><msub><mi>U</mi><mtext>ж</mtext></msub><msub><mi>I</mi><mtext>ж</mtext></msub><mi>sin</mi><mo>⁡</mo><mi>φ</mi><mo>=</mo><mfrac><mi>Q</mi><msqrt><mn>3</mn></msqrt></mfrac><mo separator="true">,</mo><mspace width="2em"/><mi>Q</mi><mo>=</mo><msqrt><mn>3</mn></msqrt><mtext> </mtext><mi>W</mi></mrow></math></span></div></div>
+<div class="box ex"><b class="bt">Мысал (сынақтан)</b><p>Жұлдызша, әр фазада R = 12 Ом, X = 9 Ом, <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>U</mi><mtext>ж</mtext></msub><mo>=</mo><mn>380</mn></mrow></math></span> В. <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>U</mi><mtext>ф</mtext></msub><mo>=</mo><mn>220</mn></mrow></math></span> В, <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>Z</mi><mo>=</mo><msqrt><mrow><msup><mn>12</mn><mn>2</mn></msup><mo>+</mo><msup><mn>9</mn><mn>2</mn></msup></mrow></msqrt><mo>=</mo><mn>15</mn></mrow></math></span> Ом, <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>I</mi><mo>=</mo><mn>220</mn><mi mathvariant="normal">/</mi><mn>15</mn><mo>=</mo><mn>14,7</mn></mrow></math></span> А. <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>Q</mi><mo>=</mo><mn>3</mn><msup><mi>I</mi><mn>2</mn></msup><mi>X</mi><mo>=</mo><mn>3</mn><mo>⋅</mo><msup><mn>14,7</mn><mn>2</mn></msup><mo>⋅</mo><mn>9</mn><mo>≈</mo><mn>5,8</mn></mrow></math></span> кВАр. Ваттметр: <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>Q</mi><mi mathvariant="normal">/</mi><msqrt><mn>3</mn></msqrt><mo>≈</mo><mn>3,34</mn></mrow></math></span> кВАр.</p></div>
+<div class="box trap"><b class="bt">Тесттегі тұзақ</b><p>Нұсқаларда сан бірдей (3,34), тек бірлігі әртүрлі: Вт, В, А, ВА, кВАр. Реактивті қуат – <b>ВАр</b>.</p></div>
 <section class="cheat"><h3>Қысқаша формулалар</h3>
 <div class="tw"><table>
 <tr><th>Не</th><th>Формула</th></tr>
@@ -3671,6 +3681,14 @@ svg .a1{fill:var(--c1);fill-opacity:.15;stroke:none} svg .a2{fill:var(--c2);fill
 <details class="chk"><summary>Өзіңді тексер: болат өзекті орауышқа синусоидалы кернеу берілді. Ағын мен токтың қайсысы синусоидалы?</summary><p>Ағын синусоидалы (кернеу оны анықтайды). Ток шыңды, құрамында тақ гармоникалар бар.</p></details>
 <details class="chk"><summary>Өзіңді тексер: 127 В желіге қосылған бір жартыпериодты түзеткіштің орташа кернеуі?</summary><p>0,45 · 127 = 57,2 В.</p></details>
 
+<h3>Фурье қатары (синусоидалы емес қисық)</h3>
+<p>Сызықты емес элементтен кейін ток пен кернеу синусоида болмай қалады. Кез келген периодты қисықты <b>тұрақты құраушы мен гармоникалардың қосындысы</b> ретінде жазуға болады:</p>
+<div class="key"><div class="fm"><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>ω</mi><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo><msub><mi>A</mi><mn>0</mn></msub><mo>+</mo><munderover><mo>∑</mo><mrow><mi>k</mi><mo>=</mo><mn>1</mn></mrow><mi mathvariant="normal">∞</mi></munderover><msub><mi>A</mi><mrow><mi>k</mi><mi>m</mi></mrow></msub><mi>sin</mi><mo>⁡</mo><mo stretchy="false">(</mo><mi>k</mi><mi>ω</mi><mi>t</mi><mo>+</mo><msub><mi>ψ</mi><mi>k</mi></msub><mo stretchy="false">)</mo></mrow></math></span></div></div>
+<ul><li><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>A</mi><mn>0</mn></msub></mrow></math></span> – тұрақты құраушы (орташа мән);</li>
+<li><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>k</mi></mrow></math></span> – гармоника нөмірі: k = 1 негізгі гармоника, k = 3, 5… жоғары гармоникалар;</li>
+<li><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>A</mi><mrow><mi>k</mi><mi>m</mi></mrow></msub></mrow></math></span> – k-шы гармониканың амплитудасы, <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>ψ</mi><mi>k</mi></msub></mrow></math></span> – оның бастапқы фазасы.</li></ul>
+<p>Әсерлік мән: <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>I</mi><mo>=</mo><msqrt><mrow><msubsup><mi>I</mi><mn>0</mn><mn>2</mn></msubsup><mo>+</mo><msubsup><mi>I</mi><mn>1</mn><mn>2</mn></msubsup><mo>+</mo><msubsup><mi>I</mi><mn>2</mn><mn>2</mn></msubsup><mo>+</mo><mo>…</mo></mrow></msqrt></mrow></math></span> (гармоникалар әсерлік мәндерінің квадраттарының қосындысының түбірі).</p>
+<div class="box trap"><b class="bt">Тесттегі тұзақ</b><p>Дұрыс нұсқада <b><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>A</mi><mn>0</mn></msub></mrow></math></span></b> бар және синус ішінде <b><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>k</mi><mi>ω</mi><mi>t</mi></mrow></math></span></b> тұр. <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>A</mi><mn>0</mn></msub></mrow></math></span> жоқ, <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>ω</mi><mi>t</mi></mrow></math></span> (k жоқ), <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>k</mi><mi>t</mi></mrow></math></span> (ω жоқ), <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>k</mi><mi>ω</mi></mrow></math></span> (t жоқ) – қате.</p></div>
 <section class="cheat">
 <h3>Қысқаша формулалар</h3>
 <div class="tw"><table>
